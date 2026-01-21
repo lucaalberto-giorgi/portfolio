@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Audio for Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Audio for Portfolio</h1>
+    <div class="info">
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Enter the text you want to convert to speech</li>
+            <li>Click "Generate Audio" to create the audio</li>
+            <li>Click "Download Audio" to save the file</li>
+            <li>Save the file as <code>luca-intro.mp3</code> in the <code>public/audio/</code> folder</li>
+        </ol>
+    </div>
+    
+    <textarea id="textInput" rows="3">Hello my name is Luca Alberto Giorgi and thats my portfolio</textarea>
+    
+    <div>
+        <button onclick="generateAudio()">Generate Audio</button>
+        <button onclick="downloadAudio()" id="downloadBtn" disabled>Download Audio</button>
+    </div>
+    
+    <audio id="audioPlayer" controls style="width: 100%; margin-top: 20px;"></audio>
+
+    <script>
+        let audioBlob = null;
+        const synth = window.speechSynthesis;
+        
+        function generateAudio() {
+            const text = document.getElementById('textInput').value;
+            if (!text) {
+                alert('Please enter some text');
+                return;
+            }
+            
+            // Use Web Speech API to generate audio
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            
+            // Try to use a good quality voice
+            const voices = synth.getVoices();
+            const preferredVoice = voices.find(voice => 
+                voice.name.includes('Google') || 
+                voice.name.includes('Microsoft') ||
+                voice.lang.startsWith('en')
+            ) || voices.find(voice => voice.lang.startsWith('en'));
+            
+            if (preferredVoice) {
+                utterance.voice = preferredVoice;
+            }
+            
+            // Create audio context to record the speech
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const mediaStreamDestination = audioContext.createMediaStreamDestination();
+            const mediaRecorder = new MediaRecorder(mediaStreamDestination.stream);
+            const chunks = [];
+            
+            mediaRecorder.ondataavailable = (event) => {
+                chunks.push(event.data);
+            };
+            
+            mediaRecorder.onstop = () => {
+                audioBlob = new Blob(chunks, { type: 'audio/webm' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                document.getElementById('audioPlayer').src = audioUrl;
+                document.getElementById('downloadBtn').disabled = false;
+            };
+            
+            // Start recording
+            mediaRecorder.start();
+            
+            utterance.onend = () => {
+                setTimeout(() => {
+                    mediaRecorder.stop();
+                }, 500);
+            };
+            
+            synth.speak(utterance);
+        }
+        
+        function downloadAudio() {
+            if (!audioBlob) {
+                alert('Please generate audio first');
+                return;
+            }
+            
+            const url = URL.createObjectURL(audioBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'luca-intro.webm';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Audio downloaded! Note: This is a .webm file. You may need to convert it to .mp3 using an online converter or audio software.');
+        }
+        
+        // Load voices when page loads
+        window.onload = () => {
+            if (synth.onvoiceschanged !== undefined) {
+                synth.onvoiceschanged = () => {
+                    // Voices loaded
+                };
+            }
+        };
+    </script>
+</body>
+</html>

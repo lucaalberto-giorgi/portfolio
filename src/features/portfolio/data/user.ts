@@ -35,7 +35,7 @@ I'm passionate about writing clean, maintainable code and continuously learning 
   avatar: "/images/avatar.png",
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-light.png?v=4",
-  namePronunciationUrl: "/audio/chanhdai.mp3",
+  namePronunciationUrl: "/audio/luca-intro.mp3",
   timeZone: "Europe/London",
   keywords: [
     "lucagiorgi",

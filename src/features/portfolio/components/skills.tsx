@@ -32,17 +32,18 @@ export function Skills() {
         className={cn(
           "[--pattern-foreground:var(--color-zinc-950)]/5 dark:[--pattern-foreground:var(--color-white)]/5",
           "bg-[radial-gradient(var(--pattern-foreground)_1px,transparent_0)] bg-size-[10px_10px] bg-center",
-          "bg-zinc-950/0.75 dark:bg-white/0.75"
+          "bg-zinc-950/0.75 dark:bg-white/0.75",
+          "py-8"
         )}
       >
         <TooltipProvider>
-          <ul className="flex flex-wrap justify-between items-center gap-4 select-none w-full sm:flex-nowrap">
+          <ul className="flex flex-wrap justify-center items-center gap-8 select-none w-full sm:flex-nowrap sm:gap-12">
             {skills.map((tech) => {
               // Use mapped icon key if available, otherwise use original key
               const iconKey = ICON_KEY_MAP[tech.key] || tech.key;
 
               return (
-                <li key={tech.key} className="flex flex-1 justify-center">
+                <li key={tech.key} className="flex justify-center">
                   <TooltipRoot>
                     <TooltipTrigger
                       render={
@@ -60,16 +61,16 @@ export function Skills() {
                           <Image
                             src={`https://assets.chanhdai.com/images/tech-stack-icons/${iconKey}-light.svg`}
                             alt={`${tech.title} light icon`}
-                            width={64}
-                            height={64}
+                            width={80}
+                            height={80}
                             className="hidden [html.light_&]:block"
                             unoptimized
                           />
                           <Image
                             src={`https://assets.chanhdai.com/images/tech-stack-icons/${iconKey}-dark.svg`}
                             alt={`${tech.title} dark icon`}
-                            width={64}
-                            height={64}
+                            width={80}
+                            height={80}
                             className="hidden [html.dark_&]:block"
                             unoptimized
                           />

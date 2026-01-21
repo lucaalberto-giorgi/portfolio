@@ -32,7 +32,7 @@ Through coursework and projects, I've gained hands-on experience with JavaScript
 
 I'm passionate about writing clean, maintainable code and continuously learning new technologies, with a growing interest in full-stack development using **Next.js**.
 `,
-  avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
+  avatar: "/images/avatar.png",
   ogImage:
     "https://assets.chanhdai.com/images/screenshot-og-image-light.png?v=4",
   namePronunciationUrl: "/audio/chanhdai.mp3",

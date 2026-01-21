@@ -1,7 +1,6 @@
 import { USER } from "@/features/portfolio/data/user";
 import { FlipSentences } from "@/registry/flip-sentences";
 
-import { PronounceMyName } from "./pronounce-my-name";
 import { VerifiedIcon } from "./verified-icon";
 
 export function ProfileHeader() {
@@ -39,12 +38,6 @@ export function ProfileHeader() {
               className="size-4.5 text-info select-none"
               aria-label="Verified"
             />
-
-            {USER.namePronunciationUrl && (
-              <PronounceMyName
-                namePronunciationUrl={USER.namePronunciationUrl}
-              />
-            )}
           </div>
 
           <div className="h-12.5 border-t border-edge py-1 pl-4 sm:h-9">

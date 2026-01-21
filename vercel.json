@@ -1,7 +1,7 @@
 {
   "buildCommand": "pnpm run build",
   "devCommand": "pnpm run dev",
-  "installCommand": "pnpm install --frozen-lockfile && pnpm approve-builds",
+  "installCommand": "pnpm approve-builds && pnpm install --frozen-lockfile",
   "framework": "nextjs",
   "nodeVersion": "22.x"
 }

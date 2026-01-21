@@ -12,7 +12,11 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
       className={cn(
         "group/link flex cursor-pointer items-center gap-4 p-4 pr-2 transition-[background-color] ease-out hover:bg-accent2",
         "max-sm:screen-line-before max-sm:screen-line-after",
+<<<<<<< HEAD
         "sm:nth-[3n+1]:screen-line-before sm:nth-[3n]:screen-line-after"
+=======
+        "sm:nth-[2n+1]:screen-line-before sm:nth-[2n+1]:screen-line-after"
+>>>>>>> 668ab6b64fbfec563c29c094a4f9bc48a8625b96
       )}
       href={addQueryParams(href, UTM_PARAMS)}
       target="_blank"

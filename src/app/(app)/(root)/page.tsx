@@ -17,7 +17,11 @@ export default function Page() {
         }}
       />
 
+<<<<<<< HEAD
       <div className="mx-auto w-full max-w-4xl *:[[id]]:scroll-mt-22">
+=======
+      <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
+>>>>>>> 668ab6b64fbfec563c29c094a4f9bc48a8625b96
         <ProfileHeader />
         <Separator />
 

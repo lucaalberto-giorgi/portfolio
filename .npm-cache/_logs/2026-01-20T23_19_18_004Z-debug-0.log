@@ -1,0 +1,58 @@
+0 verbose cli /opt/homebrew/Cellar/node/25.1.0_1/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.6.2
+2 info using node@v25.1.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main/.npmrc
+5 warn Unknown project config "public-hoist-pattern". This will stop working in the next major version of npm.
+6 silly config load:file:/Users/lucaalbertogiorgi/.npmrc
+7 silly config load:file:/opt/homebrew/etc/npmrc
+8 verbose title npm install
+9 verbose argv "install" "--cache" ".npm-cache"
+10 verbose logfile logs-max:10 dir:/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main/.npm-cache/_logs/2026-01-20T23_19_18_004Z-
+11 verbose logfile /Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main/.npm-cache/_logs/2026-01-20T23_19_18_004Z-debug-0.log
+12 silly logfile done cleaning log files
+13 verbose stack Error: EPERM: operation not permitted, open '/opt/homebrew/lib/node_modules/npm/node_modules/@sigstore/verify/dist/key/index.js'
+13 verbose stack     at Object.readFileSync (node:fs:435:20)
+13 verbose stack     at defaultLoadImpl (node:internal/modules/cjs/loader:1138:17)
+13 verbose stack     at loadSource (node:internal/modules/cjs/loader:1787:20)
+13 verbose stack     at Object..js (node:internal/modules/cjs/loader:1885:44)
+13 verbose stack     at Module.load (node:internal/modules/cjs/loader:1480:32)
+13 verbose stack     at Module._load (node:internal/modules/cjs/loader:1299:12)
+13 verbose stack     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+13 verbose stack     at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+13 verbose stack     at Module.require (node:internal/modules/cjs/loader:1503:12)
+13 verbose stack     at require (node:internal/modules/helpers:152:16)
+14 error code EPERM
+15 error syscall open
+16 error path /opt/homebrew/lib/node_modules/npm/node_modules/@sigstore/verify/dist/key/index.js
+17 error errno -1
+18 error Error: EPERM: operation not permitted, open '/opt/homebrew/lib/node_modules/npm/node_modules/@sigstore/verify/dist/key/index.js'
+18 error     at Object.readFileSync (node:fs:435:20)
+18 error     at defaultLoadImpl (node:internal/modules/cjs/loader:1138:17)
+18 error     at loadSource (node:internal/modules/cjs/loader:1787:20)
+18 error     at Object..js (node:internal/modules/cjs/loader:1885:44)
+18 error     at Module.load (node:internal/modules/cjs/loader:1480:32)
+18 error     at Module._load (node:internal/modules/cjs/loader:1299:12)
+18 error     at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+18 error     at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+18 error     at Module.require (node:internal/modules/cjs/loader:1503:12)
+18 error     at require (node:internal/modules/helpers:152:16) {
+18 error   errno: -1,
+18 error   code: 'EPERM',
+18 error   syscall: 'open',
+18 error   path: '/opt/homebrew/lib/node_modules/npm/node_modules/@sigstore/verify/dist/key/index.js'
+18 error }
+19 error
+19 error The operation was rejected by your operating system.
+19 error It is likely you do not have the permissions to access this file as the current user
+19 error
+19 error If you believe this might be a permissions issue, please double-check the
+19 error permissions of the file and its containing directories, or try running
+19 error the command again as root/Administrator.
+20 verbose cwd /Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main
+21 verbose os Darwin 25.1.0
+22 verbose node v25.1.0
+23 verbose npm  v11.6.2
+24 verbose exit -1
+25 verbose code -1
+26 error A complete log of this run can be found in: /Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main/.npm-cache/_logs/2026-01-20T23_19_18_004Z-debug-0.log

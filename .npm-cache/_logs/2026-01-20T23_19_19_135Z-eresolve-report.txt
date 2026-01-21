@@ -1,0 +1,50 @@
+'Log files:
+/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main/.npm-cache/_logs/2026-01-20T23_19_19_135Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: fumadocs-core@16.4.7
+Found: zod@3.25.76
+node_modules/zod
+  zod@"^3.25.0" from the root project
+  zod@"^3.24.1" from shadcn@3.6.3
+  node_modules/shadcn
+    dev shadcn@"3.6.3" from the root project
+  peer zod@">=3.25.0" from @orpc/zod@1.8.1
+  node_modules/@orpc/zod
+    @orpc/zod@"1.8.1" from @c15t/backend@1.8.0
+    node_modules/@c15t/backend
+      @c15t/backend@"1.8.0" from c15t@1.8.3
+      node_modules/c15t
+        c15t@"1.8.3" from @c15t/react@1.8.3
+        node_modules/@c15t/react
+          @c15t/react@"1.8.3" from @c15t/nextjs@1.8.3
+          node_modules/@c15t/nextjs
+            @c15t/nextjs@"^1.8.1" from the root project
+  zod@"^3.25.0 || ^4.0.0" from eslint-plugin-react-hooks@7.0.1
+  node_modules/eslint-plugin-react-hooks
+    eslint-plugin-react-hooks@"^7.0.0" from eslint-config-next@16.1.1
+    node_modules/eslint-config-next
+      dev eslint-config-next@"16.1.1" from the root project
+  peer zod@"^3.25.0 || ^4.0.0" from zod-validation-error@4.0.2
+  node_modules/zod-validation-error
+    zod-validation-error@"^3.5.0 || ^4.0.0" from eslint-plugin-react-hooks@7.0.1
+    node_modules/eslint-plugin-react-hooks
+      eslint-plugin-react-hooks@"^7.0.0" from eslint-config-next@16.1.1
+      node_modules/eslint-config-next
+        dev eslint-config-next@"16.1.1" from the root project
+
+Could not resolve dependency:
+peerOptional zod@"4.x.x" from fumadocs-core@16.4.7
+node_modules/fumadocs-core
+  fumadocs-core@"^16.0.0" from the root project
+
+Conflicting peer dependency: zod@4.3.5
+node_modules/zod
+  peerOptional zod@"4.x.x" from fumadocs-core@16.4.7
+  node_modules/fumadocs-core
+    fumadocs-core@"^16.0.0" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

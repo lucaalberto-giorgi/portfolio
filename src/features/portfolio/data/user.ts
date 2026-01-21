@@ -16,7 +16,7 @@ export const USER = {
   address: "London, United Kingdom",
   phoneNumber: "KzQ0NzQyNDk3MjM5MQ==", // E.164 format, base64 encoded (+447424972391)
   email: "bHVjYWxiZXJ0by5naW9yZ2kyMDA0QGdtYWlsLmNvbQ==", // base64 encoded (lucalberto.giorgi2004@gmail.com)
-  website: "http://localhost:1408",
+  website: "https://luca.giorgi.com",
   jobTitle: "Computer Science Student",
   jobs: [
     {

@@ -17,7 +17,7 @@ export default function Page() {
         }}
       />
 
-      <div className="mx-auto md:max-w-3xl *:[[id]]:scroll-mt-22">
+      <div className="mx-auto w-full max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileHeader />
         <Separator />
 

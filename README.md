@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 # [chanhdai.com](https://chanhdai.com) &middot; [![GitHub License](https://img.shields.io/github/license/ncdai/chanhdai.com?label=License)](https://github.com/ncdai/chanhdai.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/ncdai/chanhdai.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
 
 A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
@@ -160,4 +157,3 @@ This project is proudly supported by:
 [![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
 
 <!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->
->>>>>>> 668ab6b64fbfec563c29c094a4f9bc48a8625b96

@@ -11,11 +11,7 @@ export function About() {
         <PanelTitle>About</PanelTitle>
       </PanelHeader>
 
-<<<<<<< HEAD
       <PanelContent className="py-6">
-=======
-      <PanelContent>
->>>>>>> 668ab6b64fbfec563c29c094a4f9bc48a8625b96
         <ProseMono>
           <Markdown>{USER.about}</Markdown>
         </ProseMono>

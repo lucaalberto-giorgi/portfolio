@@ -2,7 +2,6 @@ import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { About } from "@/features/portfolio/components/about";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
-import { Projects } from "@/features/portfolio/components/projects";
 import { Skills } from "@/features/portfolio/components/skills";
 import { SocialLinks } from "@/features/portfolio/components/social-links";
 import { USER } from "@/features/portfolio/data/user";
@@ -26,9 +25,6 @@ export default function Page() {
         <Separator />
 
         <About />
-        <Separator />
-
-        <Projects />
         <Separator />
 
         <Skills />

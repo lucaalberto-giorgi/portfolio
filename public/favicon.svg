@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="#000000"/>
+  <text
+    x="128"
+    y="180"
+    fontSize="140"
+    fontFamily="system-ui, -apple-system, sans-serif"
+    fontWeight="600"
+    fill="#ffffff"
+    textAnchor="middle"
+    dominantBaseline="middle"
+  >
+    LG
+  </text>
+</svg>

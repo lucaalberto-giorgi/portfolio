@@ -155,8 +155,8 @@ export function ProjectItem({
                         </div>
                       </button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-5xl p-0">
-                      <div className="relative aspect-video w-full">
+                    <DialogContent className="max-w-6xl p-0 overflow-hidden">
+                      <div className="relative aspect-video w-full bg-muted">
                         <Image
                           src={project.preview}
                           alt={`${project.title} preview`}

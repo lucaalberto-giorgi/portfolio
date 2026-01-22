@@ -26,6 +26,16 @@ const nextConfig: NextConfig = {
         hostname: "raw.githubusercontent.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "vercel.app",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "api.screenshotone.com",
+        port: "",
+      },
     ],
     qualities: [75, 100],
   },

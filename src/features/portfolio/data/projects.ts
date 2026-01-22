@@ -2,6 +2,39 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "amazon-app",
+    title: "Lucazon - Amazon Clone",
+    period: {
+      start: "01.2025",
+    },
+    link: "https://github.com/lucaalberto-giorgi/amazon-app",
+    skills: [
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "LocalStorage",
+      "Vanilla JS",
+      "E-commerce",
+    ],
+    description: `A fully functional Amazon clone built with vanilla JavaScript, HTML, and CSS.
+
+**Features:**
+- 🏠 Home page with featured products and category filtering
+- 🔍 Product search functionality
+- 📦 Detailed product pages
+- 🛒 Shopping cart with add/remove/update quantities
+- 💳 Checkout process with form validation
+- 💾 Cart persistence using LocalStorage
+
+**Tech Stack:**
+- Pure vanilla JavaScript (no frameworks)
+- Responsive CSS with Flexbox and Grid
+- LocalStorage API for cart persistence
+- Clean, maintainable code structure`,
+    preview: "https://raw.githubusercontent.com/lucaalberto-giorgi/amazon-app/main/images/preview.png",
+    isExpanded: true,
+  },
+  {
     id: "react-wheel-picker",
     title: "React Wheel Picker",
     period: {

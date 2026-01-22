@@ -117,6 +117,26 @@ export function ProjectItem({
         <CollapsibleContent className="group overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
           <div className="border-t border-edge shadow-inner">
             <div className="space-y-4 p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
+              {project.preview && (
+                <div className="relative w-full overflow-hidden rounded-lg border border-edge bg-muted">
+                  <a
+                    href={addQueryParams(project.link, UTM_PARAMS)}
+                    target="_blank"
+                    rel="noopener"
+                    className="block"
+                  >
+                    <Image
+                      src={project.preview}
+                      alt={`${project.title} preview`}
+                      width={1200}
+                      height={675}
+                      className="w-full h-auto transition-transform duration-300 hover:scale-105"
+                      unoptimized
+                    />
+                  </a>
+                </div>
+              )}
+
               {project.description && (
                 <ProseMono>
                   <Markdown>{project.description}</Markdown>

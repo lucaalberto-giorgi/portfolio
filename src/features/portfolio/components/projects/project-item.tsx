@@ -2,7 +2,6 @@
 
 import { BoxIcon, InfinityIcon, LinkIcon, ExternalLinkIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 import { Markdown } from "@/components/markdown";
 import {

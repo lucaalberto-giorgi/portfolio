@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
     period: {
       start: "01.2025",
     },
-    link: "https://github.com/lucaalberto-giorgi/amazon-app",
+    link: "https://amazon-appclone.vercel.app",
     skills: [
       "JavaScript",
       "HTML5",
@@ -15,8 +15,9 @@ export const PROJECTS: Project[] = [
       "LocalStorage",
       "Vanilla JS",
       "E-commerce",
+      "Vercel",
     ],
-    description: `A fully functional Amazon clone built with vanilla JavaScript, HTML, and CSS.
+    description: `A fully functional Amazon clone built with vanilla JavaScript, HTML, and CSS. [Live Demo](https://amazon-appclone.vercel.app) | [GitHub Repository](https://github.com/lucaalberto-giorgi/amazon-app)
 
 **Features:**
 - 🏠 Home page with featured products and category filtering
@@ -30,7 +31,8 @@ export const PROJECTS: Project[] = [
 - Pure vanilla JavaScript (no frameworks)
 - Responsive CSS with Flexbox and Grid
 - LocalStorage API for cart persistence
-- Clean, maintainable code structure`,
+- Clean, maintainable code structure
+- Deployed on Vercel`,
     preview: "https://raw.githubusercontent.com/lucaalberto-giorgi/amazon-app/main/images/preview.png",
     isExpanded: true,
   },

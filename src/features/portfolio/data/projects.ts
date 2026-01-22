@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
 - LocalStorage API for cart persistence
 - Clean, maintainable code structure
 - Deployed on Vercel`,
-    preview: "/images/amazon.jpg",
+    preview: "https://raw.githubusercontent.com/lucaalberto-giorgi/portfoliocs/main/Screenshot%202026-01-22%20at%2001.02.50.png",
     isExpanded: true,
   },
   {

@@ -16,7 +16,7 @@ export const USER = {
   address: "London, United Kingdom",
   phoneNumber: "KzQ0NzQyNDk3MjM5MQ==", // E.164 format, base64 encoded (+447424972391)
   email: "bHVjYWxiZXJ0by5naW9yZ2kyMDA0QGdtYWlsLmNvbQ==", // base64 encoded (lucalberto.giorgi2004@gmail.com)
-  website: "https://luca.giorgi.com",
+  website: "https://www.lucagiorgi.com",
   jobTitle: "Computer Science Student",
   jobs: [
     {
@@ -33,8 +33,7 @@ Through coursework and projects, I've gained hands-on experience with JavaScript
 I'm passionate about writing clean, maintainable code and continuously learning new technologies, with a growing interest in full-stack development using **Next.js**.
 `,
   avatar: "/images/avatar.png",
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-light.png?v=4",
+  ogImage: "https://www.lucagiorgi.com/og?title=Luca%20Alberto%20Giorgi",
   namePronunciationUrl: "/audio/luca-intro.mp3",
   timeZone: "Europe/London",
   keywords: [

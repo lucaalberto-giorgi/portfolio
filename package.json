@@ -1,19 +1,19 @@
 {
-  "name": "chanhdai.com",
+  "name": "luca-portfolio",
   "version": "0.1.0",
-  "description": "A minimal, pixel-perfect dev portfolio, component registry, and blog.",
-  "homepage": "https://chanhdai.com",
+  "description": "Personal portfolio, component registry, and blog for Luca Alberto Giorgi.",
+  "homepage": "https://www.lucagiorgi.com",
   "license": "MIT",
   "author": {
-    "name": "Nguyen Chanh Dai",
-    "email": "dai@chanhdai.com",
-    "url": "https://github.com/ncdai"
+    "name": "Luca Alberto Giorgi",
+    "email": "lucalberto.giorgi2004@gmail.com",
+    "url": "https://github.com/lucaalberto-giorgi"
   },
   "contributors": [
     {
-      "name": "Nguyen Chanh Dai",
-      "email": "dai@chanhdai.com",
-      "url": "https://github.com/ncdai"
+      "name": "Luca Alberto Giorgi",
+      "email": "lucalberto.giorgi2004@gmail.com",
+      "url": "https://github.com/lucaalberto-giorgi"
     }
   ],
   "repository": {

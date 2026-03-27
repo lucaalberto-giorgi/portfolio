@@ -7,7 +7,7 @@ export const components: Registry["items"] = [
     description:
       "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
     title: "Theme Switcher",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["next-themes", "lucide-react", "motion"],
     registryDependencies: ["@ncdai/utils"],
     files: [
@@ -16,13 +16,13 @@ export const components: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    docs: "https://chanhdai.com/components/theme-switcher-component",
+    docs: "https://www.lucagiorgi.com/components/theme-switcher-component",
   },
   {
     name: "flip-sentences",
     type: "registry:component",
     title: "Flip Sentences",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["motion"],
     registryDependencies: ["@ncdai/utils"],
     files: [
@@ -38,7 +38,7 @@ export const components: Registry["items"] = [
     description:
       "Create a Xin chào and Hello writing effect inspired by Apple using Motion for React.",
     title: "Apple Hello Effect",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["motion"],
     registryDependencies: ["@ncdai/utils"],
     files: [
@@ -47,7 +47,7 @@ export const components: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    docs: "https://chanhdai.com/components/apple-hello-effect",
+    docs: "https://www.lucagiorgi.com/components/apple-hello-effect",
   },
   {
     name: "wheel-picker",
@@ -55,7 +55,7 @@ export const components: Registry["items"] = [
     description:
       "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
     title: "Wheel Picker",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["@ncdai/react-wheel-picker"],
     registryDependencies: ["@ncdai/utils"],
     files: [
@@ -64,7 +64,7 @@ export const components: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    docs: "https://chanhdai.com/components/react-wheel-picker",
+    docs: "https://www.lucagiorgi.com/components/react-wheel-picker",
   },
   {
     name: "work-experience",
@@ -72,7 +72,7 @@ export const components: Registry["items"] = [
     description:
       "Displays a list of work experiences with role details and durations.",
     title: "Work Experience",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["react-markdown", "lucide-react"],
     devDependencies: ["@tailwindcss/typography", "tw-animate-css"],
     registryDependencies: ["@ncdai/utils", "collapsible", "separator"],
@@ -100,14 +100,14 @@ export const components: Registry["items"] = [
       '@import "tw-animate-css"': {},
       "@plugin @tailwindcss/typography": {},
     },
-    docs: "https://chanhdai.com/components/work-experience-component",
+    docs: "https://www.lucagiorgi.com/components/work-experience-component",
   },
   {
     name: "shimmering-text",
     type: "registry:component",
     description: "Smooth shimmering text animation built with Motion.",
     title: "Shimmering Text",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["motion"],
     registryDependencies: ["@ncdai/utils"],
     files: [
@@ -123,7 +123,7 @@ export const components: Registry["items"] = [
     description:
       "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
     title: "Slide to Unlock",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["motion"],
     registryDependencies: ["@ncdai/utils", "@ncdai/shimmering-text"],
     files: [
@@ -132,7 +132,7 @@ export const components: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    docs: "https://chanhdai.com/components/slide-to-unlock",
+    docs: "https://www.lucagiorgi.com/components/slide-to-unlock",
   },
   {
     name: "testimonials-marquee",
@@ -140,7 +140,7 @@ export const components: Registry["items"] = [
     description:
       "A testimonials marquee component for showcasing user feedback in a scrolling format.",
     title: "Testimonials Marquee",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     registryDependencies: ["@ncdai/utils", "@kibo-ui/marquee"],
     files: [
       {
@@ -148,7 +148,7 @@ export const components: Registry["items"] = [
         type: "registry:component",
       },
     ],
-    docs: "https://chanhdai.com/components/testimonials-marquee",
+    docs: "https://www.lucagiorgi.com/components/testimonials-marquee",
   },
   {
     name: "github-stars",
@@ -156,7 +156,7 @@ export const components: Registry["items"] = [
     description:
       "Display GitHub repository star count with formatted numbers and a tooltip showing the full count.",
     title: "GitHub Stars",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     registryDependencies: ["button", "tooltip"],
     files: [
       {
@@ -171,7 +171,7 @@ export const components: Registry["items"] = [
     description:
       "A React component that adds a fade effect to content as you scroll.",
     title: "Scroll Fade Effect",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     registryDependencies: ["@ncdai/utils"],
     files: [
       {
@@ -268,7 +268,7 @@ export const components: Registry["items"] = [
     description:
       "A React component for managing user consent for cookies and tracking in Next.js applications.",
     title: "Consent Manager",
-    author: "ncdai <dai@chanhdai.com>",
+    author: "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
     dependencies: ["@c15t/nextjs"],
     registryDependencies: ["@ncdai/utils", "button"],
     files: [

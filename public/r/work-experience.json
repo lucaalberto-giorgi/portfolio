@@ -1,9 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "work-experience",
-  "type": "registry:component",
   "title": "Work Experience",
-  "author": "ncdai <dai@chanhdai.com>",
+  "author": "Luca Alberto Giorgi <lucalberto.giorgi2004@gmail.com>",
   "description": "Displays a list of work experiences with role details and durations.",
   "dependencies": [
     "react-markdown",
@@ -43,5 +42,6 @@
     "@import \"tw-animate-css\"": {},
     "@plugin @tailwindcss/typography": {}
   },
-  "docs": "https://chanhdai.com/components/work-experience-component"
+  "docs": "https://www.lucagiorgi.com/components/work-experience-component",
+  "type": "registry:component"
 }

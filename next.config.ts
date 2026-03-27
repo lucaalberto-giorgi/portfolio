@@ -1,10 +1,15 @@
 import type { NextConfig } from "next";
 import path from "path";
 
+const allowedDevOrigins = process.env.ALLOWED_DEV_ORIGINS
+  ?.split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
-  allowedDevOrigins: ["chanhdai-macbook.local"],
+  ...(allowedDevOrigins?.length ? { allowedDevOrigins } : {}),
   turbopack: {
     root: path.join(__dirname, "."),
   },

@@ -8,6 +8,7 @@ export const PROJECTS: Project[] = [
       start: "01.2025",
     },
     link: "https://amazon-appclone.vercel.app",
+    githubLink: "https://github.com/lucaalberto-giorgi/amazon-app",
     skills: [
       "JavaScript",
       "HTML5",

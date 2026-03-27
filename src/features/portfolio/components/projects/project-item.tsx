@@ -38,6 +38,7 @@ export function ProjectItem({
   const { start, end } = project.period;
   const isOngoing = !end;
   const isSinglePeriod = end === start;
+  const githubHref = addQueryParams(project.githubLink ?? project.link, UTM_PARAMS);
 
   return (
     <CollapsibleWithContext defaultOpen={project.isExpanded} asChild>
@@ -169,7 +170,7 @@ export function ProjectItem({
                   </Dialog>
                   
                   <a
-                    href={addQueryParams(project.link, UTM_PARAMS)}
+                    href={githubHref}
                     target="_blank"
                     rel="noopener"
                     className={cn(

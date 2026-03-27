@@ -1,7 +1,7 @@
 # Vercel Deployment Troubleshooting Checklist
 
 ## Current Status
-- **Repository**: `https://github.com/lucaalberto-giorgi/portfoliocs.git`
+- **Repository**: `https://github.com/lucaalberto-giorgi/portfolio.git`
 - **Latest Commit**: `84da5bc` - "Resolve merge conflicts: keep all fixes"
 - **Branch**: `main`
 
@@ -12,14 +12,14 @@
 **In Vercel Dashboard:**
 1. Go to your project → **Settings** → **Git**
 2. Verify it shows:
-   - **Repository**: `lucaalberto-giorgi/portfoliocs`
+   - **Repository**: `lucaalberto-giorgi/portfolio`
    - **Production Branch**: `main`
    - **Git Provider**: GitHub
 
 **If NOT connected:**
 1. Click **Disconnect** (if connected to wrong repo)
 2. Click **Connect Git Repository**
-3. Select `lucaalberto-giorgi/portfoliocs`
+3. Select `lucaalberto-giorgi/portfolio`
 4. Select branch: `main`
 5. Click **Deploy**
 
@@ -93,7 +93,7 @@ git log --oneline -1
 git remote -v
 ```
 
-Both should show `portfoliocs` repository.
+Both should show `portfolio` repository.
 
 ## Still Not Working?
 

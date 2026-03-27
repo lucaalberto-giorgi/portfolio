@@ -1,7 +1,7 @@
 # Vercel-GitHub Connection Troubleshooting Guide
 
 ## Current Status
-- **Git Remote**: `https://github.com/lucaalberto-giorgi/MYProject.git`
+- **Git Remote**: `https://github.com/lucaalberto-giorgi/portfolio.git`
 - **Branch**: `main`
 - **Local Status**: Up to date with `origin/main`
 
@@ -21,7 +21,7 @@ For Vercel to automatically deploy your changes, you need to:
 2. Navigate to your project
 3. Go to **Settings** → **Git**
 4. Check if your GitHub repository is connected:
-   - Should show: `lucaalberto-giorgi/MYProject`
+   - Should show: `lucaalberto-giorgi/portfolio`
    - Should show: Branch `main` is connected
 
 **Option B: Check via Vercel CLI**
@@ -36,7 +36,7 @@ npx vercel link
 1. Go to Vercel Dashboard → Your Project → Settings → Git
 2. Click "Disconnect" if already connected
 3. Click "Connect Git Repository"
-4. Select `lucaalberto-giorgi/MYProject`
+4. Select `lucaalberto-giorgi/portfolio`
 5. Select branch: `main`
 6. Click "Deploy"
 

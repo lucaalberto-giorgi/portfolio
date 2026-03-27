@@ -1,11 +1,12 @@
-# [chanhdai.com](https://chanhdai.com) &middot; [![GitHub License](https://img.shields.io/github/license/ncdai/chanhdai.com?label=License)](https://github.com/ncdai/chanhdai.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/ncdai/chanhdai.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
+# Luca Alberto Giorgi Portfolio
 
-A minimal, pixel-perfect dev portfolio, component registry, and blog to showcase my work as a Design Engineer.
+A minimal, pixel-perfect portfolio, component registry, and blog to showcase my work as a Computer Science student and developer.
 
-→ Check out the live site: [chanhdai.com](https://chanhdai.com)
+Live site: [www.lucagiorgi.com](https://www.lucagiorgi.com)
 
-[![screenshot-dark](https://assets.chanhdai.com/images/screenshot-desktop-dark.webp?v=4#gh-dark-mode-only)](https://chanhdai.com#gh-dark-mode-only)
-[![screenshot-light](https://assets.chanhdai.com/images/screenshot-desktop-light.webp?v=4#gh-light-mode-only)](https://chanhdai.com#gh-light-mode-only)
+Repository: [lucaalberto-giorgi/portfolio](https://github.com/lucaalberto-giorgi/portfolio)
+
+![Portfolio Screenshot](./Screenshot%202026-01-22%20at%2001.02.50.png)
 
 ## Overview
 
@@ -72,68 +73,7 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 
 ## Contributors
 
-[![Contributors](https://chanhdai.com/svg/contributors?v=2)](https://github.com/ncdai/chanhdai.com/graphs/contributors)
-
-## Sponsors
-
-This project is proudly supported by:
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="https://shadcnstudio.com?utm_source=chanhdai.com&utm_medium=banner&utm_campaign=github#gh-light-mode-only">
-          <img src="https://assets.chanhdai.com/images/sponsors/shadcnstudio.svg?v=2#gh-light-mode-only" alt="shadcnstudio.com" />
-        </a>
-        <a href="https://shadcnstudio.com?utm_source=chanhdai.com&utm_medium=banner&utm_campaign=github#gh-dark-mode-only">
-          <img src="https://assets.chanhdai.com/images/sponsors/shadcnstudio-dark.svg?v=2#gh-dark-mode-only" alt="shadcnstudio.com" />
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-light-mode-only">
-          <img
-            src="https://assets.chanhdai.com/images/sponsors/shadcraft.svg?v=1#gh-light-mode-only"
-            alt="shadcraft.com"
-          />
-        </a>
-        <a href="https://shadcraft.com?utm_source=chanhdai.com#gh-dark-mode-only">
-          <img
-            src="https://assets.chanhdai.com/images/sponsors/shadcraft-dark.svg?v=1#gh-dark-mode-only"
-            alt="shadcraft.com"
-          />
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="https://reactbits.com?utm_source=chanhdai.com#gh-light-mode-only">
-          <img
-            src="https://assets.chanhdai.com/images/sponsors/reactbits.svg?v=1#gh-light-mode-only"
-            alt="reactbits.com"
-          />
-        </a>
-        <a href="https://reactbits.com?utm_source=chanhdai.com#gh-dark-mode-only">
-          <img
-            src="https://assets.chanhdai.com/images/sponsors/reactbits-dark.svg?v=1#gh-dark-mode-only"
-            alt="reactbits.com"
-          />
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-> Found this project useful? [Sponsor me](https://github.com/sponsors/ncdai) to help with support and maintenance.
-
-## Stats
-
-![Stats](https://repobeats.axiom.co/api/embed/583bf08fbdef57c3921d3cfda902d546df3e6ed1.svg "Repobeats analytics image")
-
-## Star History
-
-[![Star History](https://starchart.cc/ncdai/chanhdai.com.svg?variant=adaptive&line=%23d37f2c)](https://starchart.cc/ncdai/chanhdai.com)
+[![Contributors](https://www.lucagiorgi.com/svg/contributors?v=2)](https://github.com/lucaalberto-giorgi/portfolio/graphs/contributors)
 
 ## Acknowledgments
 
@@ -151,9 +91,3 @@ This project is proudly supported by:
 - [PostHog](https://posthog.com)
 - [c15t](https://c15t.com)
 - And many other open-source libraries used in `package.json`
-
-## GitAds Sponsored
-
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=ncdai/chanhdai.com@github)](https://gitads.dev/v1/ad-track?source=ncdai/chanhdai.com@github)
-
-<!-- GitAds-Verify: QICCAB4PFWV9MHUGPGPN5B2I8SAXLAOK -->

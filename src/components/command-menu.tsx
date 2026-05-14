@@ -68,7 +68,7 @@ const MENU_LINKS: CommandLinkItem[] = [
   },
   {
     title: "Projects",
-    href: "/projects",
+    href: "/#projects",
     icon: BoxIcon,
   },
 ];
@@ -278,7 +278,6 @@ export function CommandMenu({ posts }: { posts: Post[] }) {
               Auto
             </CommandItem>
           </CommandGroup>
-
         </CommandList>
 
         <CommandMenuFooter />

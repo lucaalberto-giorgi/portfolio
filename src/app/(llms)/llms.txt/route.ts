@@ -1,6 +1,6 @@
 import { SITE_INFO } from "@/config/site";
-import { USER } from "@/features/portfolio/data/user";
 import { getAllPosts } from "@/features/blog/data/posts";
+import { USER } from "@/features/portfolio/data/user";
 
 const allPosts = getAllPosts();
 

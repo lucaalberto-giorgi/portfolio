@@ -2,6 +2,30 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "dissertation-cv-job-matching",
+    title: "AI CV & Job Matching System",
+    period: {
+      start: "01.2026",
+      end: "05.2026",
+    },
+    link: "https://dissertation-hazel.vercel.app",
+    githubLink: "https://github.com/lucaalberto-giorgi/dissertation",
+    skills: [
+      "React",
+      "Vite",
+      "FastAPI",
+      "Python",
+      "OpenAI API",
+      "Supabase",
+      "pypdf",
+      "REST API",
+      "TypeScript",
+    ],
+    description: `A full-stack dissertation project that compares CVs against job descriptions using semantic similarity, keyword matching, and AI-generated feedback. The system extracts CV text from PDF uploads, calculates semantic and keyword-based match scores, and returns an overall match level with matching skills, missing skills, and a short explanation. The backend is built with FastAPI and integrates OpenAI embeddings and Supabase for storing match results, while the frontend provides a clean interface for uploading CVs and reviewing match feedback.`,
+    preview: "/images/dissertation.png",
+    isExpanded: true,
+  },
+  {
     id: "receipt-flow",
     title: "Receipt Flow",
     period: {

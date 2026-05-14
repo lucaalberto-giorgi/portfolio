@@ -21,13 +21,14 @@ export const MAIN_NAV: NavItem[] = [
   },
   {
     title: "Projects",
-    href: "/projects",
+    href: "/#projects",
   },
 ];
 
 export const GITHUB_USERNAME = "lucaalberto-giorgi";
 export const SOURCE_CODE_GITHUB_REPO = "lucaalberto-giorgi/portfolio";
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/lucaalberto-giorgi/portfolio";
+export const SOURCE_CODE_GITHUB_URL =
+  "https://github.com/lucaalberto-giorgi/portfolio";
 
 export const SPONSORSHIP_URL = "";
 

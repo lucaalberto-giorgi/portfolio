@@ -1,6 +1,11 @@
 "use client";
 
-import { BoxIcon, InfinityIcon, LinkIcon, ExternalLinkIcon } from "lucide-react";
+import {
+  BoxIcon,
+  ExternalLinkIcon,
+  InfinityIcon,
+  LinkIcon,
+} from "lucide-react";
 import Image from "next/image";
 
 import { Markdown } from "@/components/markdown";
@@ -10,11 +15,7 @@ import {
   CollapsibleTrigger,
   CollapsibleWithContext,
 } from "@/components/ui/collapsible";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tag } from "@/components/ui/tag";
 import {
   Tooltip,
@@ -23,8 +24,8 @@ import {
 } from "@/components/ui/tooltip";
 import { ProseMono } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
-import { addQueryParams } from "@/utils/url";
 import { cn } from "@/lib/utils";
+import { addQueryParams } from "@/utils/url";
 
 import type { Project } from "../../types/projects";
 
@@ -38,7 +39,10 @@ export function ProjectItem({
   const { start, end } = project.period;
   const isOngoing = !end;
   const isSinglePeriod = end === start;
-  const githubHref = addQueryParams(project.githubLink ?? project.link, UTM_PARAMS);
+  const githubHref = addQueryParams(
+    project.githubLink ?? project.link,
+    UTM_PARAMS
+  );
 
   return (
     <CollapsibleWithContext defaultOpen={project.isExpanded} asChild>
@@ -136,7 +140,7 @@ export function ProjectItem({
                           "transition-all duration-300 ease-out",
                           "hover:scale-[1.02] hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/20",
                           "active:scale-[0.98]",
-                          "cursor-pointer group/preview"
+                          "group/preview cursor-pointer"
                         )}
                       >
                         <div className="relative aspect-video w-full">
@@ -156,7 +160,7 @@ export function ProjectItem({
                         </div>
                       </button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-6xl p-0 overflow-hidden">
+                    <DialogContent className="max-w-6xl overflow-hidden p-0">
                       <div className="relative aspect-video w-full bg-muted">
                         <Image
                           src={project.preview}
@@ -168,7 +172,7 @@ export function ProjectItem({
                       </div>
                     </DialogContent>
                   </Dialog>
-                  
+
                   <a
                     href={githubHref}
                     target="_blank"

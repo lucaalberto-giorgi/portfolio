@@ -6,7 +6,9 @@ Live site: [www.lucagiorgi.com](https://www.lucagiorgi.com)
 
 Repository: [lucaalberto-giorgi/portfolio](https://github.com/lucaalberto-giorgi/portfolio)
 
-![Portfolio Screenshot](./README-portfolio-screenshot.webp)
+## Preview
+
+![Luca Alberto Giorgi portfolio homepage](./public/screenshots/portfolio-homepage.png)
 
 ## Overview
 

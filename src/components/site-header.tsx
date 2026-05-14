@@ -1,34 +1,28 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-import { DesktopNav } from "@/components/desktop-nav";
-import { MAIN_NAV } from "@/config/site";
 import { cn } from "@/lib/utils";
 
+import { HeaderPill } from "./header-pill";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
-import { ThemeToggle } from "./theme-toggle";
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
-);
-
-const MobileNav = dynamic(() =>
-  import("@/components/mobile-nav").then((mod) => mod.MobileNav)
 );
 
 export function SiteHeader() {
   return (
     <SiteHeaderWrapper
       className={cn(
-        "sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background px-2 pt-2",
+        "sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2 pt-2",
         "data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]",
         "not-dark:data-[affix=true]:**:data-header-container:after:bg-border",
         "transition-shadow duration-300"
       )}
     >
       <div
-        className="screen-line-before screen-line-after mx-auto flex h-12 items-center justify-between gap-4 border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-3xl"
+        className="screen-line-before screen-line-after relative mx-auto flex h-12 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-3xl"
         data-header-container
       >
         <BrandContextMenu>
@@ -41,10 +35,10 @@ export function SiteHeader() {
           </Link>
         </BrandContextMenu>
 
-        <div className="flex items-center gap-4">
-          <DesktopNav items={MAIN_NAV} />
-          <ThemeToggle />
-          <MobileNav className="sm:hidden" items={MAIN_NAV} />
+        <div className="pointer-events-none absolute inset-x-0 flex justify-center">
+          <div className="pointer-events-auto">
+            <HeaderPill />
+          </div>
         </div>
       </div>
     </SiteHeaderWrapper>

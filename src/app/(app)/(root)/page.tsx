@@ -4,7 +4,6 @@ import { About } from "@/features/portfolio/components/about";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
 import { Skills } from "@/features/portfolio/components/skills";
-import { SocialLinks } from "@/features/portfolio/components/social-links";
 import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +19,6 @@ export default function Page() {
 
       <div className="mx-auto w-full max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileHeader />
-        <Separator />
-
-        <SocialLinks />
         <Separator />
 
         <About />

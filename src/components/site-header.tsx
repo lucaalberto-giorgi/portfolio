@@ -27,7 +27,7 @@ export function SiteHeader() {
       >
         <BrandContextMenu>
           <Link
-            className="has-data-[visible=false]:pointer-events-none [&_svg]:h-8"
+            className="hidden has-data-[visible=false]:pointer-events-none sm:flex [&_svg]:h-8"
             href="/"
             aria-label="Home"
           >

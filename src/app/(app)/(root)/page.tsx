@@ -24,10 +24,10 @@ export default function Page() {
         <About />
         <Separator />
 
-        <Skills />
+        <Projects />
         <Separator />
 
-        <Projects />
+        <Skills />
         <Separator />
       </div>
     </>

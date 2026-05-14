@@ -26,11 +26,9 @@ export const USER = {
     },
   ],
   about: `
-During my studies at University of East London, I've developed a strong foundation in **JavaScript** and **React**, focusing on building interactive web applications and understanding modern frontend development principles.
+I'm a Computer Science graduate focused on frontend and full-stack development. I build clean, responsive web applications with **React**, **TypeScript**, and **Next.js**, with an emphasis on practical projects, readable code, and user-focused design.
 
-Through coursework and projects, I've gained hands-on experience with JavaScript fundamentals, ES6+ features, and React's component-based architecture, working on assignments that involved creating dynamic user interfaces and managing state.
-
-I'm passionate about writing clean, maintainable code and continuously learning new technologies, with a growing interest in full-stack development using **Next.js**.
+My recent work includes portfolio projects and an AI-powered CV/job matching system, combining frontend development with backend APIs and AI features. I'm now looking for junior frontend or full-stack opportunities where I can contribute to real products and keep improving.
 `,
   avatar: "/images/avatar.png",
   ogImage: "https://www.lucagiorgi.com/og?title=Luca%20Alberto%20Giorgi",

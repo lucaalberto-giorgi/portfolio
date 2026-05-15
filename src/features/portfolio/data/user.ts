@@ -7,20 +7,20 @@ export const USER = {
   username: "lucagiorgi",
   gender: "male",
   pronouns: "he/him",
-  bio: "Third year Computer Science student at University of East London.",
+  bio: "Computer Science graduate from University of East London.",
   flipSentences: [
-    "Third year Computer Science student at University of East London.",
-    "Computer Science Student",
+    "Computer Science graduate from University of East London.",
+    "Based in London",
     "Software Developer",
   ],
   address: "London, United Kingdom",
   phoneNumber: "KzQ0NzQyNDk3MjM5MQ==", // E.164 format, base64 encoded (+447424972391)
   email: "bHVjYWxiZXJ0by5naW9yZ2kyMDA0QGdtYWlsLmNvbQ==", // base64 encoded (lucalberto.giorgi2004@gmail.com)
   website: "https://www.lucagiorgi.com",
-  jobTitle: "Computer Science Student",
+  jobTitle: "Computer Science Graduate",
   jobs: [
     {
-      title: "Student",
+      title: "Graduate",
       company: "University of East London",
       website: "https://www.uel.ac.uk",
     },
@@ -38,7 +38,7 @@ My recent work includes portfolio projects and an AI-powered CV/job matching sys
     "lucagiorgi",
     "luca alberto giorgi",
     "luca giorgi",
-    "computer science student",
+    "computer science graduate",
     "university of east london",
     "uel",
     "software developer",

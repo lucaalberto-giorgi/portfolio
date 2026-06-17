@@ -1,26 +1,32 @@
 "use client";
 
+import type { MotionValue } from "motion/react";
 import {
   motion,
+  useAnimationFrame,
+  useMotionValue,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useSpring,
-  useTime,
   useTransform,
+  useVelocity,
 } from "motion/react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
- * A stickman that continuously climbs a ladder in the left gutter (Option A).
+ * A stickman that climbs a ladder in the homepage left gutter and reacts to
+ * where you settle:
  *
- * - The climbing gait runs on its own time loop, so he's always climbing —
- *   alive even when you're not scrolling.
- * - His vertical position still tracks page scroll progress, so he doubles
- *   as a "you are here" indicator.
+ * - scrolling      → contralateral climbing gait
+ * - idle near top  → "summit": pulls up tall and waves hello
+ * - idle near bottom → "rest": sits on a rung with legs dangling
+ * - idle mid-ladder  → "breathe": gentle hang so he never looks frozen
  *
- * Limbs are animated by their endpoint coordinates (not CSS rotation), which
- * sidesteps the cross-browser quirks of SVG `transform-origin`. Decorative:
- * hidden below xl, aria-hidden, pointer-events-none, and frozen to a static
- * gripping pose under prefers-reduced-motion.
+ * Limbs are animated by their endpoint coordinates (no fragile SVG
+ * transform-origin). Each frame eases the limbs toward the current pose, so
+ * mode changes blend smoothly. Decorative: hidden below xl, aria-hidden,
+ * pointer-events-none, and a static pose under prefers-reduced-motion.
  */
 
 // SVG geometry (user units).
@@ -36,16 +42,98 @@ const RUNG_COUNT = Math.floor((VB_H - RUNG_TOP * 2) / RUNG_GAP) + 1;
 const TRAVEL_TOP = 44;
 const TRAVEL_BOTTOM = VB_H - 64;
 
-// Gait timing + limb throw.
+// Behaviour tuning.
 const CYCLE_MS = 1100; // one full climb stride
 const ARM_THROW = 5;
 const LEG_THROW = 4;
-const BOB = 1.4;
+const SMOOTH_TAU = 90; // pose-blend time constant (ms); lower = snappier
+const VEL_THRESHOLD = 0.004; // |scroll-progress / s| above which he's climbing
+const SETTLE_MS = 280; // idle time before he settles into an end pose
+const TOP_AT = 0.04;
+const BOTTOM_AT = 0.96;
+
+type Mode = "climbing" | "top" | "bottom" | "breathe";
+
+type Pose = {
+  lhx: number;
+  lhy: number;
+  rhx: number;
+  rhy: number;
+  lfx: number;
+  lfy: number;
+  rfx: number;
+  rfy: number;
+  body: number;
+};
+
+// Per-mode target pose as a function of elapsed time (for the oscillations).
+function poseFor(mode: Mode, t: number): Pose {
+  switch (mode) {
+    case "top": {
+      const w = Math.sin((t / 420) * Math.PI * 2); // wave
+      return {
+        lhx: 20 + w * 5,
+        lhy: -45 + w * 3, // raised, waving
+        rhx: 40,
+        rhy: -40, // raised, gripping the top
+        lfx: 26,
+        lfy: 4,
+        rfx: 38,
+        rfy: 4,
+        body: -3, // stands tall
+      };
+    }
+    case "bottom": {
+      const d = Math.sin((t / 900) * Math.PI * 2); // dangle
+      return {
+        lhx: 26,
+        lhy: -20, // hands resting on a rung
+        rhx: 38,
+        rhy: -20,
+        lfx: 28 + d * 3,
+        lfy: 15, // legs hang and swing together
+        rfx: 36 + d * 3,
+        rfy: 15,
+        body: 3, // sits lower
+      };
+    }
+    case "breathe": {
+      const b = Math.sin((t / 2200) * Math.PI * 2); // slow breath
+      return {
+        lhx: 24,
+        lhy: -27, // hands holding a rung overhead
+        rhx: 40,
+        rhy: -27,
+        lfx: 25,
+        lfy: 8,
+        rfx: 39,
+        rfy: 8,
+        body: b * 0.8,
+      };
+    }
+    default: {
+      const s = Math.sin(((t % CYCLE_MS) / CYCLE_MS) * Math.PI * 2);
+      return {
+        lhx: 22,
+        lhy: -26 + s * ARM_THROW,
+        rhx: 42,
+        rhy: -26 - s * ARM_THROW,
+        lfx: 24,
+        lfy: 8 - s * LEG_THROW,
+        rfx: 40,
+        rfy: 8 + s * LEG_THROW,
+        body: -Math.abs(s) * 1.4,
+      };
+    }
+  }
+}
+
+const REST_POSE = poseFor("breathe", 0);
 
 export function ScrollClimber() {
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll();
-  const time = useTime();
+  const velocity = useVelocity(scrollYProgress);
 
   // Vertical position, smoothed so the climb glides between scroll deltas.
   const yRaw = useTransform(
@@ -55,19 +143,61 @@ export function ScrollClimber() {
   );
   const y = useSpring(yRaw, { stiffness: 110, damping: 22, mass: 0.4 });
 
-  // -1..1 oscillation advanced by the time loop → the climbing gait.
-  const swing = useTransform(time, (t) =>
-    Math.sin(((t % CYCLE_MS) / CYCLE_MS) * Math.PI * 2)
-  );
+  // Limb endpoint + body-offset motion values, eased toward the active pose.
+  const lhx = useMotionValue(REST_POSE.lhx);
+  const lhy = useMotionValue(REST_POSE.lhy);
+  const rhx = useMotionValue(REST_POSE.rhx);
+  const rhy = useMotionValue(REST_POSE.rhy);
+  const lfx = useMotionValue(REST_POSE.lfx);
+  const lfy = useMotionValue(REST_POSE.lfy);
+  const rfx = useMotionValue(REST_POSE.rfx);
+  const rfy = useMotionValue(REST_POSE.rfy);
+  const body = useMotionValue(REST_POSE.body);
 
-  // Contralateral gait: left hand rises with the right foot, and vice versa.
-  const leftHandY = useTransform(swing, (s) => -26 + s * ARM_THROW);
-  const rightHandY = useTransform(swing, (s) => -26 - s * ARM_THROW);
-  const leftFootY = useTransform(swing, (s) => 8 - s * LEG_THROW);
-  const rightFootY = useTransform(swing, (s) => 8 + s * LEG_THROW);
+  const [mode, setMode] = useState<Mode>("top");
+  const modeRef = useRef<Mode>("top");
+  useEffect(() => {
+    modeRef.current = mode;
+  }, [mode]);
 
-  // Slight upper-body bob at each reach.
-  const bob = useTransform(swing, (s) => -Math.abs(s) * BOB);
+  // Settle into an end pose once scrolling stops.
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scheduleSettle = useCallback(() => {
+    if (settleTimer.current) clearTimeout(settleTimer.current);
+    settleTimer.current = setTimeout(() => {
+      const p = scrollYProgress.get();
+      setMode(p <= TOP_AT ? "top" : p >= BOTTOM_AT ? "bottom" : "breathe");
+    }, SETTLE_MS);
+  }, [scrollYProgress]);
+
+  useMotionValueEvent(velocity, "change", (v) => {
+    if (Math.abs(v) > VEL_THRESHOLD) setMode("climbing");
+    scheduleSettle();
+  });
+
+  useEffect(() => {
+    scheduleSettle(); // settle on load (page opens at the top)
+    return () => {
+      if (settleTimer.current) clearTimeout(settleTimer.current);
+    };
+  }, [scheduleSettle]);
+
+  useAnimationFrame((t, delta) => {
+    if (reduce) return;
+    const alpha = 1 - Math.exp(-delta / SMOOTH_TAU);
+    const p = poseFor(modeRef.current, t);
+    const ease = (mv: MotionValue<number>, to: number) =>
+      mv.set(mv.get() + (to - mv.get()) * alpha);
+    ease(lhx, p.lhx);
+    ease(lhy, p.lhy);
+    ease(rhx, p.rhx);
+    ease(rhy, p.rhy);
+    ease(lfx, p.lfx);
+    ease(lfy, p.lfy);
+    ease(rfx, p.rfx);
+    ease(rfy, p.rfy);
+    ease(body, p.body);
+  });
 
   const rungs = Array.from(
     { length: RUNG_COUNT },
@@ -109,7 +239,7 @@ export function ScrollClimber() {
           ))}
         </g>
 
-        {/* Climber: outer group = scroll position, inner group = gait bob */}
+        {/* Climber: outer group = scroll position, inner group = body offset */}
         <motion.g style={{ y: reduce ? TRAVEL_TOP : y }}>
           <motion.g
             className="text-foreground"
@@ -117,7 +247,7 @@ export function ScrollClimber() {
             strokeWidth={2.4}
             strokeLinecap="round"
             strokeLinejoin="round"
-            style={{ y: reduce ? 0 : bob }}
+            style={{ y: reduce ? 0 : body }}
           >
             {/* head */}
             <circle
@@ -129,22 +259,32 @@ export function ScrollClimber() {
             />
             {/* torso */}
             <line x1={32} y1={-26} x2={32} y2={-4} />
-            {/* arms (shoulder → hands on the rails) */}
+            {/* arms (shoulder → hands) */}
             <motion.line
               x1={32}
               y1={-22}
-              x2={22}
-              y2={reduce ? -28 : leftHandY}
+              x2={reduce ? REST_POSE.lhx : lhx}
+              y2={reduce ? REST_POSE.lhy : lhy}
             />
             <motion.line
               x1={32}
               y1={-22}
-              x2={42}
-              y2={reduce ? -24 : rightHandY}
+              x2={reduce ? REST_POSE.rhx : rhx}
+              y2={reduce ? REST_POSE.rhy : rhy}
             />
-            {/* legs (hip → feet on the rungs) */}
-            <motion.line x1={32} y1={-4} x2={24} y2={reduce ? 8 : leftFootY} />
-            <motion.line x1={32} y1={-4} x2={40} y2={reduce ? 8 : rightFootY} />
+            {/* legs (hip → feet) */}
+            <motion.line
+              x1={32}
+              y1={-4}
+              x2={reduce ? REST_POSE.lfx : lfx}
+              y2={reduce ? REST_POSE.lfy : lfy}
+            />
+            <motion.line
+              x1={32}
+              y1={-4}
+              x2={reduce ? REST_POSE.rfx : rfx}
+              y2={reduce ? REST_POSE.rfy : rfy}
+            />
           </motion.g>
         </motion.g>
       </svg>

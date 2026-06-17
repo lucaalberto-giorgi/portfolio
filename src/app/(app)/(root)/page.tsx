@@ -1,5 +1,6 @@
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
+import { ScrollClimber } from "@/components/scroll-climber";
 import { About } from "@/features/portfolio/components/about";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
@@ -16,6 +17,8 @@ export default function Page() {
           __html: JSON.stringify(getPageJsonLd()).replace(/</g, "\\u003c"),
         }}
       />
+
+      <ScrollClimber />
 
       <div className="mx-auto w-full max-w-3xl *:[[id]]:scroll-mt-22">
         <ProfileHeader />

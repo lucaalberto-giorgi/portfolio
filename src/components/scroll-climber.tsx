@@ -59,12 +59,19 @@ type Pose = {
   lhy: number;
   rhx: number;
   rhy: number;
+  // Optional right elbow; defaults to the straight-arm midpoint when omitted.
+  rex?: number;
+  rey?: number;
   lfx: number;
   lfy: number;
   rfx: number;
   rfy: number;
   body: number;
 };
+
+// Right shoulder anchor (both arms share it).
+const SHOULDER_X = 32;
+const SHOULDER_Y = -22;
 
 // Per-mode target pose as a function of elapsed time (for the oscillations).
 function poseFor(mode: Mode, t: number): Pose {
@@ -75,8 +82,10 @@ function poseFor(mode: Mode, t: number): Pose {
       return {
         lhx: 22,
         lhy: -20, // left hand grips the rail, anchored
-        rhx: 46 + w * 8, // right hand sweeps side to side...
-        rhy: -47, // ...held high over the head
+        rex: 42, // elbow up and out to the right, clearing the head
+        rey: -33,
+        rhx: 45 + w * 6, // forearm waves the hand side to side...
+        rhy: -49, // ...held high over the head
         lfx: 27,
         lfy: 5,
         rfx: 37,
@@ -130,6 +139,9 @@ function poseFor(mode: Mode, t: number): Pose {
 }
 
 const REST_POSE = poseFor("breathe", 0);
+// Straight-arm elbow (midpoint of shoulder → hand) for the resting pose.
+const REST_REX = (SHOULDER_X + REST_POSE.rhx) / 2;
+const REST_REY = (SHOULDER_Y + REST_POSE.rhy) / 2;
 
 export function ScrollClimber() {
   const reduce = useReducedMotion();
@@ -149,6 +161,8 @@ export function ScrollClimber() {
   const lhy = useMotionValue(REST_POSE.lhy);
   const rhx = useMotionValue(REST_POSE.rhx);
   const rhy = useMotionValue(REST_POSE.rhy);
+  const rex = useMotionValue(REST_REX);
+  const rey = useMotionValue(REST_REY);
   const lfx = useMotionValue(REST_POSE.lfx);
   const lfy = useMotionValue(REST_POSE.lfy);
   const rfx = useMotionValue(REST_POSE.rfx);
@@ -193,6 +207,8 @@ export function ScrollClimber() {
     ease(lhy, p.lhy);
     ease(rhx, p.rhx);
     ease(rhy, p.rhy);
+    ease(rex, p.rex ?? (SHOULDER_X + p.rhx) / 2);
+    ease(rey, p.rey ?? (SHOULDER_Y + p.rhy) / 2);
     ease(lfx, p.lfx);
     ease(lfy, p.lfy);
     ease(rfx, p.rfx);
@@ -260,16 +276,23 @@ export function ScrollClimber() {
             />
             {/* torso */}
             <line x1={32} y1={-26} x2={32} y2={-4} />
-            {/* arms (shoulder → hands) */}
+            {/* left arm (shoulder → hand) */}
             <motion.line
               x1={32}
               y1={-22}
               x2={reduce ? REST_POSE.lhx : lhx}
               y2={reduce ? REST_POSE.lhy : lhy}
             />
+            {/* right arm bends at the elbow so the wave clears the head */}
             <motion.line
               x1={32}
               y1={-22}
+              x2={reduce ? REST_REX : rex}
+              y2={reduce ? REST_REY : rey}
+            />
+            <motion.line
+              x1={reduce ? REST_REX : rex}
+              y1={reduce ? REST_REY : rey}
               x2={reduce ? REST_POSE.rhx : rhx}
               y2={reduce ? REST_POSE.rhy : rhy}
             />

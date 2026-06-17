@@ -46,7 +46,7 @@ const TRAVEL_BOTTOM = VB_H - 64;
 const CYCLE_MS = 1100; // one full climb stride
 const ARM_THROW = 5;
 const LEG_THROW = 4;
-const SMOOTH_TAU = 90; // pose-blend time constant (ms); lower = snappier
+const SMOOTH_TAU = 70; // pose-blend time constant (ms); lower = snappier
 const VEL_THRESHOLD = 0.004; // |scroll-progress / s| above which he's climbing
 const SETTLE_MS = 280; // idle time before he settles into an end pose
 const TOP_AT = 0.04;
@@ -70,17 +70,18 @@ type Pose = {
 function poseFor(mode: Mode, t: number): Pose {
   switch (mode) {
     case "top": {
-      const w = Math.sin((t / 420) * Math.PI * 2); // wave
+      // One hand holds the ladder; the other waves hello high above the head.
+      const w = Math.sin((t / 540) * Math.PI * 2); // friendly wave cadence
       return {
-        lhx: 20 + w * 5,
-        lhy: -45 + w * 3, // raised, waving
-        rhx: 40,
-        rhy: -40, // raised, gripping the top
-        lfx: 26,
-        lfy: 4,
-        rfx: 38,
-        rfy: 4,
-        body: -3, // stands tall
+        lhx: 22,
+        lhy: -20, // left hand grips the rail, anchored
+        rhx: 46 + w * 8, // right hand sweeps side to side...
+        rhy: -47, // ...held high over the head
+        lfx: 27,
+        lfy: 5,
+        rfx: 37,
+        rfy: 5, // feet planted on the rung
+        body: -2, // standing tall
       };
     }
     case "bottom": {

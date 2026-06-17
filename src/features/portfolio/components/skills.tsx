@@ -37,7 +37,7 @@ export function Skills() {
         )}
       >
         <TooltipProvider>
-          <ul className="flex flex-wrap justify-center items-center gap-8 select-none w-full sm:flex-nowrap sm:gap-12">
+          <ul className="flex w-full flex-wrap items-center justify-center gap-8 select-none sm:flex-nowrap sm:gap-12">
             {skills.map((tech) => {
               // Use mapped icon key if available, otherwise use original key
               const iconKey = ICON_KEY_MAP[tech.key] || tech.key;
@@ -52,14 +52,14 @@ export function Skills() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={tech.title}
-                          className="flex justify-center items-center"
+                          className="flex items-center justify-center"
                         />
                       }
                     >
                       {tech.theme ? (
                         <>
                           <Image
-                            src={`https://assets.chanhdai.com/images/tech-stack-icons/${iconKey}-light.svg`}
+                            src={`/images/tech-stack-icons/${iconKey}-light.svg`}
                             alt={`${tech.title} light icon`}
                             width={80}
                             height={80}
@@ -67,7 +67,7 @@ export function Skills() {
                             unoptimized
                           />
                           <Image
-                            src={`https://assets.chanhdai.com/images/tech-stack-icons/${iconKey}-dark.svg`}
+                            src={`/images/tech-stack-icons/${iconKey}-dark.svg`}
                             alt={`${tech.title} dark icon`}
                             width={80}
                             height={80}
@@ -77,7 +77,7 @@ export function Skills() {
                         </>
                       ) : (
                         <Image
-                          src={`https://assets.chanhdai.com/images/tech-stack-icons/${iconKey}.svg`}
+                          src={`/images/tech-stack-icons/${iconKey}.svg`}
                           alt={`${tech.title} icon`}
                           width={64}
                           height={64}
@@ -99,4 +99,3 @@ export function Skills() {
     </Panel>
   );
 }
-

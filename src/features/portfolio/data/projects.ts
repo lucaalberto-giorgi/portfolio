@@ -30,6 +30,7 @@ export const PROJECTS: Project[] = [
     title: "Receipt Flow",
     period: {
       start: "03.2026",
+      end: "04.2026",
     },
     link: "https://receipt-flow-neon.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/receipt-flow",
@@ -54,6 +55,7 @@ export const PROJECTS: Project[] = [
     title: "Lucazon - Amazon Clone",
     period: {
       start: "01.2025",
+      end: "03.2025",
     },
     link: "https://amazon-appclone.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/amazon-app",

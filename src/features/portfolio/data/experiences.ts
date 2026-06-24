@@ -45,6 +45,7 @@ export const EXPERIENCES: Experience[] = [
           end: "2026",
         },
         icon: "education",
+        isExpanded: true,
         description: `- BSc (Hons) Computer Science — First Class.`,
         skills: [
           "C++",

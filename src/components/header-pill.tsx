@@ -4,6 +4,7 @@ import {
   BriefcaseBusinessIcon,
   FolderGit2Icon,
   GithubIcon,
+  GraduationCapIcon,
   HomeIcon,
   LinkedinIcon,
   MailIcon,
@@ -259,6 +260,14 @@ export function HeaderPill() {
         label="Experience"
         href="/#experience"
         icon={<BriefcaseBusinessIcon className="size-[22px]" />}
+      />
+
+      <DockItem
+        mouseX={mouseX}
+        reduce={reduce}
+        label="Education"
+        href="/#education"
+        icon={<GraduationCapIcon className="size-[22px]" />}
       />
 
       <DockItem

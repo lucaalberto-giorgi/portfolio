@@ -30,6 +30,8 @@ export type Experience = {
   companyName: string;
   /** URL to the company logo (absolute URL or path under /public). */
   companyLogo?: string;
+  /** Invert the logo in dark mode (for dark/monochrome logos on transparent). */
+  invertLogoOnDark?: boolean;
   /** Roles held at this company; keep newest first for display. */
   positions: ExperiencePosition[];
   /** Marks the company as the current employer for highlighting. */

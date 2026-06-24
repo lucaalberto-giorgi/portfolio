@@ -1,22 +1,30 @@
 import Image from "next/image";
 import React from "react";
 
+import { cn } from "@/lib/utils";
+
 import type { Experience } from "../../types/experiences";
 import { ExperiencePositionItem } from "./experience-position-item";
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
-    <div className="screen-line-after space-y-4 py-4">
+    <div
+      id={experience.id}
+      className="screen-line-after scroll-mt-14 space-y-4 py-4"
+    >
       <div className="flex items-center gap-3">
-        <div className="flex size-6 shrink-0 items-center justify-center select-none">
+        <div className="flex size-8 shrink-0 items-center justify-center select-none">
           {experience.companyLogo ? (
             <Image
               src={experience.companyLogo}
               alt={experience.companyName}
-              width={24}
-              height={24}
+              width={32}
+              height={32}
               quality={100}
-              className="rounded-full"
+              className={cn(
+                "object-contain",
+                experience.invertLogoOnDark && "dark:invert"
+              )}
               unoptimized
               aria-hidden
             />
@@ -38,7 +46,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         )}
       </div>
 
-      <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
+      <div className="space-y-4">
         {experience.positions.map((position) => (
           <ExperiencePositionItem key={position.id} position={position} />
         ))}

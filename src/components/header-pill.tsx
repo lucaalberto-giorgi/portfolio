@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  BriefcaseBusinessIcon,
   FolderGit2Icon,
   GithubIcon,
+  GraduationCapIcon,
   HomeIcon,
   LinkedinIcon,
   MailIcon,
@@ -52,6 +54,11 @@ const ITEM_BUTTON = cn(
 
 const TOOLTIP =
   "pointer-events-none absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 translate-y-1 scale-95 whitespace-nowrap rounded-md border bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-md transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100";
+
+// Keep mouse clicks from leaving focus on a dock item — otherwise the focus
+// ring ("glow") and the focus-within tooltip would stick after clicking.
+// Keyboard focus (Tab) is unaffected, so the focus ring still shows for it.
+const preventFocusOnPointer = (e: React.MouseEvent) => e.preventDefault();
 
 function Divider() {
   return (
@@ -123,6 +130,7 @@ function DockItem({
         className={ITEM_BUTTON}
         aria-label={label}
         onClick={onClick}
+        onMouseDown={preventFocusOnPointer}
       >
         {iconNode}
         <span className="sr-only">{label}</span>
@@ -130,7 +138,12 @@ function DockItem({
     );
   } else if (isInternal) {
     interactive = (
-      <Link className={ITEM_BUTTON} href={href!} aria-label={label}>
+      <Link
+        className={ITEM_BUTTON}
+        href={href!}
+        aria-label={label}
+        onMouseDown={preventFocusOnPointer}
+      >
         {iconNode}
       </Link>
     );
@@ -140,6 +153,7 @@ function DockItem({
         className={ITEM_BUTTON}
         href={href}
         aria-label={label}
+        onMouseDown={preventFocusOnPointer}
         {...(target === "_blank"
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
@@ -238,6 +252,22 @@ export function HeaderPill() {
         label="Home"
         href="/"
         icon={<HomeIcon className="size-[22px]" />}
+      />
+
+      <DockItem
+        mouseX={mouseX}
+        reduce={reduce}
+        label="Experience"
+        href="/#experience"
+        icon={<BriefcaseBusinessIcon className="size-[22px]" />}
+      />
+
+      <DockItem
+        mouseX={mouseX}
+        reduce={reduce}
+        label="Education"
+        href="/#education"
+        icon={<GraduationCapIcon className="size-[22px]" />}
       />
 
       <DockItem

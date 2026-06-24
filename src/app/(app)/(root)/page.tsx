@@ -1,6 +1,7 @@
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { About } from "@/features/portfolio/components/about";
+import { Experiences } from "@/features/portfolio/components/experiences";
 import { ProfileHeader } from "@/features/portfolio/components/profile-header";
 import { Projects } from "@/features/portfolio/components/projects";
 import { Skills } from "@/features/portfolio/components/skills";
@@ -17,11 +18,14 @@ export default function Page() {
         }}
       />
 
-      <div className="mx-auto w-full max-w-3xl *:[[id]]:scroll-mt-22">
+      <div className="mx-auto w-full max-w-4xl *:[[id]]:scroll-mt-22">
         <ProfileHeader />
         <Separator />
 
         <About />
+        <Separator />
+
+        <Experiences />
         <Separator />
 
         <Projects />

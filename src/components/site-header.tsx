@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 import { HeaderPill } from "./header-pill";
+import { MobileMenu } from "./mobile-menu";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
 
@@ -22,12 +23,12 @@ export function SiteHeader() {
       )}
     >
       <div
-        className="screen-line-before screen-line-after relative mx-auto flex h-12 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-3xl"
+        className="screen-line-before screen-line-after relative mx-auto flex h-12 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-4xl"
         data-header-container
       >
         <BrandContextMenu>
           <Link
-            className="hidden has-data-[visible=false]:pointer-events-none sm:flex [&_svg]:h-8"
+            className="flex has-data-[visible=false]:pointer-events-none [&_svg]:h-8"
             href="/"
             aria-label="Home"
           >
@@ -35,11 +36,13 @@ export function SiteHeader() {
           </Link>
         </BrandContextMenu>
 
-        <div className="pointer-events-none absolute inset-x-0 flex justify-center">
+        <div className="pointer-events-none absolute inset-x-0 hidden justify-center sm:flex">
           <div className="pointer-events-auto">
             <HeaderPill />
           </div>
         </div>
+
+        <MobileMenu className="ml-auto sm:hidden" />
       </div>
     </SiteHeaderWrapper>
   );

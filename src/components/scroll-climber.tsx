@@ -45,23 +45,23 @@ const clamp = (v: number, lo: number, hi: number) =>
 const VB_W = 64;
 const VB_H = 760;
 
-// Ladder only occupies the lower half — its top rung sits around the mid-page
-// striped separator and the rails run to the bottom. Up top, by his desk,
-// there is no ladder at all.
+// The ladder hangs not far below the desk (so the leap is short and there is
+// no big dead gap above it) and runs nearly to the bottom of the gutter.
 const RAIL_L = 20;
 const RAIL_R = 44;
 const RUNG_GAP = 34;
-const LADDER_TOP = 356;
-const RUNG_COUNT = 10;
-const RAIL_BOTTOM = LADDER_TOP + (RUNG_COUNT - 1) * RUNG_GAP; // 662
+const LADDER_TOP = 190;
+const RUNG_COUNT = 15;
+const RAIL_BOTTOM = LADDER_TOP + (RUNG_COUNT - 1) * RUNG_GAP; // 666
 
-// Desk shelf he sits on at the very top.
-const DESK_Y = 84;
+// Desk shelf he sits on at the very top — placed right under his seat so he
+// rests on it rather than floating above it.
+const DESK_Y = 60;
 
 // Where the climber's hip travels (local origin y = 0 at the hip).
-const TRAVEL_TOP = 60; // seated at the desk
-const TRAVEL_BOTTOM = 650; // hanging off the lowest rung
-const LADDER_HIP_TOP = 380; // hip height when his hands reach the top rung
+const TRAVEL_TOP = 56; // seated at the desk
+const TRAVEL_BOTTOM = 654; // hanging off the lowest rung
+const LADDER_HIP_TOP = 214; // hip height when his hands reach the top rung
 
 // Jump (desk ↔ ladder). Time-driven, decoupled from scroll.
 const JUMP_MS = 1100; // a slow, deliberate leap (slower reads better)
@@ -327,19 +327,29 @@ export function ScrollClimber() {
     [posY]
   );
 
-  useMotionValueEvent(scrollYProgress, "change", (p) => {
-    if (p <= REARM_AT) armedRef.current = true;
-    const m = modeRef.current;
-    if (m === "coding") {
-      if (armedRef.current && p > T1) transition("jumping");
-    } else if (m === "climbing") {
-      if (p >= BOTTOM_AT) transition("bottomIdle");
-      else if (p <= CODE_AT) transition("jumpingUp");
-    } else if (m === "bottomIdle") {
-      if (p < BOTTOM_EXIT) transition("climbing");
-    }
-    // "jumping" / "jumpingUp" are time-driven; they ignore scroll until done.
-  });
+  // Pick the act for a given scroll position. This is evaluated both on scroll
+  // events (snappy) AND every animation frame (see the frame loop). The frame
+  // loop matters because scrolling to the very bottom and stopping fires no
+  // further "change" events — which used to strand him in "climbing" at the foot
+  // of the ladder forever, so the dangle + rope ascent never played.
+  const evaluate = useCallback(
+    (p: number) => {
+      if (p <= REARM_AT) armedRef.current = true;
+      const m = modeRef.current;
+      if (m === "coding") {
+        if (armedRef.current && p > T1) transition("jumping");
+      } else if (m === "climbing") {
+        if (p >= BOTTOM_AT) transition("bottomIdle");
+        else if (p <= CODE_AT) transition("jumpingUp");
+      } else if (m === "bottomIdle") {
+        if (p < BOTTOM_EXIT) transition("climbing");
+      }
+      // "jumping" / "jumpingUp" are time-driven; they ignore scroll until done.
+    },
+    [transition]
+  );
+
+  useMotionValueEvent(scrollYProgress, "change", evaluate);
 
   useEffect(() => {
     return () => {
@@ -349,6 +359,9 @@ export function ScrollClimber() {
 
   useAnimationFrame((t, delta) => {
     if (reduce) return;
+    // Re-decide the act every frame so terminal scroll positions (parked at the
+    // very bottom/top) still advance the story even with no scroll events.
+    evaluate(scrollYProgress.get());
     const m = modeRef.current;
     const ease = (mv: MotionValue<number>, to: number, a: number) =>
       mv.set(mv.get() + (to - mv.get()) * a);
@@ -442,9 +455,11 @@ export function ScrollClimber() {
         className="h-full w-auto"
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Desk shelf + ladder (the static "furniture", in the edge colour) */}
+        {/* Desk shelf + ladder (the static "furniture"). On dark the faint edge
+            colour reads fine; on the white theme it all but vanishes, so light
+            mode uses the stronger muted-foreground instead. */}
         <g
-          className="text-edge"
+          className="text-muted-foreground dark:text-edge"
           stroke="currentColor"
           strokeWidth={2}
           strokeLinecap="round"

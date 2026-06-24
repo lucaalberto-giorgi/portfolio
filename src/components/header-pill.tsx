@@ -44,14 +44,18 @@ const PROXIMITY = 110; // px from an item's center where magnification fades out
 const SPRING = { mass: 0.1, stiffness: 170, damping: 14 } as const;
 
 const ITEM_BUTTON = cn(
-  "absolute inset-0 flex items-center justify-center rounded-full",
+  "peer absolute inset-0 flex items-center justify-center rounded-full",
   "text-foreground/80 transition-colors outline-none",
   "hover:bg-accent hover:text-foreground",
   "focus-visible:bg-accent focus-visible:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
 );
 
+// Tooltip is driven by the button as a peer: it shows on hover and on keyboard
+// focus (focus-visible) only. Using peer-focus-visible instead of
+// group-focus-within means a plain mouse click — which leaves the button
+// focused but not focus-visible — no longer keeps the tooltip stuck open.
 const TOOLTIP =
-  "pointer-events-none absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 translate-y-1 scale-95 whitespace-nowrap rounded-md border bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-md transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:opacity-100";
+  "pointer-events-none absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 translate-y-1 scale-95 whitespace-nowrap rounded-md border bg-popover px-2 py-1 text-xs text-popover-foreground opacity-0 shadow-md transition-all duration-200 ease-out peer-hover:translate-y-0 peer-hover:scale-100 peer-hover:opacity-100 peer-focus-visible:translate-y-0 peer-focus-visible:scale-100 peer-focus-visible:opacity-100";
 
 function Divider() {
   return (
@@ -152,7 +156,7 @@ function DockItem({
   return (
     <motion.div
       ref={ref}
-      className="group relative flex shrink-0 items-center justify-center"
+      className="relative flex shrink-0 items-center justify-center"
       style={{ width: dimension, height: dimension }}
     >
       {interactive}

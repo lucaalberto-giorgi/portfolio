@@ -15,7 +15,7 @@ Next.js portfolio, blog, and component registry website with:
 - **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS v4
 - **UI Components**: shadcn/ui + custom components
-- **Package Manager**: pnpm
+- **Package Manager**: Bun (`bun install` / `bun dev`; use `bun run <script>` for `build`, `start`, `lint`, etc. since `bun build`/`bun test` are reserved Bun subcommands)
 - **Language**: TypeScript
 - **Content**: MDX for blog posts
 - **Deployment**: Vercel
@@ -70,10 +70,10 @@ The project features a custom component registry built on top of shadcn/ui:
 
 ```bash
 # Build registry internally
-pnpm registry:internal:build
+bun run registry:internal:build
 
 # Build shadcn registry
-pnpm registry:build
+bun run registry:build
 ```
 
 Auto-generated files (DO NOT EDIT):
@@ -88,13 +88,13 @@ Auto-generated files (DO NOT EDIT):
 
 ```bash
 # Install dependencies
-pnpm install
+bun install
 
 # Start development server
-pnpm dev  # Runs on port 1408
+bun dev  # Runs on port 1408
 
 # Build for production
-pnpm build
+bun run build
 ```
 
 ### Code Standards
@@ -188,7 +188,7 @@ The project uses PostHog for analytics tracking. Events are defined in `src/lib/
 2. Implement component with proper TypeScript types
 3. Add to `src/registry/registry-components.ts`
 4. Create example in `src/registry/examples/`
-5. Build registry: `pnpm registry:build`
+5. Build registry: `bun run registry:build`
 
 ### Updating User Information
 
@@ -239,10 +239,10 @@ When adapting this codebase, ensure ALL personal information is replaced. See **
 ## Build Commands
 
 ```bash
-pnpm build          # Production build
-pnpm start          # Start production server
-pnpm preview        # Build and preview locally
-pnpm lint           # Run ESLint
-pnpm format:write   # Format code with Prettier
-pnpm check-types    # TypeScript type checking
+bun run build          # Production build
+bun run start          # Start production server
+bun run preview        # Build and preview locally
+bun run lint           # Run ESLint
+bun run format:write   # Format code with Prettier
+bun run check-types    # TypeScript type checking
 ```

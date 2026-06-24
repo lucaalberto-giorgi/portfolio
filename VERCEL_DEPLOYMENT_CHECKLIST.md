@@ -27,8 +27,8 @@
 
 **In Vercel Dashboard → Settings → General:**
 - **Framework Preset**: Should be `Next.js`
-- **Build Command**: Should be `pnpm run build` (or auto-detected)
-- **Install Command**: Should be `pnpm install` (or auto-detected)
+- **Build Command**: Should be `bun run build` (or auto-detected)
+- **Install Command**: Should be `bun install` (or auto-detected)
 - **Root Directory**: Should be `.` (root)
 
 **In Settings → Git:**
@@ -59,13 +59,17 @@ npx vercel --prod
 Your `vercel.json` should have:
 ```json
 {
-  "buildCommand": "pnpm run build",
-  "devCommand": "pnpm run dev",
-  "installCommand": "pnpm approve-builds && pnpm install --frozen-lockfile",
+  "buildCommand": "bun run build",
+  "devCommand": "bun run dev",
+  "installCommand": "bun install --frozen-lockfile",
   "framework": "nextjs",
   "nodeVersion": "22.x"
 }
 ```
+
+> Build scripts for native packages (sharp, esbuild, etc.) are allowed via the
+> `trustedDependencies` array in `package.json` — Bun's equivalent of pnpm's
+> `approve-builds`, so no separate approval step is needed in the install command.
 
 ### 6. Check Build Logs
 
@@ -73,7 +77,7 @@ Your `vercel.json` should have:
 1. Click on the latest deployment
 2. Check **Build Logs** for errors
 3. Common issues:
-   - Build script warnings (should be fixed with `pnpm approve-builds`)
+   - Build script warnings (allowed via `trustedDependencies` in `package.json`)
    - Missing dependencies
    - Build errors
 

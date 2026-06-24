@@ -15,7 +15,6 @@ import {
   CollapsibleTrigger,
   CollapsibleWithContext,
 } from "@/components/ui/collapsible";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tag } from "@/components/ui/tag";
 import {
   Tooltip,
@@ -132,46 +131,35 @@ export function ProjectItem({
             <div className="space-y-4 p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
               {project.preview && (
                 <div className="space-y-3">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <button
-                        className={cn(
-                          "relative w-full overflow-hidden rounded-lg border border-edge bg-muted",
-                          "transition-all duration-300 ease-out",
-                          "hover:scale-[1.02] hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/20",
-                          "active:scale-[0.98]",
-                          "group/preview cursor-pointer"
-                        )}
-                      >
-                        <div className="relative aspect-video w-full">
-                          <Image
-                            src={project.preview}
-                            alt={`${project.title} preview`}
-                            fill
-                            className="object-cover transition-transform duration-300 group-hover/preview:scale-110"
-                            unoptimized
-                          />
-                          <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/preview:bg-black/5" />
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
-                            <div className="rounded-full bg-background/90 p-3 shadow-lg backdrop-blur-sm">
-                              <ExternalLinkIcon className="size-5 text-foreground" />
-                            </div>
-                          </div>
+                  <a
+                    href={addQueryParams(project.link, UTM_PARAMS)}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={`Open ${project.title} live site`}
+                    className={cn(
+                      "relative block w-full overflow-hidden rounded-lg border border-edge bg-muted",
+                      "transition-all duration-300 ease-out",
+                      "hover:scale-[1.02] hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/20",
+                      "active:scale-[0.98]",
+                      "group/preview cursor-pointer"
+                    )}
+                  >
+                    <div className="relative aspect-video w-full">
+                      <Image
+                        src={project.preview}
+                        alt={`${project.title} preview`}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover/preview:scale-110"
+                        unoptimized
+                      />
+                      <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/preview:bg-black/5" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
+                        <div className="rounded-full bg-background/90 p-3 shadow-lg backdrop-blur-sm">
+                          <ExternalLinkIcon className="size-5 text-foreground" />
                         </div>
-                      </button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-6xl overflow-hidden p-0">
-                      <div className="relative aspect-video w-full bg-muted">
-                        <Image
-                          src={project.preview}
-                          alt={`${project.title} preview`}
-                          fill
-                          className="object-contain"
-                          unoptimized
-                        />
                       </div>
-                    </DialogContent>
-                  </Dialog>
+                    </div>
+                  </a>
 
                   <a
                     href={githubHref}

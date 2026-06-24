@@ -22,7 +22,7 @@ export function SiteHeader() {
       )}
     >
       <div
-        className="screen-line-before screen-line-after relative mx-auto flex h-12 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-3xl"
+        className="screen-line-before screen-line-after relative mx-auto flex h-12 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-4xl"
         data-header-container
       >
         <BrandContextMenu>

@@ -10,7 +10,7 @@ export function ProfileHeader() {
       <div className="shrink-0 border-r border-edge">
         <div className="mx-0.5 my-0.75">
           <img
-            className="size-32 rounded-full object-cover ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
+            className="size-24 rounded-full object-cover ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
             fetchPriority="high"
@@ -29,8 +29,8 @@ export function ProfileHeader() {
         </div>
 
         <div className="border-t border-edge">
-          <div className="flex items-center gap-2 pl-4">
-            <h1 className="-translate-y-px text-3xl font-semibold">
+          <div className="flex items-center gap-2 pr-4 pl-4">
+            <h1 className="-translate-y-px text-2xl font-semibold text-balance sm:text-3xl">
               {USER.displayName}
             </h1>
 
@@ -40,7 +40,7 @@ export function ProfileHeader() {
             />
           </div>
 
-          <div className="h-12.5 border-t border-edge py-1 pl-4 sm:h-9">
+          <div className="flex h-14 items-center border-t border-edge py-1 pr-4 pl-4 sm:h-9">
             <FlipSentences
               className="font-mono text-sm text-balance text-muted-foreground"
               variants={{

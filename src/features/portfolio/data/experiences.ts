@@ -4,6 +4,7 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "affinity",
     companyName: "Affinity (Shipping) LLP",
+    companyLogo: "/images/affinity-logo.png",
     positions: [
       {
         id: "f3a9c1e2-7b54-4d6a-9e21-0a1b2c3d4e5f",
@@ -36,6 +37,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "education",
     companyName: "Education",
+    companyLogo: "/images/uel-logo.png",
+    invertLogoOnDark: true,
     positions: [
       {
         id: "c47f5903-88ae-4512-8a50-0b91b0cf99b6",

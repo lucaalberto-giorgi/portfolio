@@ -11,16 +11,21 @@ import { cn } from "@/lib/utils";
 import { TECH_STACK } from "../data/tech-stack";
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
 
-// Filter to only show the technologies the user knows
-const SKILLS_TO_SHOW = ["js", "react", "nextjs2", "react-native", "java"];
-
-// Icon key mapping - use React icon for React Native since it's related
-const ICON_KEY_MAP: Record<string, string> = {
-  "react-native": "react",
-};
+// Only show technologies actually used across the projects/experience above,
+// listed in display order.
+const SKILLS_TO_SHOW = [
+  "react",
+  "nextjs2",
+  "typescript",
+  "js",
+  "tailwindcss",
+  "python",
+];
 
 export function Skills() {
-  const skills = TECH_STACK.filter((tech) => SKILLS_TO_SHOW.includes(tech.key));
+  const skills = SKILLS_TO_SHOW.map((key) =>
+    TECH_STACK.find((tech) => tech.key === key)
+  ).filter(Boolean);
 
   return (
     <Panel id="skills">
@@ -39,8 +44,7 @@ export function Skills() {
         <TooltipProvider>
           <ul className="flex w-full flex-wrap items-center justify-center gap-8 select-none sm:flex-nowrap sm:gap-12">
             {skills.map((tech) => {
-              // Use mapped icon key if available, otherwise use original key
-              const iconKey = ICON_KEY_MAP[tech.key] || tech.key;
+              const iconKey = tech.key;
 
               return (
                 <li key={tech.key} className="flex justify-center">

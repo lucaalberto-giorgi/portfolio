@@ -1,52 +1,57 @@
+import { Fragment } from "react";
+
+import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
+import type { SocialLinkKey } from "@/features/portfolio/types/social-links";
 import { cn } from "@/lib/utils";
 
 import { Icons } from "./icons";
+
+const SOCIAL_ICONS: Record<
+  SocialLinkKey,
+  React.ComponentType<{ className?: string }>
+> = {
+  linkedin: Icons.linkedin,
+  x: Icons.x,
+  github: Icons.github,
+};
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="max-w-screen overflow-x-hidden px-2">
-      <div className="screen-line-before mx-auto border-x border-edge pt-4 md:max-w-4xl">
-        <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-          © {year} Luca Alberto Giorgi · Built with Next.js
-        </p>
+      <div className="screen-line-before mx-auto border-x border-edge md:max-w-6xl lg:grid lg:grid-cols-[20rem_minmax(0,1fr)]">
+        {/* Empty left rail — mirrors the profile column of the split layout */}
+        <div className="hidden lg:block" aria-hidden />
 
-        <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
-          <div className="mx-auto flex items-center justify-center gap-6 border-x border-edge bg-background px-6">
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://www.linkedin.com/in/luca-alberto-giorgi-89710a357"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.linkedin className="size-4" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
+        {/* Footer content — aligns with the content column on large screens */}
+        <div className="pt-4 lg:border-l lg:border-edge">
+          <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
+            © {year} Luca Alberto Giorgi · Built with Next.js
+          </p>
 
-            <Separator />
+          <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
+            <div className="mx-auto flex items-center justify-center gap-6 border-x border-edge bg-background px-6">
+              {SOCIAL_LINKS.map((link, index) => {
+                const Icon = SOCIAL_ICONS[link.key];
 
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://x.com/lucaalberto2004"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.x className="size-4" />
-              <span className="sr-only">X</span>
-            </a>
+                return (
+                  <Fragment key={link.key}>
+                    {index > 0 && <Separator />}
 
-            <Separator />
-
-            <a
-              className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-              href="https://github.com/lucaalberto-giorgi"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icons.github className="size-4" />
-              <span className="sr-only">GitHub</span>
-            </a>
+                    <a
+                      className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon className="size-4" />
+                      <span className="sr-only">{link.title}</span>
+                    </a>
+                  </Fragment>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

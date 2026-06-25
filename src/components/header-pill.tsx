@@ -23,6 +23,7 @@ import { useCallback, useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import { META_THEME_COLORS } from "@/config/site";
+import { SOCIAL_LINKS_BY_KEY } from "@/features/portfolio/data/social-links";
 import { USER } from "@/features/portfolio/data/user";
 import { useIsClient } from "@/hooks/use-is-client";
 import { useMetaColor } from "@/hooks/use-meta-color";
@@ -33,9 +34,8 @@ import { decodeEmail } from "@/utils/string";
 import { MoonIcon } from "./animated-icons/moon";
 import { SunMediumIcon } from "./animated-icons/sun-medium";
 
-const GITHUB_URL = "https://github.com/lucaalberto-giorgi";
-const LINKEDIN_URL =
-  "https://www.linkedin.com/in/luca-alberto-giorgi-89710a357";
+const GITHUB_URL = SOCIAL_LINKS_BY_KEY.github.href;
+const LINKEDIN_URL = SOCIAL_LINKS_BY_KEY.linkedin.href;
 
 // Dock magnification tuning. Kept modest so peak items stay within the
 // slim sticky header instead of ballooning like a macOS bottom dock.

@@ -26,7 +26,7 @@ For Vercel to automatically deploy your changes, you need to:
 
 **Option B: Check via Vercel CLI**
 ```bash
-cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main"
+cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio"
 npx vercel link
 ```
 
@@ -42,7 +42,7 @@ npx vercel link
 
 **Via CLI:**
 ```bash
-cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main"
+cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio"
 npx vercel --prod
 ```
 

@@ -44,7 +44,7 @@
 
 **Option B: Via Vercel CLI**
 ```bash
-cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main"
+cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio"
 npx vercel --prod
 ```
 
@@ -92,7 +92,7 @@ If automatic deployment isn't working:
 
 Run this to verify everything is connected:
 ```bash
-cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio website/chanhdai.com-main"
+cd "/Users/lucaalbertogiorgi/Desktop/CS_PORTFOLIO/portfolio"
 git log --oneline -1
 git remote -v
 ```

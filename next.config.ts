@@ -1,14 +1,12 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const allowedDevOrigins = process.env.ALLOWED_DEV_ORIGINS
-  ?.split(",")
+const allowedDevOrigins = process.env.ALLOWED_DEV_ORIGINS?.split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["next-mdx-remote"],
   ...(allowedDevOrigins?.length ? { allowedDevOrigins } : {}),
   turbopack: {
     root: path.join(__dirname, "."),
@@ -16,11 +14,6 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "assets.chanhdai.com",
-        port: "",
-      },
       {
         protocol: "https",
         hostname: "images.unsplash.com",
@@ -43,36 +36,6 @@ const nextConfig: NextConfig = {
       },
     ],
     qualities: [75, 100],
-  },
-  async redirects() {
-    return [
-      {
-        source:
-          "/:section(blog|components)/writing-effect-inspired-by-apple:extension(.mdx)?",
-        destination: "/:section/apple-hello-effect:extension",
-        permanent: true,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/blog/:slug.mdx",
-        destination: "/blog.mdx/:slug",
-      },
-      {
-        source: "/components/:slug.mdx",
-        destination: "/blog.mdx/:slug",
-      },
-      {
-        source: "/rss",
-        destination: "/blog/rss",
-      },
-      {
-        source: "/registry/rss",
-        destination: "/components/rss",
-      },
-    ];
   },
   async headers() {
     return [

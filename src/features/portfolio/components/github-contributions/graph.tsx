@@ -1,8 +1,6 @@
 "use client";
 
 import { format } from "date-fns";
-import { LoaderIcon } from "lucide-react";
-import { use } from "react";
 
 import {
   TooltipContent,
@@ -25,9 +23,9 @@ import { addQueryParams } from "@/utils/url";
 export function GitHubContributionGraph({
   contributions,
 }: {
-  contributions: Promise<Activity[]>;
+  contributions: Activity[];
 }) {
-  const data = use(contributions);
+  const data = contributions;
 
   return (
     <TooltipProvider>
@@ -87,13 +85,5 @@ export function GitHubContributionGraph({
         </ContributionGraphFooter>
       </ContributionGraph>
     </TooltipProvider>
-  );
-}
-
-export function GitHubContributionFallback() {
-  return (
-    <div className="flex h-40.5 w-full items-center justify-center">
-      <LoaderIcon className="animate-spin text-muted-foreground" />
-    </div>
   );
 }

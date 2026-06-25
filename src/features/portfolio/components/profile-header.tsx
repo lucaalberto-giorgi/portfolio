@@ -43,6 +43,8 @@ export function ProfileHeader() {
           <div className="flex h-14 items-center border-t border-edge py-1 pr-4 pl-4 sm:h-9">
             <FlipSentences
               className="font-mono text-sm text-balance text-muted-foreground"
+              interval={3}
+              transition={{ duration: 0.4 }}
               variants={{
                 initial: { y: -10, opacity: 0 },
                 animate: { y: -1, opacity: 1 },

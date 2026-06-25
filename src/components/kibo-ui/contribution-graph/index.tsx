@@ -75,11 +75,11 @@ const DEFAULT_LABELS: Labels = {
 };
 
 const THEME = cn(
-  'data-[level="0"]:fill-muted-foreground/5',
-  'data-[level="1"]:fill-muted-foreground/20',
-  'data-[level="2"]:fill-muted-foreground/40',
-  'data-[level="3"]:fill-muted-foreground/60',
-  'data-[level="4"]:fill-muted-foreground/80'
+  'data-[level="0"]:fill-muted-foreground/8',
+  'data-[level="1"]:fill-emerald-300 dark:data-[level="1"]:fill-emerald-900',
+  'data-[level="2"]:fill-emerald-400 dark:data-[level="2"]:fill-emerald-700',
+  'data-[level="3"]:fill-emerald-500 dark:data-[level="3"]:fill-emerald-500',
+  'data-[level="4"]:fill-emerald-600 dark:data-[level="4"]:fill-emerald-400'
 );
 
 type ContributionGraphContextType = {

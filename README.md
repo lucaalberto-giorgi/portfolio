@@ -1,6 +1,6 @@
 # Luca Alberto Giorgi Portfolio
 
-A minimal, pixel-perfect portfolio, component registry, and blog to showcase my work as a Computer Science student and developer.
+A minimal, pixel-perfect portfolio to showcase my work as a Computer Science graduate and developer.
 
 Live site: [www.lucagiorgi.com](https://www.lucagiorgi.com)
 
@@ -29,31 +29,11 @@ Repository: [lucaalberto-giorgi/portfolio](https://github.com/lucaalberto-giorgi
 - Installable as PWA
 - Analytics with [PostHog](https://posthog.com) & consent management via [c15t](https://c15t.com)
 
-### Blog
-
-- Supports MDX & Markdown
-- Raw `.mdx` endpoints for AI readability
-- Syntax highlighting for clear code presentation
-- Dynamic OG images for rich link previews
-- RSS feed for easy content distribution
-
-### Registry
-
-Easily build and distribute reusable components, hooks, and pages using a custom registry powered by the [shadcn CLI](https://ui.shadcn.com/docs/cli).
-
-Each entry is well-documented and includes:
-
-- Live preview & code snippets
-- Beautiful, readable code blocks
-- One-click command blocks (pnpm, npm, yarn, bun)
-
 ### Analytics
 
 User behavior tracking with [PostHog](https://posthog.com) to understand how visitors interact with the site:
 
-- **Copy events** - Track code & command copies
-- **Engagement** - Monitor name pronunciation plays, command menu usage
-- **Search behavior** - Analyze search queries (debounced)
+- **Engagement** - Monitor name pronunciation plays
 - **User actions** - Navigation, theme changes, content interactions
 
 Built with privacy in mind:

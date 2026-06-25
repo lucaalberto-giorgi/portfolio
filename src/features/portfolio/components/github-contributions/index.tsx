@@ -1,11 +1,15 @@
-import { Suspense } from "react";
-
 import { getGitHubContributions } from "../../data/github-contributions";
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
-import { GitHubContributionFallback, GitHubContributionGraph } from "./graph";
+import { GitHubContributionGraph } from "./graph";
 
-export function GitHubContributions() {
-  const contributions = getGitHubContributions();
+export async function GitHubContributions() {
+  const contributions = await getGitHubContributions();
+
+  // No data (e.g. the GitHub stats API was unreachable) — hide the whole
+  // section rather than render an empty graph.
+  if (contributions.length === 0) {
+    return null;
+  }
 
   return (
     <Panel id="contributions">
@@ -14,9 +18,7 @@ export function GitHubContributions() {
       </PanelHeader>
 
       <PanelContent className="px-0 py-4">
-        <Suspense fallback={<GitHubContributionFallback />}>
-          <GitHubContributionGraph contributions={contributions} />
-        </Suspense>
+        <GitHubContributionGraph contributions={contributions} />
       </PanelContent>
     </Panel>
   );

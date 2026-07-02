@@ -12,7 +12,7 @@ export const USER = {
     "First Class CS grad building for the web",
     "I ship full-stack apps with React & Next.js",
     "Currently working with AI-powered products",
-    "Open to junior frontend / full-stack roles",
+    "Open to junior frontend or full-stack roles",
   ],
   address: "London, United Kingdom",
   phoneNumber: "KzQ0NzQyNDk3MjM5MQ==", // E.164 format, base64 encoded (+447424972391)

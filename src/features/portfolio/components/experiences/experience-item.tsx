@@ -10,7 +10,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
   return (
     <div
       id={experience.id}
-      className="screen-line-after scroll-mt-14 space-y-4 py-4"
+      className="screen-line-after scroll-mt-22 space-y-4 py-4"
     >
       <div className="flex items-center gap-3">
         <div className="flex size-8 shrink-0 items-center justify-center select-none">

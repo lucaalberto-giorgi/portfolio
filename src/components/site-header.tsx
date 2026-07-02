@@ -23,7 +23,7 @@ export function SiteHeader() {
       )}
     >
       <div
-        className="screen-line-before screen-line-after relative mx-auto flex h-12 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-4xl"
+        className="screen-line-after relative mx-auto flex h-16 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-6xl"
         data-header-container
       >
         <BrandContextMenu>
@@ -36,7 +36,12 @@ export function SiteHeader() {
           </Link>
         </BrandContextMenu>
 
-        <div className="pointer-events-none absolute inset-x-0 hidden justify-center sm:flex">
+        <div
+          aria-hidden
+          className="absolute inset-y-0 left-80 hidden w-px bg-edge lg:block"
+        />
+
+        <div className="pointer-events-none absolute inset-x-0 hidden justify-center sm:flex lg:left-80">
           <div className="pointer-events-auto">
             <HeaderPill />
           </div>

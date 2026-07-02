@@ -6,7 +6,7 @@ import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
 
 export function About() {
   return (
-    <Panel id="about">
+    <Panel id="about" className="lg:before:hidden">
       <PanelHeader>
         <PanelTitle>About</PanelTitle>
       </PanelHeader>

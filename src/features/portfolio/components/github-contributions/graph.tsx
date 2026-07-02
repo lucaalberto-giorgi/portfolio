@@ -37,7 +37,7 @@ export function GitHubContributionGraph({
         blockRadius={2}
       >
         <ContributionGraphCalendar
-          className="no-scrollbar px-2"
+          className="no-scrollbar px-2 supports-timeline-scroll:scroll-fade-effect-x supports-timeline-scroll:[--mask-width:2rem]"
           title="GitHub Contributions"
         >
           {({ activity, dayIndex, weekIndex }) => (

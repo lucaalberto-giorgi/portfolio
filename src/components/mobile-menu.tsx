@@ -26,15 +26,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { META_THEME_COLORS } from "@/config/site";
+import { SOCIAL_LINKS_BY_KEY } from "@/features/portfolio/data/social-links";
 import { USER } from "@/features/portfolio/data/user";
 import { useIsClient } from "@/hooks/use-is-client";
 import { useMetaColor } from "@/hooks/use-meta-color";
 import { cn } from "@/lib/utils";
 import { decodeEmail } from "@/utils/string";
 
-const GITHUB_URL = "https://github.com/lucaalberto-giorgi";
-const LINKEDIN_URL =
-  "https://www.linkedin.com/in/luca-alberto-giorgi-89710a357";
+const GITHUB_URL = SOCIAL_LINKS_BY_KEY.github.href;
+const LINKEDIN_URL = SOCIAL_LINKS_BY_KEY.linkedin.href;
 
 const SECTIONS = [
   { label: "Home", href: "/", Icon: HomeIcon },

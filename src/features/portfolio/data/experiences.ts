@@ -49,7 +49,9 @@ export const EXPERIENCES: Experience[] = [
         },
         icon: "education",
         isExpanded: true,
-        description: `- BSc (Hons) Computer Science — First Class.`,
+        description: `- BSc (Hons) Computer Science, **First-Class Honours**.
+- Final-year project / dissertation graded **95/100**.
+- Standout modules: Software Development (98), Computer & Network Security (93), Data Structures & Algorithms (89), Web & Mobile App Development (87), Database Systems (84), Artificial Intelligence (82).`,
         skills: [
           "C++",
           "Java",

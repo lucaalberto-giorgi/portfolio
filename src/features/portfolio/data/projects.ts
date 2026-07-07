@@ -21,8 +21,12 @@ export const PROJECTS: Project[] = [
       "REST API",
       "TypeScript",
     ],
-    description: `A full-stack dissertation project that compares CVs against job descriptions using semantic similarity, keyword matching, and AI-generated feedback. The system extracts CV text from PDF uploads, calculates semantic and keyword-based match scores, and returns an overall match level with matching skills, missing skills, and a short explanation. The backend is built with FastAPI and integrates OpenAI embeddings and Supabase for storing match results, while the frontend provides a clean interface for uploading CVs and reviewing match feedback.`,
-    preview: "/images/dissertation.png",
+    description: `My First-Class dissertation project: a full-stack tool that scores a candidate's CV against a job description in real time.
+
+- Built the full stack (React + Vite frontend, FastAPI backend) with a clean upload-and-review interface.
+- Extracted CV text from uploaded PDFs and generated OpenAI embeddings to compute semantic + keyword match scores.
+- Surfaced matched skills, missing skills, and an AI-generated rationale alongside the overall score, persisting results in Supabase.`,
+    preview: "/images/dissertation.webp",
     isExpanded: true,
   },
   {
@@ -46,8 +50,12 @@ export const PROJECTS: Project[] = [
       "Vercel",
       "Render",
     ],
-    description: `An AI-powered receipt processing and expense tracking web application. Users can upload receipts, automatically extract structured data using AI, auto-categorise expenses, search saved entries, view analytics, delete items, and export data to CSV.`,
-    preview: "/images/receipt-flow.png",
+    description: `An AI-powered receipt-processing and expense-tracking app that turns uploaded receipts into structured, searchable data.
+
+- Built with a React + Vite frontend and a FastAPI backend, using OpenAI to extract structured data from uploaded receipts.
+- Implemented auto-categorisation, search, analytics, and CSV export across a shared expense workspace with real-time dashboard updates.
+- Focused on UX resilience with error, loading, and empty states across the upload and review flow.`,
+    preview: "/images/receipt-flow.webp",
     isExpanded: true,
   },
   {
@@ -68,8 +76,12 @@ export const PROJECTS: Project[] = [
       "E-commerce",
       "Vercel",
     ],
-    description: `A fully functional Amazon clone built with vanilla JavaScript, HTML, and CSS. Features include product browsing, search functionality, shopping cart, and checkout process with LocalStorage persistence.`,
-    preview: "/images/amazon-preview.png",
+    description: `A fully functional Amazon clone built from scratch with no frameworks, as an exercise in core JavaScript and DOM fundamentals.
+
+- Built entirely with vanilla JavaScript, HTML, and CSS.
+- Implemented product browsing, search, a shopping cart, and a checkout flow.
+- Persisted cart and order state in the browser using LocalStorage.`,
+    preview: "/images/amazon-preview.webp",
     isExpanded: true,
   },
 ];

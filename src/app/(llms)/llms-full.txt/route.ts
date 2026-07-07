@@ -1,6 +1,4 @@
 import { SITE_INFO } from "@/config/site";
-import { AWARDS } from "@/features/portfolio/data/awards";
-import { CERTIFICATIONS } from "@/features/portfolio/data/certifications";
 import { EXPERIENCES } from "@/features/portfolio/data/experiences";
 import { PROJECTS } from "@/features/portfolio/data/projects";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
@@ -48,17 +46,8 @@ ${PROJECTS.map((item) => {
 }).join("\n\n")}
 `;
 
-const awardsText = `## Awards
-
-${AWARDS.map((item) => `### ${item.prize} | ${item.title}\n\n${item.description}`).join("\n\n")}
-`;
-
-const certificationsText = `## Certifications
-
-${CERTIFICATIONS.map((item) => `- [${item.title}](${item.credentialURL})`).join("\n")}`;
-
 async function getContent() {
-  return `<SYSTEM>This document contains comprehensive information about ${USER.displayName}'s professional profile and portfolio. It includes personal details, work experience, projects, achievements, and certifications. This data is formatted for consumption by Large Language Models (LLMs) to provide accurate and up-to-date information about ${USER.displayName}'s background, skills, and expertise as a ${USER.jobTitle}.</SYSTEM>
+  return `<SYSTEM>This document contains comprehensive information about ${USER.displayName}'s professional profile and portfolio. It includes personal details, work experience, and projects. This data is formatted for consumption by Large Language Models (LLMs) to provide accurate and up-to-date information about ${USER.displayName}'s background, skills, and expertise as a ${USER.jobTitle}.</SYSTEM>
 
 # ${SITE_INFO.name}
 
@@ -66,9 +55,7 @@ async function getContent() {
 
 ${aboutText}
 ${experienceText}
-${projectsText}
-${awardsText}
-${certificationsText}`;
+${projectsText}`;
 }
 
 export const dynamic = "force-static";

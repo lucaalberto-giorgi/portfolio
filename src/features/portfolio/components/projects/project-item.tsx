@@ -161,19 +161,21 @@ export function ProjectItem({
                     </div>
                   </a>
 
-                  <a
-                    href={githubHref}
-                    target="_blank"
-                    rel="noopener"
-                    className={cn(
-                      "flex items-center justify-center gap-2 text-sm text-muted-foreground",
-                      "transition-colors duration-200 hover:text-foreground",
-                      "underline-offset-4 hover:underline"
-                    )}
-                  >
-                    <span>View on GitHub</span>
-                    <ExternalLinkIcon className="size-3.5" />
-                  </a>
+                  {project.githubLink && (
+                    <a
+                      href={githubHref}
+                      target="_blank"
+                      rel="noopener"
+                      className={cn(
+                        "flex items-center justify-center gap-2 text-sm text-muted-foreground",
+                        "transition-colors duration-200 hover:text-foreground",
+                        "underline-offset-4 hover:underline"
+                      )}
+                    >
+                      <span>View on GitHub</span>
+                      <ExternalLinkIcon className="size-3.5" />
+                    </a>
+                  )}
                 </div>
               )}
 

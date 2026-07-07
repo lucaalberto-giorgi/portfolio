@@ -30,6 +30,33 @@ export const PROJECTS: Project[] = [
     isExpanded: true,
   },
   {
+    id: "forma",
+    title: "Forma",
+    period: {
+      start: "06.2026",
+      end: "07.2026",
+    },
+    link: "https://forma-two-delta.vercel.app",
+    skills: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "OpenRouter",
+      "Claude API",
+      "i18n",
+      "Vercel",
+    ],
+    description: `A web app that turns a few questions about your body and goals into a complete, personalised training and nutrition plan in about two minutes.
+
+- Built with Next.js 15 (App Router), React 19, and Tailwind CSS, using Framer Motion for a polished, animated landing page and plan builder.
+- Wrote the nutrition engine from scratch, computing Mifflin-St Jeor BMR, TDEE, and goal-based calorie and macro targets alongside an automatic weekly training split.
+- Generated meal suggestions with an LLM through OpenRouter, routing simple requests to Claude Haiku and dietary-constrained ones to Claude Sonnet while keeping the macro split as the source of truth, and shipped the interface in four languages.`,
+    preview: "/images/forma-banner.webp",
+    isExpanded: true,
+  },
+  {
     id: "receipt-flow",
     title: "Receipt Flow",
     period: {
@@ -56,32 +83,6 @@ export const PROJECTS: Project[] = [
 - Implemented auto-categorisation, search, analytics, and CSV export across a shared expense workspace with real-time dashboard updates.
 - Focused on UX resilience with error, loading, and empty states across the upload and review flow.`,
     preview: "/images/receipt-flow.webp",
-    isExpanded: true,
-  },
-  {
-    id: "amazon-app",
-    title: "Lucazon - Amazon Clone",
-    period: {
-      start: "01.2025",
-      end: "03.2025",
-    },
-    link: "https://amazon-appclone.vercel.app",
-    githubLink: "https://github.com/lucaalberto-giorgi/amazon-app",
-    skills: [
-      "JavaScript",
-      "HTML5",
-      "CSS3",
-      "LocalStorage",
-      "Vanilla JS",
-      "E-commerce",
-      "Vercel",
-    ],
-    description: `A fully functional Amazon clone built from scratch with no frameworks, as an exercise in core JavaScript and DOM fundamentals.
-
-- Built entirely with vanilla JavaScript, HTML, and CSS.
-- Implemented product browsing, search, a shopping cart, and a checkout flow.
-- Persisted cart and order state in the browser using LocalStorage.`,
-    preview: "/images/amazon-preview.webp",
     isExpanded: true,
   },
 ];

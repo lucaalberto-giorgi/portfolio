@@ -37,6 +37,7 @@ export const PROJECTS: Project[] = [
       end: "07.2026",
     },
     link: "https://forma-two-delta.vercel.app",
+    githubLink: "https://github.com/lucaalberto-giorgi/forma",
     skills: [
       "Next.js",
       "React",

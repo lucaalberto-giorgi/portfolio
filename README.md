@@ -27,21 +27,7 @@ Repository: [lucaalberto-giorgi/portfolio](https://github.com/lucaalberto-giorgi
 - AI-ready with [/llms.txt](https://llmstxt.org)
 - Spam-protected email
 - Installable as PWA
-- Analytics with [PostHog](https://posthog.com) & consent management via [c15t](https://c15t.com)
-
-### Analytics
-
-User behavior tracking with [PostHog](https://posthog.com) to understand how visitors interact with the site:
-
-- **Engagement** - Monitor name pronunciation plays
-- **User actions** - Navigation, theme changes, content interactions
-
-Built with privacy in mind:
-
-- Consent management via [c15t](https://c15t.com)
-- Cookieless mode until consent
-- Production-only tracking
-- Type-safe event schema with Zod
+- No cookies, no tracking
 
 ## Development
 
@@ -70,6 +56,4 @@ You're free to use my code! Just make sure to <ins>remove all my personal inform
 - [Kibo UI](https://www.kibo-ui.com)
 - [Lucide](https://lucide.dev)
 - [Fumadocs](https://fumadocs.dev)
-- [PostHog](https://posthog.com)
-- [c15t](https://c15t.com)
 - And many other open-source libraries used in `package.json`

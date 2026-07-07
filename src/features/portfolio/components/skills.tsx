@@ -6,6 +6,7 @@ import {
   TooltipRoot,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip";
+import { Tag } from "@/components/ui/tag";
 import { cn } from "@/lib/utils";
 
 import { TECH_STACK } from "../data/tech-stack";
@@ -20,6 +21,35 @@ const SKILLS_TO_SHOW = [
   "js",
   "tailwindcss",
   "python",
+];
+
+// Full, categorised stack (kept in sync with the CV). Everything here is
+// evidenced by the experience, projects, or education above — no filler.
+const SKILL_GROUPS: { title: string; items: string[] }[] = [
+  {
+    title: "Frontend",
+    items: [
+      "React",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+      "Vite",
+    ],
+  },
+  {
+    title: "Backend",
+    items: ["FastAPI (Python)", "REST APIs"],
+  },
+  {
+    title: "Tools",
+    items: ["Git", "GitHub", "Next.js", "Supabase", "Sanity"],
+  },
+  {
+    title: "AI",
+    items: ["LLM Integration", "OpenAI API", "NLP Fundamentals"],
+  },
 ];
 
 export function Skills() {
@@ -99,6 +129,26 @@ export function Skills() {
             })}
           </ul>
         </TooltipProvider>
+      </PanelContent>
+
+      <PanelContent className="space-y-5 border-t border-edge">
+        {SKILL_GROUPS.map((group) => (
+          <div
+            key={group.title}
+            className="flex flex-col gap-2 sm:flex-row sm:gap-4"
+          >
+            <h3 className="shrink-0 pt-0.5 font-mono text-xs tracking-wide text-muted-foreground uppercase sm:w-20">
+              {group.title}
+            </h3>
+            <ul className="flex flex-1 flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <li key={item} className="flex">
+                  <Tag>{item}</Tag>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </PanelContent>
     </Panel>
   );

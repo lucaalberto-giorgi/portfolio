@@ -18,16 +18,13 @@ import {
   useTransform,
 } from "motion/react";
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
-import { META_THEME_COLORS } from "@/config/site";
 import { SOCIAL_LINKS_BY_KEY } from "@/features/portfolio/data/social-links";
 import { USER } from "@/features/portfolio/data/user";
 import { useIsClient } from "@/hooks/use-is-client";
-import { useMetaColor } from "@/hooks/use-meta-color";
-import { useSound } from "@/hooks/use-sound";
+import { useThemeToggle } from "@/hooks/use-theme-toggle";
 import { cn } from "@/lib/utils";
 import { decodeEmail } from "@/utils/string";
 
@@ -183,19 +180,7 @@ type DockChildProps = {
 };
 
 function ThemeDockItem({ mouseX, reduce }: DockChildProps) {
-  const { resolvedTheme, setTheme } = useTheme();
-  const { setMetaColor } = useMetaColor();
-  const playClick = useSound("/audio/ui-sounds/click.wav");
-
-  const switchTheme = useCallback(() => {
-    playClick(0.5);
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-    setMetaColor(
-      resolvedTheme === "dark"
-        ? META_THEME_COLORS.light
-        : META_THEME_COLORS.dark
-    );
-  }, [resolvedTheme, setTheme, setMetaColor, playClick]);
+  const switchTheme = useThemeToggle();
 
   useHotkeys("d", switchTheme);
 

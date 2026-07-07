@@ -7,12 +7,12 @@ export const USER = {
   username: "lucagiorgi",
   gender: "male",
   pronouns: "he/him",
-  bio: "First Class Computer Science graduate and full-stack developer building web apps with React, TypeScript & Next.js — based in London, open to junior roles.",
+  bio: "First Class Computer Science graduate and full-stack developer building web apps with React, TypeScript & Next.js, based in London and open to junior roles.",
   flipSentences: [
+    "Open to junior frontend & full-stack roles",
     "First Class CS grad building for the web",
     "I ship full-stack apps with React & Next.js",
     "Currently working with AI-powered products",
-    "Open to junior frontend or full-stack roles",
   ],
   address: "London, United Kingdom",
   phoneNumber: "KzQ0NzQyNDk3MjM5MQ==", // E.164 format, base64 encoded (+447424972391)
@@ -31,9 +31,8 @@ I'm a First Class Computer Science graduate focused on frontend and full-stack d
 
 My recent work includes portfolio projects and an AI-powered CV/job matching system, combining frontend development with backend APIs and AI features. I'm now looking for junior frontend or full-stack opportunities where I can contribute to real products and keep improving.
 `,
-  avatar: "/images/avatar.png",
+  avatar: "/images/avatar.webp",
   ogImage: "https://www.lucagiorgi.com/og?title=Luca%20Alberto%20Giorgi",
-  namePronunciationUrl: "/audio/luca-intro.mp3",
   timeZone: "Europe/London",
   keywords: [
     "lucagiorgi",

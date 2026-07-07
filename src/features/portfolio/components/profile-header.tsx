@@ -1,6 +1,7 @@
 import { FlipSentences } from "@/components/flip-sentences";
 import { USER } from "@/features/portfolio/data/user";
 
+import { AvailabilityBadge } from "./availability-badge";
 import { ProfileActions } from "./profile-actions";
 import { VerifiedIcon } from "./verified-icon";
 
@@ -14,6 +15,8 @@ export function ProfileHeader() {
           className="size-24 shrink-0 rounded-full object-cover ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-28"
           alt={`${USER.displayName}'s avatar`}
           src={USER.avatar}
+          width={112}
+          height={112}
           fetchPriority="high"
         />
 
@@ -38,6 +41,8 @@ export function ProfileHeader() {
                 {USER.flipSentences}
               </FlipSentences>
             </div>
+
+            <AvailabilityBadge className="mt-1" />
           </div>
 
           <ProfileActions />

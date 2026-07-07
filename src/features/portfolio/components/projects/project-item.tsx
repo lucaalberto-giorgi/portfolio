@@ -149,8 +149,8 @@ export function ProjectItem({
                         src={project.preview}
                         alt={`${project.title} preview`}
                         fill
+                        sizes="(min-width: 1024px) 800px, 100vw"
                         className="object-cover transition-transform duration-300 group-hover/preview:scale-110"
-                        unoptimized
                       />
                       <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/preview:bg-black/5" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">

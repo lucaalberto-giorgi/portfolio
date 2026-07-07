@@ -3,6 +3,7 @@ import { CodeXmlIcon, MapPinIcon } from "lucide-react";
 import { FlipSentences } from "@/components/flip-sentences";
 import { USER } from "@/features/portfolio/data/user";
 
+import { AvailabilityBadge } from "./availability-badge";
 import { CurrentLocalTimeItem } from "./overview/current-local-time-item";
 import {
   IntroItem,
@@ -25,6 +26,8 @@ export function ProfileSidebar() {
         className="size-32 rounded-full object-cover ring-1 ring-border ring-offset-2 ring-offset-background select-none"
         alt={`${USER.displayName}'s avatar`}
         src={USER.avatar}
+        width={128}
+        height={128}
         fetchPriority="high"
       />
 
@@ -48,6 +51,8 @@ export function ProfileSidebar() {
             {USER.flipSentences}
           </FlipSentences>
         </div>
+
+        <AvailabilityBadge />
       </div>
 
       <div className="-mx-6 border-t border-edge" />

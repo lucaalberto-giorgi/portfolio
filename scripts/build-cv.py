@@ -47,18 +47,18 @@ contact_style = ParagraphStyle(
 )
 section_style = ParagraphStyle(
     "Section", fontName="Helvetica-Bold", fontSize=11, leading=13,
-    spaceBefore=14, spaceAfter=4.5,
+    spaceBefore=11, spaceAfter=4,
 )
 body_style = ParagraphStyle(
     "Body", fontName="Helvetica", fontSize=9, leading=11.2,
 )
 job_title_style = ParagraphStyle(
     "JobTitle", fontName="Helvetica-Bold", fontSize=9.5, leading=11.5,
-    spaceBefore=5, spaceAfter=2.5,
+    spaceBefore=4, spaceAfter=2,
 )
 bullet_style = ParagraphStyle(
     "Bullet", fontName="Helvetica", fontSize=9, leading=11.2,
-    spaceAfter=1.8,
+    spaceAfter=1.5,
 )
 
 
@@ -69,7 +69,7 @@ def section(title):
 def bullets(items):
     return ListFlowable(
         [ListItem(Paragraph(t, bullet_style), leftIndent=4, value="•") for t in items],
-        bulletType="bullet", leftIndent=12, spaceBefore=0, spaceAfter=3.5,
+        bulletType="bullet", leftIndent=12, spaceBefore=0, spaceAfter=3,
         bulletFontSize=9,
     )
 
@@ -97,9 +97,8 @@ story += section("PROFILE")
 story.append(Paragraph(
     "Frontend-focused Software Engineer and First-Class Computer Science graduate from the University of East "
     "London. Experienced in building full-stack applications using React and FastAPI, with a focus on responsive "
-    "UI, API integration, and clean, maintainable code. Recently completed a Software Development Internship at "
-    "Affinity (Shipping) LLP, shipping AI-powered back-office features, a hiring/applicant-tracking workflow, and "
-    "a security review. Actively seeking a frontend or full-stack junior role in London.",
+    "UI, API integration, and clean, maintainable code. Actively seeking a frontend or full-stack junior role in "
+    "London.",
     body_style,
 ))
 
@@ -134,6 +133,14 @@ story.append(bullets([
     "Extracted CV text from uploaded PDFs and generated OpenAI embeddings to compute semantic + keyword match "
     "scores.",
     "Surfaced matched/missing skills and an AI-generated rationale alongside the overall score.",
+]))
+
+story.append(Paragraph("Forma | Full-Stack Web Application - London | 2026", job_title_style))
+story.append(bullets([
+    "Built a personalised training and nutrition planner (Next.js, React, TypeScript, Tailwind CSS) that turns a "
+    "short questionnaire into a complete weekly training plan.",
+    "Wrote the nutrition engine from scratch (BMR, TDEE, goal-based calorie and macro targets) and generated "
+    "meal suggestions with Claude models via OpenRouter, shipping the interface in four languages.",
 ]))
 
 story.append(Paragraph("Receipt Flow | Full-Stack Web Application - London | 2026", job_title_style))

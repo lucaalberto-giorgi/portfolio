@@ -149,6 +149,7 @@ export function ProjectItem({
                         src={project.preview}
                         alt={`${project.title} preview`}
                         fill
+                        quality={100}
                         sizes="(min-width: 1024px) 800px, 100vw"
                         className="object-cover transition-transform duration-300 group-hover/preview:scale-110"
                       />

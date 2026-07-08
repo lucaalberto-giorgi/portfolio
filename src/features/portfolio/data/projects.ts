@@ -15,17 +15,18 @@ export const PROJECTS: Project[] = [
       "Vite",
       "FastAPI",
       "Python",
-      "OpenAI API",
+      "OpenRouter",
       "Supabase",
+      "Vercel",
       "pypdf",
       "REST API",
       "TypeScript",
     ],
     description: `My First-Class dissertation project: a full-stack tool that scores a candidate's CV against a job description in real time.
 
-- Built the full stack (React + Vite frontend, FastAPI backend) with a clean upload-and-review interface.
-- Extracted CV text from uploaded PDFs and generated OpenAI embeddings to compute semantic + keyword match scores.
-- Surfaced matched skills, missing skills, and an AI-generated rationale alongside the overall score, persisting results in Supabase.`,
+- Built the full stack (React + Vite frontend, FastAPI backend) with a clean upload-and-review interface, deployed as a single Vercel project.
+- Extracted CV text from uploaded PDFs and generated text embeddings through OpenRouter to compute a calibrated semantic and keyword match score.
+- Surfaced matched skills, missing skills, and an explainable Strong/Moderate/Weak verdict alongside the score, anonymising each CV before scoring and persisting results in Supabase.`,
     preview: "/images/dissertation.webp",
     isExpanded: true,
   },

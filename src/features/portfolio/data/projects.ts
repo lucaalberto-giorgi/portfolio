@@ -77,7 +77,6 @@ export const PROJECTS: Project[] = [
       "CSV Export",
       "Analytics",
       "Vercel",
-      "Render",
     ],
     description: `An AI-powered receipt-processing and expense-tracking app that turns uploaded receipts into structured, searchable data.
 

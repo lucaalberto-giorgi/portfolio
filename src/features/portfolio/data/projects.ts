@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
 
 - Built with a React + Vite frontend and a FastAPI backend, using OpenAI to extract structured data from uploaded receipts.
 - Implemented auto-categorisation, search, analytics, and CSV export across a shared expense workspace with real-time dashboard updates.
-- Focused on UX resilience with error, loading, and empty states across the upload and review flow.`,
+- Designed a ledger-inspired interface with numbered entries and review stamps, and added a one-click demo mode that loads sample receipts so the dashboard is never empty on a first visit.`,
     preview: "/images/receipt-flow.webp",
     isExpanded: true,
   },

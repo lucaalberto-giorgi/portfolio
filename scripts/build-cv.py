@@ -149,7 +149,8 @@ story.append(bullets([
     "structured data extraction from uploaded receipts.",
     "Implemented auto-categorisation, analytics, and CSV export across a shared expense workspace with "
     "real-time dashboard updates.",
-    "Focused on UX resilience with error handling, loading, and empty states across the upload and review flow.",
+    "Designed a ledger-inspired interface with numbered entries and review stamps, plus a one-click demo mode "
+    "that loads sample data on first visit.",
 ]))
 
 story.append(Paragraph("Personal Portfolio Website | Front-End Project - London | 2026", job_title_style))

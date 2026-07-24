@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 
 import { Markdown } from "@/components/markdown";
+import { Button } from "@/components/ui/button";
 import {
   CollapsibleChevronsIcon,
   CollapsibleContent,
@@ -24,7 +25,6 @@ import {
 } from "@/components/ui/tooltip";
 import { ProseMono } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
-import { cn } from "@/lib/utils";
 import { addQueryParams } from "@/utils/url";
 
 import type { Project } from "../../types/projects";
@@ -43,11 +43,6 @@ export function ProjectItem({
     project.githubLink ?? project.link,
     UTM_PARAMS
   );
-  const actionClassName = cn(
-    "inline-flex items-center gap-1.5 rounded-lg border border-edge px-2.5 py-1",
-    "bg-zinc-50 font-mono text-xs text-muted-foreground dark:bg-zinc-900",
-    "transition-colors duration-200 hover:bg-accent2 hover:text-foreground"
-  );
 
   return (
     <CollapsibleWithContext defaultOpen={project.isExpanded} asChild>
@@ -60,7 +55,7 @@ export function ProjectItem({
               width={32}
               height={32}
               quality={100}
-              className="mx-4 flex size-6 shrink-0 select-none"
+              className="mx-4 flex size-6 shrink-0 rounded-lg ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
               unoptimized
               aria-hidden="true"
             />
@@ -152,28 +147,30 @@ export function ProjectItem({
               )}
 
               <div className="flex flex-wrap items-center gap-2 border-t border-dashed border-edge pt-4">
-                <a
-                  href={addQueryParams(project.link, UTM_PARAMS)}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label={`Open ${project.title} live site`}
-                  className={actionClassName}
-                >
-                  <ExternalLinkIcon className="size-3.5" />
-                  <span>Live demo</span>
-                </a>
-
-                {project.githubLink && (
+                <Button asChild size="sm">
                   <a
-                    href={githubHref}
+                    href={addQueryParams(project.link, UTM_PARAMS)}
                     target="_blank"
                     rel="noopener"
-                    aria-label={`View ${project.title} source on GitHub`}
-                    className={actionClassName}
+                    aria-label={`Open the ${project.title} live demo`}
                   >
-                    <GithubIcon className="size-3.5" />
-                    <span>GitHub</span>
+                    <ExternalLinkIcon />
+                    <span>View live demo</span>
                   </a>
+                </Button>
+
+                {project.githubLink && (
+                  <Button asChild size="sm" variant="outline">
+                    <a
+                      href={githubHref}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={`View the ${project.title} source on GitHub`}
+                    >
+                      <GithubIcon />
+                      <span>GitHub</span>
+                    </a>
+                  </Button>
                 )}
               </div>
             </div>

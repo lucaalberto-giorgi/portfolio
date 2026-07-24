@@ -8,6 +8,7 @@ export const PROJECTS: Project[] = [
       start: "01.2026",
       end: "05.2026",
     },
+    logo: "/images/project-logos/cv-matcher.svg",
     link: "https://dissertation-hazel.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/dissertation",
     skills: [
@@ -36,6 +37,7 @@ export const PROJECTS: Project[] = [
       start: "06.2026",
       end: "07.2026",
     },
+    logo: "/images/project-logos/forma.svg",
     link: "https://forma-two-delta.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/forma",
     skills: [
@@ -63,6 +65,7 @@ export const PROJECTS: Project[] = [
       start: "03.2026",
       end: "04.2026",
     },
+    logo: "/images/project-logos/receipt-flow.svg",
     link: "https://receipt-flow-neon.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/receipt-flow",
     skills: [

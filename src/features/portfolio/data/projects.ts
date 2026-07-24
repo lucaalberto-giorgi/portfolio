@@ -27,7 +27,6 @@ export const PROJECTS: Project[] = [
 - Built the full stack (React + Vite frontend, FastAPI backend) with a clean upload-and-review interface, deployed as a single Vercel project.
 - Extracted CV text from uploaded PDFs and generated text embeddings through OpenRouter to compute a calibrated semantic and keyword match score.
 - Surfaced matched skills, missing skills, and an explainable Strong/Moderate/Weak verdict alongside the score, anonymising each CV before scoring and persisting results in Supabase.`,
-    preview: "/images/dissertation.webp",
     isExpanded: true,
   },
   {
@@ -55,7 +54,6 @@ export const PROJECTS: Project[] = [
 - Built with Next.js 15 (App Router), React 19, and Tailwind CSS, using Framer Motion for a polished, animated landing page and plan builder.
 - Wrote the nutrition engine from scratch, computing Mifflin-St Jeor BMR, TDEE, and goal-based calorie and macro targets alongside an automatic weekly training split.
 - Generated meal suggestions with an LLM through OpenRouter, routing simple requests to Claude Haiku and dietary-constrained ones to Claude Sonnet while keeping the macro split as the source of truth, and shipped the interface in four languages.`,
-    preview: "/images/forma-banner.webp",
     isExpanded: true,
   },
   {
@@ -83,7 +81,6 @@ export const PROJECTS: Project[] = [
 - Built with a React + Vite frontend and a FastAPI backend, using OpenAI to extract structured data from uploaded receipts.
 - Implemented auto-categorisation, search, analytics, and CSV export across a shared expense workspace with real-time dashboard updates.
 - Designed a ledger-inspired interface with numbered entries and review stamps, and added a one-click demo mode that loads sample receipts so the dashboard is never empty on a first visit.`,
-    preview: "/images/receipt-flow.webp",
     isExpanded: true,
   },
 ];

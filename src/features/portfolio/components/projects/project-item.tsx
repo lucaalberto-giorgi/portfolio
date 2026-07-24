@@ -3,12 +3,13 @@
 import {
   BoxIcon,
   ExternalLinkIcon,
+  GithubIcon,
   InfinityIcon,
-  LinkIcon,
 } from "lucide-react";
 import Image from "next/image";
 
 import { Markdown } from "@/components/markdown";
+import { Button } from "@/components/ui/button";
 import {
   CollapsibleChevronsIcon,
   CollapsibleContent,
@@ -16,14 +17,8 @@ import {
   CollapsibleWithContext,
 } from "@/components/ui/collapsible";
 import { Tag } from "@/components/ui/tag";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { ProseMono } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
-import { cn } from "@/lib/utils";
 import { addQueryParams } from "@/utils/url";
 
 import type { Project } from "../../types/projects";
@@ -51,24 +46,24 @@ export function ProjectItem({
             <Image
               src={project.logo}
               alt={project.title}
-              width={32}
-              height={32}
+              width={64}
+              height={64}
               quality={100}
-              className="mx-4 flex size-6 shrink-0 select-none"
+              className="mx-4 flex size-9 shrink-0 rounded-lg ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
               unoptimized
               aria-hidden="true"
             />
           ) : (
             <div
-              className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
+              className="mx-4 flex size-9 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
               aria-hidden="true"
             >
-              <BoxIcon className="size-4" />
+              <BoxIcon className="size-5" />
             </div>
           )}
 
-          <div className="flex-1 border-l border-dashed border-edge">
-            <CollapsibleTrigger className="flex w-full items-center gap-2 p-4 pr-2 text-left">
+          <div className="flex flex-1 items-center gap-2 border-l border-dashed border-edge pr-2">
+            <CollapsibleTrigger className="flex flex-1 items-center p-4 pr-0 text-left">
               <div className="flex-1">
                 <h3 className="mb-1 leading-snug font-medium text-balance">
                   {project.title}
@@ -97,31 +92,46 @@ export function ProjectItem({
                   </dd>
                 </dl>
               </div>
+            </CollapsibleTrigger>
 
-              <Tooltip>
-                <TooltipTrigger asChild>
+            <div className="flex shrink-0 items-center gap-2">
+              <Button asChild size="sm" className="max-sm:px-2">
+                <a
+                  href={addQueryParams(project.link, UTM_PARAMS)}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`Open the ${project.title} live demo`}
+                >
+                  <ExternalLinkIcon />
+                  <span className="max-sm:hidden">Live demo</span>
+                </a>
+              </Button>
+
+              {project.githubLink && (
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="max-sm:px-2"
+                >
                   <a
-                    className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
-                    href={addQueryParams(project.link, UTM_PARAMS)}
+                    href={githubHref}
                     target="_blank"
                     rel="noopener"
+                    aria-label={`View the ${project.title} source on GitHub`}
                   >
-                    <LinkIcon className="pointer-events-none size-4" />
-                    <span className="sr-only">Open Project Link</span>
+                    <GithubIcon />
+                    <span className="max-sm:hidden">GitHub</span>
                   </a>
-                </TooltipTrigger>
+                </Button>
+              )}
+            </div>
 
-                <TooltipContent>
-                  <p>Open Project Link</p>
-                </TooltipContent>
-              </Tooltip>
-
-              <div
-                className="shrink-0 text-muted-foreground [&_svg]:size-4"
-                aria-hidden
-              >
-                <CollapsibleChevronsIcon />
-              </div>
+            <CollapsibleTrigger
+              className="shrink-0 rounded-lg p-2 text-muted-foreground hover:text-foreground [&_svg]:size-4"
+              aria-label={`Toggle ${project.title} details`}
+            >
+              <CollapsibleChevronsIcon />
             </CollapsibleTrigger>
           </div>
         </div>
@@ -129,57 +139,6 @@ export function ProjectItem({
         <CollapsibleContent className="group overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
           <div className="border-t border-edge shadow-inner">
             <div className="space-y-4 p-4 duration-300 group-data-[state=closed]:animate-fade-out group-data-[state=open]:animate-fade-in">
-              {project.preview && (
-                <div className="space-y-3">
-                  <a
-                    href={addQueryParams(project.link, UTM_PARAMS)}
-                    target="_blank"
-                    rel="noopener"
-                    aria-label={`Open ${project.title} live site`}
-                    className={cn(
-                      "relative block w-full overflow-hidden rounded-lg border border-edge bg-muted",
-                      "transition-all duration-300 ease-out",
-                      "hover:scale-[1.02] hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/20",
-                      "active:scale-[0.98]",
-                      "group/preview cursor-pointer"
-                    )}
-                  >
-                    <div className="relative aspect-video w-full">
-                      <Image
-                        src={project.preview}
-                        alt={`${project.title} preview`}
-                        fill
-                        quality={100}
-                        sizes="(min-width: 1024px) 800px, 100vw"
-                        className="object-cover transition-transform duration-300 group-hover/preview:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/preview:bg-black/5" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100">
-                        <div className="rounded-full bg-background/90 p-3 shadow-lg backdrop-blur-sm">
-                          <ExternalLinkIcon className="size-5 text-foreground" />
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-
-                  {project.githubLink && (
-                    <a
-                      href={githubHref}
-                      target="_blank"
-                      rel="noopener"
-                      className={cn(
-                        "flex items-center justify-center gap-2 text-sm text-muted-foreground",
-                        "transition-colors duration-200 hover:text-foreground",
-                        "underline-offset-4 hover:underline"
-                      )}
-                    >
-                      <span>View on GitHub</span>
-                      <ExternalLinkIcon className="size-3.5" />
-                    </a>
-                  )}
-                </div>
-              )}
-
               {project.description && (
                 <ProseMono>
                   <Markdown>{project.description}</Markdown>

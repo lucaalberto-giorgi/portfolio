@@ -8,6 +8,7 @@ export const PROJECTS: Project[] = [
       start: "01.2026",
       end: "05.2026",
     },
+    logo: "/images/project-logos/cv-matcher.svg",
     link: "https://dissertation-hazel.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/dissertation",
     skills: [
@@ -27,7 +28,6 @@ export const PROJECTS: Project[] = [
 - Built the full stack (React + Vite frontend, FastAPI backend) with a clean upload-and-review interface, deployed as a single Vercel project.
 - Extracted CV text from uploaded PDFs and generated text embeddings through OpenRouter to compute a calibrated semantic and keyword match score.
 - Surfaced matched skills, missing skills, and an explainable Strong/Moderate/Weak verdict alongside the score, anonymising each CV before scoring and persisting results in Supabase.`,
-    preview: "/images/dissertation.webp",
     isExpanded: true,
   },
   {
@@ -37,6 +37,7 @@ export const PROJECTS: Project[] = [
       start: "06.2026",
       end: "07.2026",
     },
+    logo: "/images/project-logos/forma.svg",
     link: "https://forma-two-delta.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/forma",
     skills: [
@@ -55,7 +56,6 @@ export const PROJECTS: Project[] = [
 - Built with Next.js 15 (App Router), React 19, and Tailwind CSS, using Framer Motion for a polished, animated landing page and plan builder.
 - Wrote the nutrition engine from scratch, computing Mifflin-St Jeor BMR, TDEE, and goal-based calorie and macro targets alongside an automatic weekly training split.
 - Generated meal suggestions with an LLM through OpenRouter, routing simple requests to Claude Haiku and dietary-constrained ones to Claude Sonnet while keeping the macro split as the source of truth, and shipped the interface in four languages.`,
-    preview: "/images/forma-banner.webp",
     isExpanded: true,
   },
   {
@@ -65,6 +65,7 @@ export const PROJECTS: Project[] = [
       start: "03.2026",
       end: "04.2026",
     },
+    logo: "/images/project-logos/receipt-flow.svg",
     link: "https://receipt-flow-neon.vercel.app",
     githubLink: "https://github.com/lucaalberto-giorgi/receipt-flow",
     skills: [
@@ -77,14 +78,12 @@ export const PROJECTS: Project[] = [
       "CSV Export",
       "Analytics",
       "Vercel",
-      "Render",
     ],
     description: `An AI-powered receipt-processing and expense-tracking app that turns uploaded receipts into structured, searchable data.
 
 - Built with a React + Vite frontend and a FastAPI backend, using OpenAI to extract structured data from uploaded receipts.
 - Implemented auto-categorisation, search, analytics, and CSV export across a shared expense workspace with real-time dashboard updates.
-- Focused on UX resilience with error, loading, and empty states across the upload and review flow.`,
-    preview: "/images/receipt-flow.webp",
+- Designed a ledger-inspired interface with numbered entries and review stamps, and added a one-click demo mode that loads sample receipts so the dashboard is never empty on a first visit.`,
     isExpanded: true,
   },
 ];

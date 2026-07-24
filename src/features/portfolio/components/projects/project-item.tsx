@@ -62,8 +62,8 @@ export function ProjectItem({
             </div>
           )}
 
-          <div className="flex-1 border-l border-dashed border-edge">
-            <CollapsibleTrigger className="flex w-full items-center gap-2 p-4 pr-2 text-left">
+          <div className="flex flex-1 items-center gap-2 border-l border-dashed border-edge pr-2">
+            <CollapsibleTrigger className="flex flex-1 items-center p-4 pr-0 text-left">
               <div className="flex-1">
                 <h3 className="mb-1 leading-snug font-medium text-balance">
                   {project.title}
@@ -92,13 +92,46 @@ export function ProjectItem({
                   </dd>
                 </dl>
               </div>
+            </CollapsibleTrigger>
 
-              <div
-                className="shrink-0 text-muted-foreground [&_svg]:size-4"
-                aria-hidden
-              >
-                <CollapsibleChevronsIcon />
-              </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <Button asChild size="sm" className="max-sm:px-2">
+                <a
+                  href={addQueryParams(project.link, UTM_PARAMS)}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`Open the ${project.title} live demo`}
+                >
+                  <ExternalLinkIcon />
+                  <span className="max-sm:hidden">Live demo</span>
+                </a>
+              </Button>
+
+              {project.githubLink && (
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="max-sm:px-2"
+                >
+                  <a
+                    href={githubHref}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={`View the ${project.title} source on GitHub`}
+                  >
+                    <GithubIcon />
+                    <span className="max-sm:hidden">GitHub</span>
+                  </a>
+                </Button>
+              )}
+            </div>
+
+            <CollapsibleTrigger
+              className="shrink-0 rounded-lg p-2 text-muted-foreground hover:text-foreground [&_svg]:size-4"
+              aria-label={`Toggle ${project.title} details`}
+            >
+              <CollapsibleChevronsIcon />
             </CollapsibleTrigger>
           </div>
         </div>
@@ -121,34 +154,6 @@ export function ProjectItem({
                   ))}
                 </ul>
               )}
-
-              <div className="flex flex-wrap items-center gap-2 border-t border-dashed border-edge pt-4">
-                <Button asChild size="sm">
-                  <a
-                    href={addQueryParams(project.link, UTM_PARAMS)}
-                    target="_blank"
-                    rel="noopener"
-                    aria-label={`Open the ${project.title} live demo`}
-                  >
-                    <ExternalLinkIcon />
-                    <span>View live demo</span>
-                  </a>
-                </Button>
-
-                {project.githubLink && (
-                  <Button asChild size="sm" variant="outline">
-                    <a
-                      href={githubHref}
-                      target="_blank"
-                      rel="noopener"
-                      aria-label={`View the ${project.title} source on GitHub`}
-                    >
-                      <GithubIcon />
-                      <span>GitHub</span>
-                    </a>
-                  </Button>
-                )}
-              </div>
             </div>
           </div>
         </CollapsibleContent>

@@ -5,7 +5,6 @@ import {
   ExternalLinkIcon,
   GithubIcon,
   InfinityIcon,
-  LinkIcon,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -18,11 +17,6 @@ import {
   CollapsibleWithContext,
 } from "@/components/ui/collapsible";
 import { Tag } from "@/components/ui/tag";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { ProseMono } from "@/components/ui/typography";
 import { UTM_PARAMS } from "@/config/site";
 import { addQueryParams } from "@/utils/url";
@@ -52,19 +46,19 @@ export function ProjectItem({
             <Image
               src={project.logo}
               alt={project.title}
-              width={32}
-              height={32}
+              width={64}
+              height={64}
               quality={100}
-              className="mx-4 flex size-6 shrink-0 rounded-lg ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
+              className="mx-4 flex size-9 shrink-0 rounded-lg ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
               unoptimized
               aria-hidden="true"
             />
           ) : (
             <div
-              className="mx-4 flex size-6 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
+              className="mx-4 flex size-9 shrink-0 items-center justify-center rounded-lg border border-muted-foreground/15 bg-muted text-muted-foreground ring-1 ring-edge ring-offset-1 ring-offset-background select-none"
               aria-hidden="true"
             >
-              <BoxIcon className="size-4" />
+              <BoxIcon className="size-5" />
             </div>
           )}
 
@@ -98,24 +92,6 @@ export function ProjectItem({
                   </dd>
                 </dl>
               </div>
-
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a
-                    className="relative flex size-6 shrink-0 items-center justify-center text-muted-foreground after:absolute after:-inset-2 hover:text-foreground"
-                    href={addQueryParams(project.link, UTM_PARAMS)}
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <LinkIcon className="pointer-events-none size-4" />
-                    <span className="sr-only">Open Project Link</span>
-                  </a>
-                </TooltipTrigger>
-
-                <TooltipContent>
-                  <p>Open Project Link</p>
-                </TooltipContent>
-              </Tooltip>
 
               <div
                 className="shrink-0 text-muted-foreground [&_svg]:size-4"

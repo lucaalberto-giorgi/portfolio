@@ -8,6 +8,8 @@ export const USER = {
   gender: "male",
   pronouns: "he/him",
   bio: "First Class Computer Science graduate and full-stack developer building web apps with React, TypeScript & Next.js, based in London and open to junior roles.",
+  headline: "I build reliable web applications and practical AI features.",
+  availability: "Open to junior frontend and full-stack roles",
   flipSentences: [
     "Open to junior frontend & full-stack roles",
     "First Class CS grad building for the web",

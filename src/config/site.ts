@@ -11,7 +11,7 @@ export const SITE_INFO = {
 
 export const META_THEME_COLORS = {
   light: "#ffffff",
-  dark: "#09090b",
+  dark: "#0c111c",
 };
 
 export const MAIN_NAV: NavItem[] = [

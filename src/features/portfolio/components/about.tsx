@@ -1,21 +1,16 @@
-import { Markdown } from "@/components/markdown";
-import { ProseMono } from "@/components/ui/typography";
 import { USER } from "@/features/portfolio/data/user";
 
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel";
+import { RichText, Section, SectionContent, SectionTitle } from "./section";
 
 export function About() {
   return (
-    <Panel id="about" className="lg:before:hidden">
-      <PanelHeader>
-        <PanelTitle>About</PanelTitle>
-      </PanelHeader>
-
-      <PanelContent className="py-6">
-        <ProseMono>
-          <Markdown>{USER.about}</Markdown>
-        </ProseMono>
-      </PanelContent>
-    </Panel>
+    <Section id="about">
+      <SectionTitle>About</SectionTitle>
+      <SectionContent>
+        <RichText className="text-base leading-7 [&_p+p]:mt-4">
+          {USER.about}
+        </RichText>
+      </SectionContent>
+    </Section>
   );
 }

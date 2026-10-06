@@ -30,14 +30,13 @@ export function GitHubContributionGraph({
   return (
     <TooltipProvider>
       <ContributionGraph
-        className="mx-auto py-2"
         data={data}
-        blockSize={12}
+        blockSize={11}
         blockMargin={3}
         blockRadius={2}
       >
         <ContributionGraphCalendar
-          className="no-scrollbar px-2 supports-timeline-scroll:scroll-fade-effect-x supports-timeline-scroll:[--mask-width:2rem]"
+          className="no-scrollbar supports-timeline-scroll:scroll-fade-effect-x supports-timeline-scroll:[--mask-width:2rem]"
           title="GitHub Contributions"
         >
           {({ activity, dayIndex, weekIndex }) => (
@@ -60,7 +59,7 @@ export function GitHubContributionGraph({
           )}
         </ContributionGraphCalendar>
 
-        <ContributionGraphFooter className="px-2">
+        <ContributionGraphFooter>
           <ContributionGraphTotalCount>
             {({ totalCount }) => (
               <div className="text-muted-foreground">

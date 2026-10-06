@@ -24,4 +24,10 @@ export type Project = {
   logo?: string;
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean;
+  /**
+   * Marks the project as unfinished: shows an "In progress" label and keeps
+   * `link` (the live demo) off the site and the LLM files. Remove once the
+   * demo is ready to share.
+   */
+  inProgress?: boolean;
 };

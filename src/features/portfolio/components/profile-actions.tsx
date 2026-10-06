@@ -18,7 +18,7 @@ export function ProfileActions() {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <Button asChild size="sm">
+      <Button asChild size="lg" className="px-5">
         <a
           href={isClient ? `mailto:${email}` : "#"}
           aria-label={isClient ? `Send an email to ${email}` : "Send an email"}
@@ -28,7 +28,7 @@ export function ProfileActions() {
         </a>
       </Button>
 
-      <Button asChild variant="outline" size="sm">
+      <Button asChild variant="outline" size="lg" className="px-5">
         <a
           href={CV_FILE}
           download={CV_DOWNLOAD_NAME}

@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-import { ScrollProgress } from "./scroll-progress";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
 import { SiteNav } from "./site-nav";
@@ -21,21 +21,25 @@ export function SiteHeader() {
         "transition-[border-color] duration-300 data-[affix=true]:border-border"
       )}
     >
-      <div className="page-container flex h-14 items-center gap-4">
+      <div className="page-container flex h-14 items-center gap-8">
         <BrandContextMenu>
           <Link className="flex [&_svg]:h-8" href="/" aria-label="Home">
             <SiteHeaderMark />
           </Link>
         </BrandContextMenu>
 
-        <div className="ml-auto">
+        {/* Phones get the bottom dock (MobileDock) instead of this menu. */}
+        <div className="ml-auto hidden self-stretch sm:flex">
           <SiteNav />
         </div>
 
-        <ThemeToggle className="-mr-2" />
+        <div className="flex items-center gap-2 max-sm:ml-auto">
+          <ThemeToggle />
+          <Button asChild className="px-3.5 max-sm:hidden">
+            <Link href="/#contact">Contact</Link>
+          </Button>
+        </div>
       </div>
-
-      <ScrollProgress />
     </SiteHeaderWrapper>
   );
 }

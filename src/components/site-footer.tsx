@@ -46,7 +46,7 @@ export function SiteFooter() {
         </SectionContent>
       </Section>
 
-      <div className="flex flex-col gap-1 border-t border-border py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] text-sm text-muted-foreground sm:flex-row sm:justify-between">
+      <div className="flex flex-col gap-1 border-t border-border py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] text-sm text-muted-foreground max-sm:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))] sm:flex-row sm:justify-between">
         <p>
           © {year} {USER.displayName}
         </p>

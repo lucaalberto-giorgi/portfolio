@@ -22,8 +22,11 @@ import { addQueryParams } from "@/utils/url";
 
 export function GitHubContributionGraph({
   contributions,
+  months,
 }: {
   contributions: Activity[];
+  /** Length of the window shown, for the total line. */
+  months: number;
 }) {
   const data = contributions;
 
@@ -31,13 +34,17 @@ export function GitHubContributionGraph({
     <TooltipProvider>
       <ContributionGraph
         data={data}
-        blockSize={11}
+        blockSize={12}
         blockMargin={3}
         blockRadius={2}
       >
         <ContributionGraphCalendar
           className="no-scrollbar supports-timeline-scroll:scroll-fade-effect-x supports-timeline-scroll:[--mask-width:2rem]"
           title="GitHub Contributions"
+          // On narrow screens the graph overflows; open on the newest weeks.
+          ref={(node: HTMLDivElement | null) => {
+            if (node) node.scrollLeft = node.scrollWidth;
+          }}
         >
           {({ activity, dayIndex, weekIndex }) => (
             <TooltipRoot>
@@ -63,8 +70,8 @@ export function GitHubContributionGraph({
           <ContributionGraphTotalCount>
             {({ totalCount }) => (
               <div className="text-muted-foreground">
-                {totalCount.toLocaleString("en")} contributions in the last year
-                on{" "}
+                {totalCount.toLocaleString("en")} contributions in the last{" "}
+                {months} months on{" "}
                 <a
                   className="font-medium underline underline-offset-4"
                   href={addQueryParams(

@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 
+import { MobileDock } from "@/components/mobile-dock";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -13,7 +14,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <SiteHeader />
       <main className="max-w-screen overflow-x-clip">{children}</main>
       <SiteFooter />
-      <ScrollToTop />
+      <MobileDock />
+      {/* On phones the dock sits where this button would go. */}
+      <ScrollToTop className="max-sm:hidden" />
     </>
   );
 }

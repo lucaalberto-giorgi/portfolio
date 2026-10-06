@@ -1,4 +1,7 @@
-import { getGitHubContributions } from "../../data/github-contributions";
+import {
+  CONTRIBUTION_MONTHS,
+  getGitHubContributions,
+} from "../../data/github-contributions";
 import { Section, SectionContent, SectionTitle } from "../section";
 import { GitHubContributionGraph } from "./graph";
 
@@ -15,7 +18,10 @@ export async function GitHubContributions() {
     <Section id="contributions">
       <SectionTitle>GitHub</SectionTitle>
       <SectionContent>
-        <GitHubContributionGraph contributions={contributions} />
+        <GitHubContributionGraph
+          contributions={contributions}
+          months={CONTRIBUTION_MONTHS}
+        />
       </SectionContent>
     </Section>
   );

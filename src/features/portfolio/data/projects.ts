@@ -47,17 +47,18 @@ export const PROJECTS: Project[] = [
       "React",
       "TypeScript",
       "Tailwind CSS",
-      "Framer Motion",
-      "OpenRouter",
+      "Supabase",
+      "PostgreSQL",
       "Claude API",
-      "i18n",
+      "Zod",
+      "Framer Motion",
       "Vercel",
     ],
-    description: `A web app that turns a few questions about your body and goals into a complete, personalised training and nutrition plan in about two minutes.
+    description: `A coaching app for personal trainers. Coaches manage their clients' programmes, sessions, check-ins, and messages in one place, and each client follows their plan from an app on their phone.
 
-- Built with Next.js 15 (App Router), React 19, and Tailwind CSS, using Framer Motion for a polished, animated landing page and plan builder.
-- Wrote the nutrition engine from scratch, computing Mifflin-St Jeor BMR, TDEE, and goal-based calorie and macro targets alongside an automatic weekly training split.
-- Generated meal suggestions with an LLM through OpenRouter, routing simple requests to Claude Haiku and dietary-constrained ones to Claude Sonnet while keeping the macro split as the source of truth, and shipped the interface in four languages.`,
+- Built with Next.js, React, TypeScript, and Tailwind CSS on Supabase (EU), with coach and client accounts, invite links, row-level security on every table, and realtime sync so messages arrive in under a second.
+- Wrote a client attention system that flags inactivity, low adherence, strength plateaus, and pain reports, and turns them into programme proposals that must pass code checks (load limits, library exercises only) before the coach approves them.
+- Added Claude features through Anthropic's API with structured outputs: reply drafts in the coach's voice, triage of client messages and check-ins, AI-assisted rescheduling, and programme edits from plain-language requests, with daily usage caps.`,
     isExpanded: true,
   },
   {

@@ -15,6 +15,7 @@ import {
   subWeeks,
 } from "date-fns";
 import {
+  type ComponentProps,
   createContext,
   type CSSProperties,
   Fragment,
@@ -354,7 +355,7 @@ export const ContributionGraphBlock = ({
 };
 
 export type ContributionGraphCalendarProps = Omit<
-  HTMLAttributes<HTMLDivElement>,
+  ComponentProps<"div">,
   "children"
 > & {
   hideMonthLabels?: boolean;

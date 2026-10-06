@@ -137,10 +137,10 @@ story.append(bullets([
 
 story.append(Paragraph("Forma | Full-Stack Web Application - London | 2026", job_title_style))
 story.append(bullets([
-    "Built a personalised training and nutrition planner (Next.js, React, TypeScript, Tailwind CSS) that turns a "
-    "short questionnaire into a complete weekly training plan.",
-    "Wrote the nutrition engine from scratch (BMR, TDEE, goal-based calorie and macro targets) and generated "
-    "meal suggestions with Claude models via OpenRouter, shipping the interface in four languages.",
+    "Building a coaching app for personal trainers (Next.js, React, TypeScript, Supabase): coach and client "
+    "accounts, programmes, sessions, check-ins, and realtime messaging, with row-level security on every table.",
+    "Wrote an attention system that flags inactivity, plateaus, and pain reports, and added Claude features "
+    "(reply drafts, message triage, programme proposals) with outputs checked in code before a coach approves.",
 ]))
 
 story.append(Paragraph("Receipt Flow | Full-Stack Web Application - London | 2026", job_title_style))
@@ -155,8 +155,8 @@ story.append(bullets([
 
 story.append(Paragraph("Personal Portfolio Website | Front-End Project - London | 2026", job_title_style))
 story.append(bullets([
-    "Built and designed a personal portfolio (Next.js, TypeScript, Tailwind CSS, Motion) with a sticky split "
-    "layout, animated intro, dark mode, and a live GitHub-activity graph.",
+    "Built and designed a personal portfolio (Next.js, TypeScript, Tailwind CSS, Motion) with a CV-style layout, "
+    "scroll-aware navigation with keyboard shortcuts, dark mode, and a live GitHub-activity graph.",
     "Focused on performance and accessibility, including optimised images, reduced-motion support, and "
     "keyboard-navigable markup.",
 ]))

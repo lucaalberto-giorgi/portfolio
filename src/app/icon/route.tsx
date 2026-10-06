@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 
+import { getBrandIconDataUri } from "@/lib/brand-icon";
+
 export const runtime = "edge";
 export const size = {
   width: 256,
@@ -7,31 +9,18 @@ export const size = {
 };
 export const contentType = "image/png";
 
+// Also served as the PWA's maskable icon, so the mark is scaled into the
+// central safe zone that survives circular and squircle masks.
+const MASKABLE_SCALE = 0.8;
+
 export async function GET() {
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#000000",
-        }}
-      >
-        <div
-          style={{
-            fontSize: 140,
-            fontWeight: 600,
-            color: "#ffffff",
-            fontFamily: "system-ui, -apple-system, sans-serif",
-          }}
-        >
-          LG
-        </div>
-      </div>
-    ),
+    <img
+      src={getBrandIconDataUri({ shape: "square", scale: MASKABLE_SCALE })}
+      alt=""
+      width={size.width}
+      height={size.height}
+    />,
     {
       ...size,
     }

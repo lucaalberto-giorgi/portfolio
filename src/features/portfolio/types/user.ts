@@ -13,8 +13,6 @@ export type User = {
   headline: string;
   /** Availability line shown next to the status dot */
   availability: string;
-  /** Short phrases rotated in UI (e.g., homepage flip effect) */
-  flipSentences: string[];
   /** General location for display */
   address: string;
   /** E.164 format, base64 encoded (https://t.io.vn/base64-string-converter) */

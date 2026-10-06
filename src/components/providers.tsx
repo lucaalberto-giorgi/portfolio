@@ -16,7 +16,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         disableTransitionOnChange
         enableColorScheme
         storageKey="theme"
-        defaultTheme="system"
+        // Light first: the design is ink on paper. A visitor's own toggle
+        // choice is still stored and wins on later visits.
+        defaultTheme="light"
         attribute="class"
       >
         <AppProgressProvider

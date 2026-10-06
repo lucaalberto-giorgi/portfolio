@@ -1,68 +1,57 @@
-import { Fragment } from "react";
-
+import { ProfileActions } from "@/features/portfolio/components/profile-actions";
+import {
+  Section,
+  SectionContent,
+  SectionTitle,
+} from "@/features/portfolio/components/section";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
+import { USER } from "@/features/portfolio/data/user";
 import type { SocialLinkKey } from "@/features/portfolio/types/social-links";
-import { cn } from "@/lib/utils";
 
-import { Icons } from "./icons";
-
-const SOCIAL_ICONS: Record<
-  SocialLinkKey,
-  React.ComponentType<{ className?: string }>
-> = {
-  linkedin: Icons.linkedin,
-  x: Icons.x,
-  github: Icons.github,
+// Short labels for inline text links ("X" rather than "X (formerly Twitter)").
+const SOCIAL_LABELS: Record<SocialLinkKey, string> = {
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  x: "X",
 };
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="max-w-screen overflow-x-hidden px-2">
-      <div className="screen-line-before mx-auto border-x border-edge md:max-w-6xl lg:grid lg:grid-cols-[20rem_minmax(0,1fr)]">
-        {/* Empty left rail — mirrors the profile column of the split layout */}
-        <div className="hidden lg:block" aria-hidden />
-
-        {/* Footer content — aligns with the content column on large screens */}
-        <div className="pt-4 lg:border-l lg:border-edge">
-          <p className="mb-4 px-4 text-center font-mono text-sm text-balance text-muted-foreground">
-            © {year} Luca Alberto Giorgi · Built with Next.js
+    <footer className="page-container">
+      <Section id="contact">
+        <SectionTitle>Contact</SectionTitle>
+        <SectionContent className="space-y-6">
+          <p className="max-w-[42rem] text-base leading-7">
+            Email is the quickest way to reach me. My CV is a one-page PDF.
           </p>
 
-          <div className="screen-line-before screen-line-after flex w-full before:z-1 after:z-1">
-            <div className="mx-auto flex items-center justify-center gap-6 border-x border-edge bg-background px-6">
-              {SOCIAL_LINKS.map((link, index) => {
-                const Icon = SOCIAL_ICONS[link.key];
+          <ProfileActions />
 
-                return (
-                  <Fragment key={link.key}>
-                    {index > 0 && <Separator />}
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] leading-6">
+            {SOCIAL_LINKS.map((link) => (
+              <li key={link.key}>
+                <a
+                  className="underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {SOCIAL_LABELS[link.key]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </SectionContent>
+      </Section>
 
-                    <a
-                      className="flex items-center text-muted-foreground transition-colors hover:text-foreground"
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon className="size-4" />
-                      <span className="sr-only">{link.title}</span>
-                    </a>
-                  </Fragment>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="pb-[env(safe-area-inset-bottom,0px)]">
-        <div className="flex h-2" />
+      <div className="flex flex-col gap-1 border-t border-border py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] text-sm text-muted-foreground sm:flex-row sm:justify-between">
+        <p>
+          © {year} {USER.displayName}
+        </p>
+        <p>Built with Next.js</p>
       </div>
     </footer>
   );
-}
-
-function Separator({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("flex h-11 w-px bg-edge", className)} {...props} />;
 }

@@ -4,6 +4,7 @@ import { PROJECTS } from "@/features/portfolio/data/projects";
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links";
 import { TECH_STACK } from "@/features/portfolio/data/tech-stack";
 import { USER } from "@/features/portfolio/data/user";
+import { getPublicLink } from "@/features/portfolio/utils/project-links";
 
 const aboutText = `## About
 
@@ -43,7 +44,9 @@ ${PROJECTS.map((item) => {
   const skills =
     item.skills.length > 0 ? `\n\nSkills: ${item.skills.join(", ")}` : "";
   const description = item.description ? `\n\n${item.description.trim()}` : "";
-  return `### ${item.title}\n\nProject URL: ${item.link}${skills}${description}`;
+  const link = getPublicLink(item);
+  const url = link ? `\n\nProject URL: ${link}` : "";
+  return `### ${item.title}${url}${skills}${description}`;
 }).join("\n\n")}
 `;
 

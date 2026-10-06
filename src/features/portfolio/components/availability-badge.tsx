@@ -1,25 +1,24 @@
+import { USER } from "@/features/portfolio/data/user";
 import { cn } from "@/lib/utils";
 
 /**
- * Always-visible "open to work" signal shown near the name in both the sidebar
- * and the mobile profile header. Uses the same primary fill as the "Get in
- * touch" button so it inverts with the theme (dark pill in light mode, light
- * pill in dark mode). The pinging dot honours reduced motion.
+ * "Open to work" status line. The signal green is reserved for this dot (and
+ * the GitHub graph), so it is the one spot of colour in the hero. The ping
+ * honours reduced motion.
  */
 export function AvailabilityBadge({ className }: { className?: string }) {
   return (
-    <span
+    <p
       className={cn(
-        "inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1",
-        "bg-primary font-mono text-xs font-medium text-primary-foreground select-none",
+        "inline-flex items-center gap-2.5 text-[15px] leading-6",
         className
       )}
     >
-      <span className="relative flex size-1.5" aria-hidden>
-        <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-80 motion-reduce:animate-none" />
-        <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
+      <span className="relative flex size-2 shrink-0" aria-hidden>
+        <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-60 motion-reduce:animate-none" />
+        <span className="relative inline-flex size-2 rounded-full bg-success" />
       </span>
-      Available for work
-    </span>
+      {USER.availability}
+    </p>
   );
 }

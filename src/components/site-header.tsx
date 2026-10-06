@@ -3,10 +3,11 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-import { HeaderPill } from "./header-pill";
-import { MobileMenu } from "./mobile-menu";
+import { ScrollProgress } from "./scroll-progress";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
+import { SiteNav } from "./site-nav";
+import { ThemeToggle } from "./theme-toggle";
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
@@ -16,39 +17,25 @@ export function SiteHeader() {
   return (
     <SiteHeaderWrapper
       className={cn(
-        "sticky top-0 z-50 max-w-screen overflow-x-clip bg-background px-2 pt-2",
-        "data-[affix=true]:shadow-[0_0_16px_0_black]/8 dark:data-[affix=true]:shadow-[0_0_16px_0_black]",
-        "not-dark:data-[affix=true]:**:data-header-container:after:bg-border",
-        "transition-shadow duration-300"
+        "sticky top-0 z-50 border-b border-transparent bg-background/90 backdrop-blur-md",
+        "transition-[border-color] duration-300 data-[affix=true]:border-border"
       )}
     >
-      <div
-        className="screen-line-after relative mx-auto flex h-16 items-center border-x border-edge px-2 after:z-1 after:transition-[background-color] md:max-w-6xl"
-        data-header-container
-      >
+      <div className="page-container flex h-14 items-center gap-4">
         <BrandContextMenu>
-          <Link
-            className="flex has-data-[visible=false]:pointer-events-none [&_svg]:h-8"
-            href="/"
-            aria-label="Home"
-          >
+          <Link className="flex [&_svg]:h-8" href="/" aria-label="Home">
             <SiteHeaderMark />
           </Link>
         </BrandContextMenu>
 
-        <div
-          aria-hidden
-          className="absolute inset-y-0 left-80 hidden w-px bg-edge lg:block"
-        />
-
-        <div className="pointer-events-none absolute inset-x-0 hidden justify-center sm:flex lg:left-80">
-          <div className="pointer-events-auto">
-            <HeaderPill />
-          </div>
+        <div className="ml-auto">
+          <SiteNav />
         </div>
 
-        <MobileMenu className="ml-auto sm:hidden" />
+        <ThemeToggle className="-mr-2" />
       </div>
+
+      <ScrollProgress />
     </SiteHeaderWrapper>
   );
 }

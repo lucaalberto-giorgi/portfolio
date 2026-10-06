@@ -33,13 +33,15 @@ export const PROJECTS: Project[] = [
   {
     id: "forma",
     title: "Forma",
+    // Ongoing while in progress; add `end` back when it ships.
     period: {
       start: "06.2026",
-      end: "07.2026",
     },
     logo: "/images/project-logos/forma.svg",
     link: "https://forma-two-delta.vercel.app",
-    githubLink: "https://github.com/lucaalberto-giorgi/forma",
+    // The repo is private, so a GitHub link would 404 for visitors. Restore
+    // `githubLink: "https://github.com/lucaalberto-giorgi/forma"` once public.
+    inProgress: true,
     skills: [
       "Next.js",
       "React",

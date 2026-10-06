@@ -9,6 +9,10 @@ export type User = {
   /** e.g. "he/him", "she/her", "they/them" */
   pronouns: string;
   bio: string;
+  /** Large statement that opens the homepage */
+  headline: string;
+  /** Availability line shown next to the status dot */
+  availability: string;
   /** Short phrases rotated in UI (e.g., homepage flip effect) */
   flipSentences: string[];
   /** General location for display */

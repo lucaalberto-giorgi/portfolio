@@ -1,56 +1,65 @@
 import Image from "next/image";
-import React from "react";
 
 import { cn } from "@/lib/utils";
 
 import type { Experience } from "../../types/experiences";
-import { ExperiencePositionItem } from "./experience-position-item";
+import { formatPeriod } from "../../utils/format-period";
+import { Entry, EntryPeriod } from "../entry";
+import { RichText, StackList } from "../section";
 
-export function ExperienceItem({ experience }: { experience: Experience }) {
+export function ExperienceItem({
+  experience,
+  titleFrom = "company",
+}: {
+  experience: Experience;
+  /**
+   * Which field heads the entry. Education entries store the institution in
+   * the position title, so they read better headed by it.
+   */
+  titleFrom?: "company" | "position";
+}) {
+  const logo = experience.companyLogo ? (
+    <Image
+      src={experience.companyLogo}
+      alt=""
+      width={36}
+      height={36}
+      quality={100}
+      className={cn(
+        "object-contain",
+        experience.invertLogoOnDark && "dark:invert"
+      )}
+      unoptimized
+    />
+  ) : null;
+
   return (
-    <div
-      id={experience.id}
-      className="screen-line-after scroll-mt-22 space-y-4 py-4"
-    >
-      <div className="flex items-center gap-3">
-        <div className="flex size-8 shrink-0 items-center justify-center select-none">
-          {experience.companyLogo ? (
-            <Image
-              src={experience.companyLogo}
-              alt={experience.companyName}
-              width={32}
-              height={32}
-              quality={100}
-              className={cn(
-                "object-contain",
-                experience.invertLogoOnDark && "dark:invert"
-              )}
-              unoptimized
-              aria-hidden
-            />
-          ) : (
-            <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
-          )}
-        </div>
+    <>
+      {experience.positions.map((position) => {
+        const { start, end } = position.employmentPeriod;
+        const isCompanyTitle = titleFrom === "company";
 
-        <h3 className="text-lg leading-snug font-medium">
-          {experience.companyName}
-        </h3>
-
-        {experience.isCurrentEmployer && (
-          <span className="relative flex items-center justify-center">
-            <span className="absolute inline-flex size-3 animate-ping rounded-full bg-info opacity-50" />
-            <span className="relative inline-flex size-2 rounded-full bg-info" />
-            <span className="sr-only">Current Employer</span>
-          </span>
-        )}
-      </div>
-
-      <div className="space-y-4">
-        {experience.positions.map((position) => (
-          <ExperiencePositionItem key={position.id} position={position} />
-        ))}
-      </div>
-    </div>
+        return (
+          <Entry
+            key={position.id}
+            logo={logo}
+            title={isCompanyTitle ? experience.companyName : position.title}
+            subtitle={
+              isCompanyTitle
+                ? [position.title, position.employmentType]
+                    .filter(Boolean)
+                    .join(", ")
+                : undefined
+            }
+            aside={<EntryPeriod>{formatPeriod(start, end)}</EntryPeriod>}
+          >
+            {position.description && (
+              <RichText>{position.description}</RichText>
+            )}
+            {position.skills && <StackList items={position.skills} />}
+          </Entry>
+        );
+      })}
+    </>
   );
 }

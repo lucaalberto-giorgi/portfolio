@@ -12,6 +12,8 @@ function Section({ className, ...props }: React.ComponentProps<"section">) {
       data-slot="section"
       className={cn(
         "grid gap-x-12 gap-y-5 py-10 lg:grid-cols-[11rem_minmax(0,1fr)] lg:py-12",
+        // Section links focus the section; no ring around the whole block.
+        "outline-none",
         className
       )}
       {...props}

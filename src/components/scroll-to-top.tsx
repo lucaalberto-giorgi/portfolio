@@ -5,6 +5,7 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { glideToTop } from "@/lib/page-glide";
 import { cn } from "@/lib/utils";
 
 export function ScrollToTop({
@@ -37,7 +38,7 @@ export function ScrollToTop({
       )}
       variant="secondary"
       size="icon-lg"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={(event) => glideToTop({ instant: event.detail === 0 })}
       {...props}
     >
       <ArrowUpIcon className="size-5" />

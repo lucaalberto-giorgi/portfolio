@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { type RefObject, useEffect, useState } from "react";
 
+import { getGlide, subscribeToGlide } from "@/lib/page-glide";
 import { cn } from "@/lib/utils";
 
 /** Homepage sections in the header menu; 1-4 jump to them on a keyboard. */
@@ -43,6 +44,17 @@ export function useSectionSpy(ids: readonly string[]) {
 
     const update = () => {
       frame = 0;
+
+      // While a link glides the page, point straight at its destination
+      // (or at nothing, if it isn't in this menu) rather than flicking
+      // through every section on the way.
+      const glide = getGlide();
+      if (glide) {
+        const sectionId = glide.sectionId;
+        setActiveId(sectionId && ids.includes(sectionId) ? sectionId : null);
+        return;
+      }
+
       const line = window.innerHeight * READING_LINE;
       let next: string | null = null;
 
@@ -81,11 +93,13 @@ export function useSectionSpy(ids: readonly string[]) {
     update();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
+    const unsubscribeFromGlide = subscribeToGlide(schedule);
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
+      unsubscribeFromGlide();
     };
   }, [ids]);
 

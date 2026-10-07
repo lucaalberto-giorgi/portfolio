@@ -3,12 +3,14 @@
 import Link from "next/link";
 import type { ComponentProps, MouseEvent } from "react";
 
+import { glideToSection, glideToTop } from "@/lib/page-glide";
+
 /*
  * Next's Link does nothing when its URL is the one its router thinks is
  * current. On this single-page site that broke two cases: a second click on
  * a section link (or on the logo) once you had scrolled away, and any click
  * after a hash typed into the address bar, which the router never sees. When
- * the target is on this page, these links scroll and update the URL
+ * the target is on this page, these links glide there and update the URL
  * themselves; Next keeps its router in sync with `history.pushState`.
  * Otherwise they behave like a normal Link.
  */
@@ -24,6 +26,20 @@ function isPlainClick(event: MouseEvent<HTMLAnchorElement>) {
     !event.shiftKey &&
     !event.altKey
   );
+}
+
+/** Enter on a focused link: jump straight there, like the 1-4 shortcuts. */
+function isKeyboardClick(event: MouseEvent<HTMLAnchorElement>) {
+  return event.detail === 0;
+}
+
+/**
+ * Moves focus to `section`, as a native in-page link would, so Tab carries on
+ * from there rather than from a header button that may have just hidden.
+ */
+function focusSection(section: HTMLElement) {
+  if (!section.hasAttribute("tabindex")) section.tabIndex = -1;
+  section.focus({ preventScroll: true });
 }
 
 /** Link to a homepage section by its id. */
@@ -49,7 +65,8 @@ export function SectionLink({
       window.history.pushState(null, "", hash);
     }
 
-    section.scrollIntoView();
+    glideToSection(section, { instant: isKeyboardClick(event) });
+    focusSection(section);
   };
 
   return <Link href={`/#${sectionId}`} onClick={handleClick} {...props} />;
@@ -77,7 +94,7 @@ export function HomeLink({ onClick, ...props }: SamePageLinkProps) {
       window.history.pushState(null, "", "/");
     }
 
-    window.scrollTo({ top: 0 });
+    glideToTop({ instant: isKeyboardClick(event) });
   };
 
   return <Link href="/" onClick={handleClick} {...props} />;

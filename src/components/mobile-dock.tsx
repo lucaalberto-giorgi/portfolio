@@ -13,11 +13,11 @@ import { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+import { SectionLink } from "./same-page-link";
 import {
   DOCK_SECTION_IDS,
   DOCK_SECTIONS,
   type DockSectionId,
-  SectionLink,
   SectionPill,
   useItemRect,
   useSectionSpy,

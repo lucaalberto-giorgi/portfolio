@@ -6,10 +6,10 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 import { cn } from "@/lib/utils";
 
+import { SectionLink } from "./same-page-link";
 import {
   PILL,
   SECTION_IDS,
-  SectionLink,
   SECTIONS,
   useItemRect,
   useSectionSpy,

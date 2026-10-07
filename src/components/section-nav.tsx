@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import Link from "next/link";
-import {
-  type ComponentProps,
-  type MouseEvent,
-  type RefObject,
-  useEffect,
-  useState,
-} from "react";
+import { type RefObject, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -31,43 +24,6 @@ export const DOCK_SECTIONS = [
 export type DockSectionId = (typeof DOCK_SECTIONS)[number]["id"];
 
 export const DOCK_SECTION_IDS = DOCK_SECTIONS.map(({ id }) => id);
-
-/**
- * Link to a homepage section. Next's Link ignores a click when its URL is
- * already the current one, so after scrolling away, a second click on the
- * same section did nothing; in that case scroll to the section directly.
- */
-export function SectionLink({
-  sectionId,
-  onClick,
-  ...props
-}: Omit<ComponentProps<typeof Link>, "href"> & { sectionId: string }) {
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    onClick?.(event);
-
-    const isPlainClick =
-      event.button === 0 &&
-      !event.metaKey &&
-      !event.ctrlKey &&
-      !event.shiftKey &&
-      !event.altKey;
-    const section = document.getElementById(sectionId);
-
-    if (
-      event.defaultPrevented ||
-      !isPlainClick ||
-      !section ||
-      window.location.hash !== `#${sectionId}`
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-    section.scrollIntoView();
-  };
-
-  return <Link href={`/#${sectionId}`} onClick={handleClick} {...props} />;
-}
 
 /** Fraction of the viewport height where a section counts as "being read". */
 const READING_LINE = 0.3;

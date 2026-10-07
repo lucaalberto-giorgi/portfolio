@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-import { SectionLink } from "./section-nav";
+import { HeaderContactButton } from "./header-contact-button";
+import { HomeLink } from "./same-page-link";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
 import { SiteNav } from "./site-nav";
@@ -24,9 +23,9 @@ export function SiteHeader() {
     >
       <div className="page-container flex h-14 items-center gap-8">
         <BrandContextMenu>
-          <Link className="flex [&_svg]:h-8" href="/" aria-label="Home">
+          <HomeLink className="flex [&_svg]:h-8" aria-label="Home">
             <SiteHeaderMark />
-          </Link>
+          </HomeLink>
         </BrandContextMenu>
 
         {/* Phones get the bottom dock (MobileDock) instead of this menu. */}
@@ -34,11 +33,10 @@ export function SiteHeader() {
           <SiteNav />
         </div>
 
-        <div className="flex items-center gap-2 max-sm:ml-auto">
+        {/* No gap: the Contact button spaces itself so its slot can close. */}
+        <div className="flex items-center max-sm:ml-auto">
           <ThemeToggle />
-          <Button asChild className="px-3.5 max-sm:hidden">
-            <SectionLink sectionId="contact">Contact</SectionLink>
-          </Button>
+          <HeaderContactButton />
         </div>
       </div>
     </SiteHeaderWrapper>

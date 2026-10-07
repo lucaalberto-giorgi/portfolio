@@ -31,7 +31,11 @@ export function Hero() {
         {USER.headline}
       </p>
 
-      <div className="mt-8 flex flex-col gap-5 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8">
+      {/* The header's Contact button fades in once this row scrolls away. */}
+      <div
+        id="hero-actions"
+        className="mt-8 flex flex-col gap-5 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8"
+      >
         <ProfileActions />
         <AvailabilityBadge />
       </div>

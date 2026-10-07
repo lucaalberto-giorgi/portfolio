@@ -39,10 +39,6 @@ Licensed under the [MIT license](./LICENSE).
 
 You're free to use my code! Just make sure to <ins>remove all my personal information</ins> before publishing your website. It's awesome to see my code being useful to someone!
 
-## Contributors
-
-[![Contributors](https://www.lucagiorgi.com/svg/contributors?v=2)](https://github.com/lucaalberto-giorgi/portfolio/graphs/contributors)
-
 ## Acknowledgments
 
 - [React](https://react.dev)

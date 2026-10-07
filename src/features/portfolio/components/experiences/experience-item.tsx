@@ -22,11 +22,13 @@ export function ExperienceItem({
     <Image
       src={experience.companyLogo}
       alt=""
-      width={36}
-      height={36}
+      width={40}
+      height={40}
       quality={100}
       className={cn(
-        "object-contain",
+        // Fill the 40px logo slot like the project logos; tall shields keep
+        // their shape instead of overflowing the slot.
+        "size-full object-contain",
         experience.invertLogoOnDark && "dark:invert"
       )}
       unoptimized

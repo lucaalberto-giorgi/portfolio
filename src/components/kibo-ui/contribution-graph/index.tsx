@@ -48,6 +48,8 @@ export type Labels = {
 type MonthLabel = {
   weekIndex: number;
   label: string;
+  /** Set when the month is too new to fit a label at its own column. */
+  alignEnd?: boolean;
 };
 
 const DEFAULT_MONTH_LABELS = [
@@ -226,11 +228,17 @@ const getMonthLabels = (
         return labels[1] && labels[1].weekIndex - weekIndex >= minWeeks;
       }
 
-      if (index === labels.length - 1) {
-        return weeks.slice(weekIndex).length >= minWeeks;
-      }
-
       return true;
+    })
+    .map((monthLabel, index, labels) => {
+      // Always label the current month so the graph never looks out of date,
+      // pinning it to the right edge until it has room at its own column.
+      const isLast = index === labels.length - 1;
+      const weeksLeft = weeks.length - monthLabel.weekIndex;
+
+      return isLast && weeksLeft < 3
+        ? { ...monthLabel, alignEnd: true }
+        : monthLabel;
     });
 };
 
@@ -396,11 +404,12 @@ export const ContributionGraphCalendar = ({
         <title>{title}</title>
         {!hideMonthLabels && (
           <g className="fill-current selection:fill-selection-foreground">
-            {monthLabels.map(({ label, weekIndex }) => (
+            {monthLabels.map(({ label, weekIndex, alignEnd }) => (
               <text
                 dominantBaseline="hanging"
                 key={weekIndex}
-                x={(blockSize + blockMargin) * weekIndex}
+                textAnchor={alignEnd ? "end" : undefined}
+                x={alignEnd ? width : (blockSize + blockMargin) * weekIndex}
               >
                 {label}
               </text>

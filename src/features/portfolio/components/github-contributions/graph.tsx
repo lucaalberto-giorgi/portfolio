@@ -1,6 +1,6 @@
 "use client";
 
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 import {
   TooltipContent,
@@ -56,10 +56,12 @@ export function GitHubContributionGraph({
                 />
               </TooltipTrigger>
 
+              {/* parseISO reads the date as local; new Date() would read it as
+                  UTC midnight and show the previous day west of London. */}
               <TooltipContent className="font-sans">
                 <p>
-                  {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
-                  on {format(new Date(activity.date), "dd.MM.yyyy")}
+                  {activity.count} contribution{activity.count === 1 ? "" : "s"}{" "}
+                  on {format(parseISO(activity.date), "dd.MM.yyyy")}
                 </p>
               </TooltipContent>
             </TooltipRoot>
@@ -69,7 +71,8 @@ export function GitHubContributionGraph({
         <ContributionGraphFooter>
           <ContributionGraphTotalCount>
             {({ totalCount }) => (
-              <div className="text-muted-foreground">
+              // The footer is nowrap; let this line wrap on the narrowest phones.
+              <div className="whitespace-normal text-muted-foreground">
                 {totalCount.toLocaleString("en")} contributions in the last{" "}
                 {months} months on{" "}
                 <a

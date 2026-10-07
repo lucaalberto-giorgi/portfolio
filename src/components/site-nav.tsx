@@ -1,12 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import Link from "next/link";
 import { useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 
 import { cn } from "@/lib/utils";
 
+import { SectionLink } from "./same-page-link";
 import {
   PILL,
   SECTION_IDS,
@@ -50,8 +50,8 @@ export function SiteNav() {
 
           return (
             <li key={section.id} className="flex">
-              <Link
-                href={`/#${section.id}`}
+              <SectionLink
+                sectionId={section.id}
                 data-section={section.id}
                 data-active={isActive}
                 aria-current={isActive ? "true" : undefined}
@@ -65,7 +65,7 @@ export function SiteNav() {
                 )}
               >
                 {section.label}
-              </Link>
+              </SectionLink>
             </li>
           );
         })}

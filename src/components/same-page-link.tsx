@@ -4,10 +4,13 @@ import Link from "next/link";
 import type { ComponentProps, MouseEvent } from "react";
 
 /*
- * Next's Link does nothing when its URL is already the current one. On this
- * single-page site that meant a second click on a section link (or on the
- * logo while at "/") went nowhere once you had scrolled away. These links
- * scroll directly in that case and behave like a normal Link otherwise.
+ * Next's Link does nothing when its URL is the one its router thinks is
+ * current. On this single-page site that broke two cases: a second click on
+ * a section link (or on the logo) once you had scrolled away, and any click
+ * after a hash typed into the address bar, which the router never sees. When
+ * the target is on this page, these links scroll and update the URL
+ * themselves; Next keeps its router in sync with `history.pushState`.
+ * Otherwise they behave like a normal Link.
  */
 
 type SamePageLinkProps = Omit<ComponentProps<typeof Link>, "href">;
@@ -34,16 +37,18 @@ export function SectionLink({
 
     const section = document.getElementById(sectionId);
 
-    if (
-      event.defaultPrevented ||
-      !isPlainClick(event) ||
-      !section ||
-      window.location.hash !== `#${sectionId}`
-    ) {
+    if (event.defaultPrevented || !isPlainClick(event) || !section) {
       return;
     }
 
     event.preventDefault();
+
+    // Push before scrolling so Back returns to where the click happened.
+    const hash = `#${sectionId}`;
+    if (window.location.hash !== hash) {
+      window.history.pushState(null, "", hash);
+    }
+
     section.scrollIntoView();
   };
 
@@ -61,13 +66,17 @@ export function HomeLink({ onClick, ...props }: SamePageLinkProps) {
       event.defaultPrevented ||
       !isPlainClick(event) ||
       pathname !== "/" ||
-      search ||
-      hash
+      search
     ) {
       return;
     }
 
     event.preventDefault();
+
+    if (hash) {
+      window.history.pushState(null, "", "/");
+    }
+
     window.scrollTo({ top: 0 });
   };
 

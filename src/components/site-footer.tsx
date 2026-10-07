@@ -27,7 +27,10 @@ export function SiteFooter() {
             Email is the quickest way to reach me. My CV is a one-page PDF.
           </p>
 
-          <ProfileActions />
+          {/* The header's Contact button hides while this row is on screen. */}
+          <div id="contact-actions">
+            <ProfileActions />
+          </div>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] leading-6">
             {SOCIAL_LINKS.map((link) => (

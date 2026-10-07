@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import { SectionLink } from "./section-nav";
 import { SiteHeaderMark } from "./site-header-mark";
 import { SiteHeaderWrapper } from "./site-header-wrapper";
 import { SiteNav } from "./site-nav";
@@ -36,7 +37,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2 max-sm:ml-auto">
           <ThemeToggle />
           <Button asChild className="px-3.5 max-sm:hidden">
-            <Link href="/#contact">Contact</Link>
+            <SectionLink sectionId="contact">Contact</SectionLink>
           </Button>
         </div>
       </div>

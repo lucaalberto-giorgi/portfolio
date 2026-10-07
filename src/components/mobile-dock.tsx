@@ -9,7 +9,6 @@ import {
   WrenchIcon,
 } from "lucide-react";
 import { useReducedMotion } from "motion/react";
-import Link from "next/link";
 import { useRef } from "react";
 
 import { cn } from "@/lib/utils";
@@ -18,6 +17,7 @@ import {
   DOCK_SECTION_IDS,
   DOCK_SECTIONS,
   type DockSectionId,
+  SectionLink,
   SectionPill,
   useItemRect,
   useSectionSpy,
@@ -65,8 +65,8 @@ export function MobileDock() {
 
             return (
               <li key={section.id} className="flex flex-1">
-                <Link
-                  href={`/#${section.id}`}
+                <SectionLink
+                  sectionId={section.id}
                   data-section={section.id}
                   data-active={isActive}
                   aria-current={isActive ? "true" : undefined}
@@ -79,7 +79,7 @@ export function MobileDock() {
                 >
                   <Icon className="size-5" strokeWidth={1.75} aria-hidden />
                   {section.label}
-                </Link>
+                </SectionLink>
               </li>
             );
           })}

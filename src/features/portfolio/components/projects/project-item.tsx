@@ -10,10 +10,12 @@ import { formatPeriod } from "../../utils/format-period";
 import { getDemoLink } from "../../utils/project-links";
 import { Entry } from "../entry";
 import { RichText, StackList } from "../section";
+import { PROJECT_SKETCHES } from "./sketches";
 
 export function ProjectItem({ project }: { project: Project }) {
   const demoLink = getDemoLink(project);
   const hasLinks = Boolean(demoLink || project.githubLink);
+  const Sketch = PROJECT_SKETCHES[project.id];
 
   const logo = project.logo ? (
     <Image
@@ -34,6 +36,16 @@ export function ProjectItem({ project }: { project: Project }) {
   return (
     <Entry
       id={project.id}
+      // Each project opens on a sketch of its key moment, so the rule
+      // between entries gives way to space.
+      className="border-t-0 pt-14 first:pt-0"
+      lead={
+        Sketch && (
+          <Sketch
+            href={demoLink ? addQueryParams(demoLink, UTM_PARAMS) : undefined}
+          />
+        )
+      }
       logo={logo}
       title={
         <>

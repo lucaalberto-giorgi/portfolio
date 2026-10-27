@@ -23,7 +23,7 @@ export function SiteHeader() {
     >
       <div className="page-container flex h-14 items-center gap-8">
         <BrandContextMenu>
-          <HomeLink className="flex [&_svg]:h-8" aria-label="Home">
+          <HomeLink className="flex [&_svg]:h-8" aria-label="LG, home">
             <SiteHeaderMark />
           </HomeLink>
         </BrandContextMenu>

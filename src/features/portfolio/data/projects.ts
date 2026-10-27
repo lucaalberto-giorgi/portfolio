@@ -38,9 +38,7 @@ export const PROJECTS: Project[] = [
       start: "06.2026",
     },
     logo: "/images/project-logos/slancio.svg",
-    link: "https://forma-two-delta.vercel.app",
-    // The repo is private, so a GitHub link would 404 for visitors. Restore
-    // `githubLink: "https://github.com/lucaalberto-giorgi/forma"` once public.
+    // No demo or repository link until launch: the product stays private.
     inProgress: true,
     skills: [
       "Next.js",

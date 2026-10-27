@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 
 type EntryProps = {
   id?: string;
+  /** Full-width block above the header, such as a project sketch. */
+  lead?: React.ReactNode;
   logo?: React.ReactNode;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -17,6 +19,7 @@ type EntryProps = {
  */
 export function Entry({
   id,
+  lead,
   logo,
   title,
   subtitle,
@@ -32,6 +35,8 @@ export function Entry({
         className
       )}
     >
+      {lead && <div className="mb-6">{lead}</div>}
+
       <header className="flex gap-4 sm:gap-5">
         <div className="flex size-10 shrink-0 items-center justify-center select-none">
           {logo}

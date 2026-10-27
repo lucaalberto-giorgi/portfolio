@@ -31,13 +31,13 @@ export const PROJECTS: Project[] = [
     isExpanded: true,
   },
   {
-    id: "forma",
-    title: "Forma",
+    id: "slancio",
+    title: "Slancio",
     // Ongoing while in progress; add `end` back when it ships.
     period: {
       start: "06.2026",
     },
-    logo: "/images/project-logos/forma.svg",
+    logo: "/images/project-logos/slancio.svg",
     link: "https://forma-two-delta.vercel.app",
     // The repo is private, so a GitHub link would 404 for visitors. Restore
     // `githubLink: "https://github.com/lucaalberto-giorgi/forma"` once public.
@@ -54,11 +54,12 @@ export const PROJECTS: Project[] = [
       "Framer Motion",
       "Vercel",
     ],
-    description: `A coaching app for personal trainers. Coaches manage their clients' programmes, sessions, check-ins, and messages in one place, and each client follows their plan from an app on their phone.
+    // Not on the market yet: describe the engineering, keep the product
+    // details private until launch.
+    description: `An AI-powered coaching app for personal trainers and their clients. It is still in development, so I'm keeping the product details private until launch.
 
-- Built with Next.js, React, TypeScript, and Tailwind CSS on Supabase (EU), with coach and client accounts, invite links, row-level security on every table, and realtime sync so messages arrive in under a second.
-- Wrote a client attention system that flags inactivity, low adherence, strength plateaus, and pain reports, and turns them into programme proposals that must pass code checks (load limits, library exercises only) before the coach approves them.
-- Added Claude features through Anthropic's API with structured outputs: reply drafts in the coach's voice, triage of client messages and check-ins, AI-assisted rescheduling, and programme edits from plain-language requests, with daily usage caps.`,
+- Building it end to end with Next.js, React, TypeScript, and Tailwind CSS on Supabase (EU), with coach and client accounts, row-level security on every table, and realtime sync.
+- Integrating Claude through Anthropic's API with structured outputs: every AI result is validated in code and approved by the coach before it reaches a client, with daily usage caps.`,
     isExpanded: true,
   },
   {

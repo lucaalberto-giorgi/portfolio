@@ -135,12 +135,12 @@ story.append(bullets([
     "Surfaced matched/missing skills and an AI-generated rationale alongside the overall score.",
 ]))
 
-story.append(Paragraph("Forma | Full-Stack Web Application - London | 2026", job_title_style))
+story.append(Paragraph("Slancio | Full-Stack Web Application - London | 2026", job_title_style))
 story.append(bullets([
-    "Building a coaching app for personal trainers (Next.js, React, TypeScript, Supabase): coach and client "
-    "accounts, programmes, sessions, check-ins, and realtime messaging, with row-level security on every table.",
-    "Wrote an attention system that flags inactivity, plateaus, and pain reports, and added Claude features "
-    "(reply drafts, message triage, programme proposals) with outputs checked in code before a coach approves.",
+    "Building an AI-powered coaching app for personal trainers and their clients (Next.js, React, TypeScript, "
+    "Supabase), with coach and client accounts, realtime sync, and row-level security on every table.",
+    "Integrating Claude through Anthropic's API with structured outputs: every AI result is validated in code and "
+    "approved by the coach before it reaches a client.",
 ]))
 
 story.append(Paragraph("Receipt Flow | Full-Stack Web Application - London | 2026", job_title_style))

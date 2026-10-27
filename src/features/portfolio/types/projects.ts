@@ -12,8 +12,11 @@ export type Project = {
     /** End date; leave undefined for "Present". */
     end?: string;
   };
-  /** Public URL (site, repository, demo, or video). */
-  link: string;
+  /**
+   * Public URL (site, repository, demo, or video). Leave it out while the
+   * address itself should stay private: this repository is public.
+   */
+  link?: string;
   /** Optional repository URL used for GitHub-specific CTAs. */
   githubLink?: string;
   /** Tags/technologies for chips or filtering. */

@@ -288,7 +288,8 @@ function StatusStamp({
         "inline-block border px-1.5 py-1 text-[8px] leading-none font-semibold",
         status === "reviewed"
           ? "border-(--blue)/50 bg-[#dfe7f3] text-(--blue)"
-          : "border-(--red)/40 bg-[#f6d9d3] text-(--red)",
+          : // Darker than --red so the small text keeps 4.5:1 on its tint.
+            "border-(--red)/40 bg-[#f6d9d3] text-[#a3240f]",
         className
       )}
       {...props}

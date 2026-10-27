@@ -28,24 +28,22 @@ export function ProfileActions() {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <Button asChild size="lg" className="px-5">
-        <a
-          href={isClient ? `mailto:${email}` : "#"}
-          aria-label={isClient ? `Send an email to ${email}` : "Send an email"}
-          onClick={handleEmailClick}
-        >
+        <a href={isClient ? `mailto:${email}` : "#"} onClick={handleEmailClick}>
           <MailIcon />
           Get in touch
+          {/* Extra context for screen readers; the visible words come first so
+              voice control ("click Get in touch") still matches. */}
+          <span className="sr-only">
+            {isClient ? `, send an email to ${email}` : ", send an email"}
+          </span>
         </a>
       </Button>
 
       <Button asChild variant="outline" size="lg" className="px-5">
-        <a
-          href={CV_FILE}
-          download={CV_DOWNLOAD_NAME}
-          aria-label={`Download ${USER.displayName}'s CV (PDF file)`}
-        >
+        <a href={CV_FILE} download={CV_DOWNLOAD_NAME}>
           <DownloadIcon />
           Download CV
+          <span className="sr-only"> (PDF file)</span>
         </a>
       </Button>
     </div>

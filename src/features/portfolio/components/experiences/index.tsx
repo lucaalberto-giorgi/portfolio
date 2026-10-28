@@ -1,4 +1,7 @@
+import { getSectionPin } from "@/config/sections";
+
 import { EXPERIENCES } from "../../data/experiences";
+import { RESULTS_FIGURE } from "../figures";
 import { Section, SectionContent, SectionTitle } from "../section";
 import { ExperienceItem } from "./experience-item";
 
@@ -9,7 +12,7 @@ const EDUCATION_ID = "education";
 export function Experiences() {
   return (
     <Section id="experience">
-      <SectionTitle>Experience</SectionTitle>
+      <SectionTitle pin={getSectionPin("experience")}>Experience</SectionTitle>
       <SectionContent>
         {EXPERIENCES.filter(({ id }) => id !== EDUCATION_ID).map(
           (experience) => (
@@ -30,9 +33,13 @@ export function Education() {
 
   return (
     <Section id={EDUCATION_ID}>
-      <SectionTitle>Education</SectionTitle>
+      <SectionTitle pin={getSectionPin("education")}>Education</SectionTitle>
       <SectionContent>
-        <ExperienceItem experience={education} titleFrom="position" />
+        <ExperienceItem
+          experience={education}
+          titleFrom="position"
+          resultsFigure={RESULTS_FIGURE}
+        />
       </SectionContent>
     </Section>
   );

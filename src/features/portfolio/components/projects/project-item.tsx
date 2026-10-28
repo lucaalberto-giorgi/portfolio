@@ -12,10 +12,17 @@ import { Entry } from "../entry";
 import { RichText, StackList } from "../section";
 import { PROJECT_SKETCHES } from "./sketches";
 
-export function ProjectItem({ project }: { project: Project }) {
+export function ProjectItem({
+  project,
+  figure,
+}: {
+  project: Project;
+  /** Figure number for the project's sketch, counted across the page. */
+  figure?: number;
+}) {
   const demoLink = getDemoLink(project);
   const hasLinks = Boolean(demoLink || project.githubLink);
-  const Sketch = PROJECT_SKETCHES[project.id];
+  const sketch = PROJECT_SKETCHES[project.id];
 
   const logo = project.logo ? (
     <Image
@@ -40,10 +47,20 @@ export function ProjectItem({ project }: { project: Project }) {
       // between entries gives way to space.
       className="border-t-0 pt-14 first:pt-0"
       lead={
-        Sketch && (
-          <Sketch
-            href={demoLink ? addQueryParams(demoLink, UTM_PARAMS) : undefined}
-          />
+        sketch && (
+          <figure>
+            <sketch.Sketch
+              href={demoLink ? addQueryParams(demoLink, UTM_PARAMS) : undefined}
+            />
+            <figcaption className="mt-3 max-w-[42rem] text-sm leading-6 text-muted-foreground">
+              {figure && (
+                <span className="font-semibold text-foreground">
+                  Figure {figure}.{" "}
+                </span>
+              )}
+              {sketch.caption}
+            </figcaption>
+          </figure>
         )
       }
       logo={logo}

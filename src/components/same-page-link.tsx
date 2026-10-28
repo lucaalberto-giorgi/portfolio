@@ -42,6 +42,23 @@ function focusSection(section: HTMLElement) {
   section.focus({ preventScroll: true });
 }
 
+/**
+ * Lights the section's pin pad green and lets it fade back, so a glide ends
+ * with the signal arriving where the pin pointed. Only after animated glides:
+ * keyboard jumps stay instant and quiet.
+ */
+function flashPinPad(section: HTMLElement) {
+  const pad = section.querySelector<HTMLElement>("[data-pin-pad]");
+  if (!pad) return;
+
+  const signal = getComputedStyle(pad).getPropertyValue("--success");
+
+  pad.animate(
+    [{ backgroundColor: signal, borderColor: signal, color: "#ffffff" }, {}],
+    { duration: 900, easing: "ease-out" }
+  );
+}
+
 /** Link to a homepage section by its id. */
 export function SectionLink({
   sectionId,
@@ -65,7 +82,10 @@ export function SectionLink({
       window.history.pushState(null, "", hash);
     }
 
-    glideToSection(section, { instant: isKeyboardClick(event) });
+    glideToSection(section, {
+      instant: isKeyboardClick(event),
+      onArrive: () => flashPinPad(section),
+    });
     focusSection(section);
   };
 

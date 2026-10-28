@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 import { USER } from "@/features/portfolio/data/user";
+import { getBrandIconDataUri } from "@/lib/brand-icon";
 import { urlToName } from "@/utils/url";
 
 // Rendered once at build time; any query string on shared links is ignored.
@@ -27,8 +28,8 @@ function readAsset(path: string) {
 
 export async function GET() {
   const [medium, semiBold, portrait] = await Promise.all([
-    readAsset("fonts/InstrumentSans-Medium.ttf"),
-    readAsset("fonts/InstrumentSans-SemiBold.ttf"),
+    readAsset("fonts/Archivo-Medium.woff"),
+    readAsset("fonts/Archivo-SemiBold.woff"),
     readAsset("images/og-portrait.jpg"),
   ]);
 
@@ -44,7 +45,7 @@ export async function GET() {
         height: "100%",
         backgroundColor: COLORS.paper,
         color: COLORS.ink,
-        fontFamily: "Instrument Sans",
+        fontFamily: "Archivo",
       }}
     >
       <div
@@ -59,15 +60,12 @@ export async function GET() {
         <div
           style={{
             display: "flex",
-            alignItems: "baseline",
+            alignItems: "center",
             justifyContent: "space-between",
           }}
         >
-          <div
-            style={{ fontSize: 36, fontWeight: 600, letterSpacing: "-0.02em" }}
-          >
-            LG
-          </div>
+          {/* The brand chip, as on the site's header and hero. */}
+          <img src={getBrandIconDataUri()} alt="" width={52} height={52} />
           <div
             style={{ fontSize: 22, fontWeight: 500, color: COLORS.graphite }}
           >
@@ -141,8 +139,8 @@ export async function GET() {
     {
       ...SIZE,
       fonts: [
-        { name: "Instrument Sans", data: medium, weight: 500 },
-        { name: "Instrument Sans", data: semiBold, weight: 600 },
+        { name: "Archivo", data: medium, weight: 500 },
+        { name: "Archivo", data: semiBold, weight: 600 },
       ],
     }
   );

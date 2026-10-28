@@ -1,11 +1,15 @@
-import { BrandMark } from "./brand-mark";
+import { getBrandIconSvg } from "@/lib/brand-icon";
 
-// The shared mark's 512x256 canvas leaves wide margins around "LG", which
-// made it read tiny in the header. Crop to the letters (with a little room
-// for system-ui width differences across platforms) so the height we set is
-// mostly glyph and its left edge lines up with the page content.
-const HEADER_VIEWBOX = "124 72 264 168";
-
+/**
+ * The brand chip from the favicon, at header size: the hero's chip in
+ * miniature, so the header keeps it in view once the hero scrolls away.
+ */
 export function SiteHeaderMark() {
-  return <BrandMark viewBox={HEADER_VIEWBOX} />;
+  return (
+    <span
+      aria-hidden
+      className="block size-8 overflow-hidden rounded-[9px] ring-1 ring-foreground/10 [&_svg]:size-full"
+      dangerouslySetInnerHTML={{ __html: getBrandIconSvg({ shape: "square" }) }}
+    />
+  );
 }

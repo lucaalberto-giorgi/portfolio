@@ -1,8 +1,9 @@
 import { GeistMono } from "geist/font/mono";
-import { Instrument_Sans as FontSans } from "next/font/google";
+import { Archivo as FontSans } from "next/font/google";
 
-// Variable width axis lets the hero headline run condensed while body copy
-// stays at normal width, so the whole site uses a single family.
+// Archivo's width axis (62 to 125) does the work a second family would:
+// section titles run slightly expanded, like engineering labels, and the
+// chip's marking runs fully expanded, while body copy stays at normal width.
 export const fontSans = FontSans({
   axes: ["wdth"],
   display: "swap",

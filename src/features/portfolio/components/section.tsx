@@ -1,4 +1,5 @@
 import { Markdown } from "@/components/markdown";
+import { PinPad } from "@/components/pin-pad";
 import { cn } from "@/lib/utils";
 
 /**
@@ -21,13 +22,36 @@ function Section({ className, ...props }: React.ComponentProps<"section">) {
   );
 }
 
-function SectionTitle({ className, ...props }: React.ComponentProps<"h2">) {
+/**
+ * Section name for the left column. Sections the hero chip's pins lead to
+ * carry that pin's number, and on large screens the title stays in view
+ * while its section scrolls past.
+ */
+function SectionTitle({
+  pin,
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"h2"> & { pin?: string }) {
   return (
     <h2
       data-slot="section-title"
-      className={cn("text-[15px] leading-7 font-semibold", className)}
+      className={cn(
+        "section-title flex items-center gap-3 text-[17px] leading-7 font-semibold lg:sticky lg:top-24 lg:self-start",
+        className
+      )}
       {...props}
-    />
+    >
+      {pin && (
+        <PinPad
+          data-pin-pad
+          className="size-6 rounded-[7px] text-xs text-foreground"
+        >
+          {pin}
+        </PinPad>
+      )}
+      {children}
+    </h2>
   );
 }
 

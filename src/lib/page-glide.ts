@@ -58,10 +58,16 @@ function stopGlide() {
   setGlide(null);
 }
 
+type GlideOptions = {
+  instant?: boolean;
+  /** Runs when an animated glide reaches its target uninterrupted. */
+  onArrive?: () => void;
+};
+
 function glideTo(
   top: number,
   sectionId: string | null,
-  { instant = false } = {}
+  { instant = false, onArrive }: GlideOptions = {}
 ) {
   const maxTop = document.documentElement.scrollHeight - window.innerHeight;
   // Aiming past either end would leave the spring pushing against the edge.
@@ -74,6 +80,7 @@ function glideTo(
   if (instant || reduceMotion) {
     if (currentGlide) stopGlide();
     window.scrollTo(0, target);
+    if (!instant) onArrive?.();
     return;
   }
 
@@ -90,16 +97,15 @@ function glideTo(
     ...GLIDE,
     onComplete: () => {
       // A later glide may have taken over from this one.
-      if (currentGlide === glide) stopGlide();
+      if (currentGlide !== glide) return;
+      stopGlide();
+      onArrive?.();
     },
   });
 }
 
 /** Glides to `section`, leaving room for the sticky header (scroll-margin). */
-export function glideToSection(
-  section: HTMLElement,
-  options?: { instant?: boolean }
-) {
+export function glideToSection(section: HTMLElement, options?: GlideOptions) {
   const scrollMargin = parseFloat(getComputedStyle(section).scrollMarginTop);
   const top =
     window.scrollY + section.getBoundingClientRect().top - (scrollMargin || 0);
@@ -108,6 +114,6 @@ export function glideToSection(
 }
 
 /** Glides back to the top of the page. */
-export function glideToTop(options?: { instant?: boolean }) {
+export function glideToTop(options?: GlideOptions) {
   glideTo(0, null, options);
 }

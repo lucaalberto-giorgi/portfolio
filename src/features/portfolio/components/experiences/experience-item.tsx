@@ -6,12 +6,16 @@ import type { Experience } from "../../types/experiences";
 import { formatPeriod } from "../../utils/format-period";
 import { Entry, EntryPeriod } from "../entry";
 import { RichText, StackList } from "../section";
+import { ResultsChart } from "./results-chart";
 
 export function ExperienceItem({
   experience,
   titleFrom = "company",
+  resultsFigure,
 }: {
   experience: Experience;
+  /** Figure number for a results chart, if a position has one. */
+  resultsFigure?: number;
   /**
    * Which field heads the entry. Education entries store the institution in
    * the position title, so they read better headed by it.
@@ -57,6 +61,9 @@ export function ExperienceItem({
           >
             {position.description && (
               <RichText>{position.description}</RichText>
+            )}
+            {position.results && (
+              <ResultsChart results={position.results} figure={resultsFigure} />
             )}
             {position.skills && <StackList items={position.skills} />}
           </Entry>

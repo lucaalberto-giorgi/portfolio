@@ -9,8 +9,8 @@ import { useIsClient } from "@/hooks/use-is-client";
 import { copyText } from "@/utils/copy";
 import { decodeEmail } from "@/utils/string";
 
-const CV_FILE = "/luca-alberto-giorgi-cv.pdf";
-const CV_DOWNLOAD_NAME = "Luca-Alberto-Giorgi-CV.pdf";
+export const CV_FILE = "/luca-alberto-giorgi-cv.pdf";
+export const CV_DOWNLOAD_NAME = "Luca-Alberto-Giorgi-CV.pdf";
 
 export function ProfileActions() {
   // Decode the email only on the client so it never ships in the SSR HTML

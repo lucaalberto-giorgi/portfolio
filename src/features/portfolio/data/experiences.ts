@@ -52,6 +52,15 @@ export const EXPERIENCES: Experience[] = [
         description: `- BSc (Hons) Computer Science, **First-Class Honours**.
 - Final-year project / dissertation graded **95/100**.
 - Standout modules: Software Development (98), Computer & Network Security (93), Data Structures & Algorithms (89), Web & Mobile App Development (87), Database Systems (84), Artificial Intelligence (82).`,
+        results: [
+          { label: "Software Development", mark: 98 },
+          { label: "Dissertation", mark: 95 },
+          { label: "Computer & Network Security", mark: 93 },
+          { label: "Data Structures & Algorithms", mark: 89 },
+          { label: "Web & Mobile App Development", mark: 87 },
+          { label: "Database Systems", mark: 84 },
+          { label: "Artificial Intelligence", mark: 82 },
+        ],
         skills: [
           "C++",
           "Java",

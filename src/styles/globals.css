@@ -166,6 +166,9 @@
   /* signal: reserved for availability and activity */
   --success: #16a34a;
 
+  /* Copper under solder mask: the circuit traces in the page margin. */
+  --trace: color-mix(in oklab, var(--foreground) 16%, var(--background));
+
   /* red-600 */
   --destructive: oklch(0.577 0.245 27.325);
 
@@ -342,6 +345,291 @@
 }
 
 @layer components {
+  /*
+   * The hero chip. Its power-on sequence is CSS (runs off the main thread
+   * while the page hydrates) and uses `backwards` fill, so once it ends the
+   * resting and hover rules below take over again. --i is the pin's index,
+   * counterclockwise from pin 1.
+   */
+  [data-chip] {
+    --chip-ease: cubic-bezier(0.23, 1, 0.32, 1);
+    --tin-hi: #e4e8ee;
+    --tin-lo: #868fa0;
+    --live: #4ade80;
+  }
+
+  .chip-package {
+    background:
+      radial-gradient(110% 110% at 16% 6%, #2c3856 0%, transparent 58%),
+      linear-gradient(160deg, #1c2438, #0f141f);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.1),
+      inset 0 -2px 0 rgb(0 0 0 / 0.4),
+      0 1px 2px rgb(20 27 45 / 0.3),
+      0 28px 56px -20px rgb(20 27 45 / 0.55);
+  }
+
+  .dark .chip-package {
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.09),
+      inset 0 1px 0 rgb(255 255 255 / 0.12),
+      0 28px 56px -16px rgb(0 0 0 / 0.85);
+  }
+
+  .chip-spreader {
+    background: linear-gradient(
+      160deg,
+      rgb(255 255 255 / 0.055),
+      rgb(255 255 255 / 0.01) 70%
+    );
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.07),
+      inset 0 1px 0 rgb(255 255 255 / 0.07);
+  }
+
+  /* Laser marking: fully expanded caps, etched rather than printed. */
+  .chip-marking {
+    font-size: calc(var(--body) * 0.044);
+    line-height: 1;
+    font-weight: 600;
+    font-variation-settings: "wdth" 125;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(231 234 240 / 0.4);
+  }
+
+  .chip-spark {
+    color: #22c55e;
+    transition: scale 200ms var(--chip-ease);
+    animation: chip-spark-on 700ms var(--chip-ease) 820ms backwards;
+  }
+
+  .chip-glow {
+    background: radial-gradient(closest-side, rgb(34 197 94 / 0.5), transparent);
+    opacity: 0.6;
+    transition:
+      opacity 200ms ease,
+      scale 260ms var(--chip-ease);
+    animation: chip-glow-on 1300ms ease-out 820ms backwards;
+  }
+
+  .chip-leg {
+    background: linear-gradient(
+      to bottom,
+      var(--tin-hi),
+      var(--tin-lo) 62%,
+      #b4bbc7
+    );
+    transition: box-shadow 150ms ease;
+    animation: 380ms var(--chip-ease) backwards;
+    animation-delay: calc(120ms + var(--i) * 45ms);
+  }
+
+  .chip-leg[data-side="top"],
+  .chip-leg[data-side="bottom"] {
+    background: linear-gradient(
+      to right,
+      var(--tin-hi),
+      var(--tin-lo) 62%,
+      #b4bbc7
+    );
+  }
+
+  /* Each leg grows out of the package. */
+  .chip-leg[data-side="left"] {
+    animation-name: chip-leg-left;
+  }
+  .chip-leg[data-side="right"] {
+    animation-name: chip-leg-right;
+  }
+  .chip-leg[data-side="top"] {
+    animation-name: chip-leg-top;
+  }
+  .chip-leg[data-side="bottom"] {
+    animation-name: chip-leg-bottom;
+  }
+
+  /* Current: a bright pulse that runs down the leg into the package. */
+  .chip-leg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: linear-gradient(
+      var(--current-dir, to right),
+      transparent,
+      var(--live) 50%,
+      transparent
+    );
+  }
+  .chip-leg[data-side="top"]::after,
+  .chip-leg[data-side="bottom"]::after {
+    --current-dir: to bottom;
+  }
+
+  .chip-label {
+    animation: chip-fade-in 320ms ease-out backwards;
+    animation-delay: calc(460ms + var(--i) * 45ms);
+  }
+
+  .chip-number {
+    color: rgb(231 234 240 / 0.4);
+    transition: color 150ms ease;
+  }
+
+  [data-pin]:focus-visible .chip-number {
+    color: var(--live);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    [data-pin]:hover .chip-number {
+      color: var(--live);
+    }
+
+    [data-pin]:hover .chip-leg {
+      box-shadow: inset 0 0 0 999px rgb(74 222 128 / 0.32);
+    }
+
+    [data-pin]:hover .chip-leg::after {
+      animation: 420ms ease-out;
+    }
+    [data-pin]:hover .chip-leg[data-side="left"]::after {
+      animation-name: chip-current-left;
+    }
+    [data-pin]:hover .chip-leg[data-side="right"]::after {
+      animation-name: chip-current-right;
+    }
+    [data-pin]:hover .chip-leg[data-side="top"]::after {
+      animation-name: chip-current-top;
+    }
+    [data-pin]:hover .chip-leg[data-side="bottom"]::after {
+      animation-name: chip-current-bottom;
+    }
+
+    [data-chip]:has([data-pin]:hover) .chip-glow {
+      opacity: 1;
+      scale: 1.15;
+    }
+
+    [data-chip]:has([data-pin]:hover) .chip-spark {
+      scale: 1.06;
+    }
+  }
+
+  @keyframes chip-leg-left {
+    from {
+      clip-path: inset(0 0 0 100%);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+  @keyframes chip-leg-right {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+  @keyframes chip-leg-top {
+    from {
+      clip-path: inset(100% 0 0 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+  @keyframes chip-leg-bottom {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes chip-current-left {
+    from {
+      opacity: 1;
+      translate: -100% 0;
+    }
+    to {
+      opacity: 1;
+      translate: 100% 0;
+    }
+  }
+  @keyframes chip-current-right {
+    from {
+      opacity: 1;
+      translate: 100% 0;
+    }
+    to {
+      opacity: 1;
+      translate: -100% 0;
+    }
+  }
+  @keyframes chip-current-top {
+    from {
+      opacity: 1;
+      translate: 0 -100%;
+    }
+    to {
+      opacity: 1;
+      translate: 0 100%;
+    }
+  }
+  @keyframes chip-current-bottom {
+    from {
+      opacity: 1;
+      translate: 0 100%;
+    }
+    to {
+      opacity: 1;
+      translate: 0 -100%;
+    }
+  }
+
+  @keyframes chip-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes chip-spark-on {
+    from {
+      color: #2e3954;
+      scale: 0.82;
+    }
+    35% {
+      color: #86efac;
+      scale: 1.05;
+    }
+  }
+
+  @keyframes chip-glow-on {
+    from {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+  }
+
+  /* Reduced motion: the chip appears powered, with fades only. */
+  @media (prefers-reduced-motion: reduce) {
+    .chip-leg,
+    .chip-leg::after,
+    [data-pin]:hover .chip-leg::after {
+      animation: none;
+    }
+
+    .chip-spark,
+    .chip-glow {
+      animation-name: chip-fade-in;
+    }
+  }
+
   /*
    * Project sketches. Each moving part waits in its "before" state until its
    * stage starts (data-on="true"), then transitions to its resting state.

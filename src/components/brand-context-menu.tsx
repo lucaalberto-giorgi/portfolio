@@ -1,12 +1,12 @@
 "use client";
 
-import { TypeIcon } from "lucide-react";
+import { CpuIcon, TypeIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { toast } from "sonner";
 
+import { getBrandIconSvg } from "@/lib/brand-icon";
 import { copyText } from "@/utils/copy";
 
-import { BrandMark, getMarkSVG } from "./brand-mark";
 import { getWordmarkSVG } from "./brand-wordmark";
 import {
   ContextMenu,
@@ -25,13 +25,12 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
       <ContextMenuContent className="w-64">
         <ContextMenuItem
           onClick={() => {
-            const svg = getMarkSVG(resolvedTheme === "light" ? "#000" : "#fff");
-            copyText(svg);
-            toast.success("Copied Mark as SVG");
+            copyText(getBrandIconSvg());
+            toast.success("Copied Icon as SVG");
           }}
         >
-          <BrandMark />
-          Copy Mark as SVG
+          <CpuIcon />
+          Copy Icon as SVG
         </ContextMenuItem>
 
         <ContextMenuItem

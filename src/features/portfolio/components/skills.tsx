@@ -1,3 +1,5 @@
+import { getSectionPin } from "@/config/sections";
+
 import { Section, SectionContent, SectionTitle } from "./section";
 
 // Full, categorised stack (kept in sync with the CV). Everything here is
@@ -32,16 +34,41 @@ const SKILL_GROUPS: { title: string; items: string[] }[] = [
 export function Skills() {
   return (
     <Section id="skills">
-      <SectionTitle>Skills</SectionTitle>
+      <SectionTitle pin={getSectionPin("skills")}>Skills</SectionTitle>
       <SectionContent>
-        <dl className="grid gap-x-6 text-[15px] leading-7 sm:grid-cols-[7rem_minmax(0,1fr)] sm:gap-y-2">
-          {SKILL_GROUPS.map((group) => (
-            <div key={group.title} className="contents">
-              <dt className="text-muted-foreground">{group.title}</dt>
-              <dd className="mb-3 sm:mb-0">{group.items.join(", ")}</dd>
-            </div>
-          ))}
-        </dl>
+        {/* A table, as on a datasheet: the rows are parallel and scan as such. */}
+        <div className="overflow-hidden rounded-xl border border-border">
+          <table className="w-full border-collapse text-left text-[15px] leading-6">
+            <thead className="bg-muted text-sm text-muted-foreground">
+              <tr>
+                <th
+                  scope="col"
+                  className="w-[7.5rem] px-4 py-2.5 font-medium sm:w-36 sm:px-5"
+                >
+                  Area
+                </th>
+                <th scope="col" className="px-4 py-2.5 font-medium sm:px-5">
+                  Technologies
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {SKILL_GROUPS.map((group) => (
+                <tr
+                  key={group.title}
+                  className="border-t border-border align-top"
+                >
+                  <th scope="row" className="px-4 py-3 font-semibold sm:px-5">
+                    {group.title}
+                  </th>
+                  <td className="px-4 py-3 sm:px-5">
+                    {group.items.join(", ")}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </SectionContent>
     </Section>
   );

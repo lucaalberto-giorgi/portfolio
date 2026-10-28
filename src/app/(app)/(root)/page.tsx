@@ -1,6 +1,7 @@
 import type { ProfilePage as PageSchema, WithContext } from "schema-dts";
 
 import { About } from "@/features/portfolio/components/about";
+import { CircuitTraces } from "@/features/portfolio/components/chip/circuit-traces";
 import {
   Education,
   Experiences,
@@ -21,14 +22,19 @@ export default function Page() {
         }}
       />
 
-      <div className="page-container">
-        <Hero />
-        <About />
-        <Experiences />
-        <Projects />
-        <Education />
-        <Skills />
-        <GitHubContributions />
+      {/* Full width, so the traces can run down the page margin. */}
+      <div className="relative">
+        <CircuitTraces />
+
+        <div className="page-container">
+          <Hero />
+          <About />
+          <Experiences />
+          <Projects />
+          <Education />
+          <Skills />
+          <GitHubContributions />
+        </div>
       </div>
     </>
   );

@@ -21,6 +21,11 @@ export type ExperiencePosition = {
   /** UI icon to represent the role type. */
   icon?: ExperiencePositionIcon;
   skills?: string[];
+  /**
+   * Marks out of 100, charted under the description. Keep them in step with
+   * the description, which states the same marks for the CV.
+   */
+  results?: { label: string; mark: number }[];
   /** Whether the position is expanded by default in the UI. */
   isExpanded?: boolean;
 };

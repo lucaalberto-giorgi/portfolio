@@ -3,16 +3,11 @@
 import { motion } from "motion/react";
 import { type RefObject, useEffect, useState } from "react";
 
+import { SECTIONS } from "@/config/sections";
 import { getGlide, subscribeToGlide } from "@/lib/page-glide";
 import { cn } from "@/lib/utils";
 
-/** Homepage sections in the header menu; 1-4 jump to them on a keyboard. */
-export const SECTIONS = [
-  { id: "experience", label: "Experience", hotkey: "1" },
-  { id: "projects", label: "Projects", hotkey: "2" },
-  { id: "education", label: "Education", hotkey: "3" },
-  { id: "skills", label: "Skills", hotkey: "4" },
-] as const;
+export { SECTIONS };
 
 export const SECTION_IDS = SECTIONS.map(({ id }) => id);
 

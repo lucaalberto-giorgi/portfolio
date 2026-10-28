@@ -6,6 +6,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 import { cn } from "@/lib/utils";
 
+import { PinPad } from "./pin-pad";
 import { SectionLink } from "./same-page-link";
 import {
   PILL,
@@ -18,8 +19,9 @@ import {
 /* ─────────────────────────────────────────────────────────
  * INTERACTION STORYBOARD (header menu, sm and up)
  *
- *  scroll      the section under the reading line turns ink and an
- *              underline on the header's edge glides to it (spring)
+ *  scroll      the section under the reading line turns ink, its pin
+ *              pad fills, and an underline on the header's edge glides
+ *              to it (spring)
  *  scroll      outside the four sections (intro, GitHub, contact):
  *              the underline fades out where it is
  *  hover       label turns ink and a faint underline appears (150ms)
@@ -57,13 +59,22 @@ export function SiteNav() {
                 aria-current={isActive ? "true" : undefined}
                 aria-keyshortcuts={section.hotkey}
                 className={cn(
-                  "relative flex items-center text-sm text-muted-foreground outline-none",
+                  "group/item relative flex items-center gap-2 text-sm text-muted-foreground outline-none",
                   "transition-colors duration-150 ease-snappy hover:text-foreground data-[active=true]:text-foreground",
                   // Hover preview of the underline, on the same edge.
                   "after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-border after:opacity-0 after:transition-opacity after:duration-150 hover:after:opacity-100",
                   "focus-visible:text-foreground focus-visible:after:bg-ring focus-visible:after:opacity-100"
                 )}
               >
+                <PinPad
+                  className={cn(
+                    "transition-[background-color,border-color,color] duration-150 ease-snappy",
+                    "group-hover/item:border-foreground/35 group-hover/item:text-foreground",
+                    "group-data-[active=true]/item:border-foreground group-data-[active=true]/item:bg-foreground group-data-[active=true]/item:text-background"
+                  )}
+                >
+                  {section.hotkey}
+                </PinPad>
                 {section.label}
               </SectionLink>
             </li>
